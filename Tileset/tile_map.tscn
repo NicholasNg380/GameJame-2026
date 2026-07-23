@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://lbb18ium25nn"]
+
+[ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/walls.tscn" id="1_direy"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_l3vns"]
+scenes/1/scene = ExtResource("1_direy")
+
+[sub_resource type="TileSet" id="TileSet_u7v55"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_l3vns")
+
+[node name="TileMap" type="TileMapLayer" unique_id=1914282033]
+tile_set = SubResource("TileSet_u7v55")

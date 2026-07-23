@@ -200,6 +200,8 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
+scale = Vector2(4, 4)
+collision_layer = 2
 script = ExtResource("1_qlasq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]

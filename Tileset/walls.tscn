@@ -7,7 +7,6 @@
 [node name="Walls" type="Node2D" unique_id=537426714]
 
 [node name="Wall" type="Sprite2D" parent="." unique_id=2053791326]
-scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ly1um")
 metadata/_edit_group_ = true
 

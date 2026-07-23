@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://brfu7bf3slm48"
+run/main_scene="uid://curkhkvtdufhy"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 <<<<<<<HEADrun/main_scene="uid://coar0w52ewb50"
