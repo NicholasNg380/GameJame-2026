@@ -1,11 +1,8 @@
 [gd_scene format=4 uid="uid://brfu7bf3slm48"]
 
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_60lb5"]
-[ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_spvsr"]
 
 [node name="RoomStart" type="Node2D" unique_id=203248451]
 
 [node name="TileMap" parent="." unique_id=1914282033 instance=ExtResource("1_60lb5")]
 tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAQD+/wIAAAAAAAAAAQD//wIAAAAAAAAAAQAAAAIAAAAAAAAAAQABAAIAAAAAAAAAAQACAAIAAAAAAAAAAQACAAEAAAAAAAAAAQACAAAAAAAAAAAAAQACAP//AAAAAAAAAQACAP7/AAAAAAAAAQACAP3/AAAAAAAAAQACAPz/AAAAAAAAAQACAPv/AAAAAAAAAQACAPr/AAAAAAAAAQACAPn/AAAAAAAAAQD9/wEAAAAAAAAAAQD9/wAAAAAAAAAAAQD9////AAAAAAAAAQD9//7/AAAAAAAAAQD9//3/AAAAAAAAAQD9//z/AAAAAAAAAQD9//v/AAAAAAAAAQD9//r/AAAAAAAAAQD9//n/AAAAAAAAAQD9//j/AAAAAAAAAQACAPj/AAAAAAAAAQA=")
-
-[node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_spvsr")]
