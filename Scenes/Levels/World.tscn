@@ -12,6 +12,7 @@ scenes/2/scene = ExtResource("2_w0a6n")
 [sub_resource type="TileSet" id="TileSet_vi80n"]
 sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 
+
 [node name="World" type="Node2D" unique_id=586736019]
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
