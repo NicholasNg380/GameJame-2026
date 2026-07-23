@@ -10,3 +10,6 @@ export_presets.cfg
 
 *.tmp
 mono_crash.*
+Assets/icon.svg.import
+Assets/Sprites/icon.svg.import
+Assets/icon.svg.import
