@@ -5,6 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxnd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nk2vc"]
+radius = 301.02658
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2130104624]
 script = ExtResource("1_v0iea")
 
@@ -16,3 +19,9 @@ scale = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_0yxnd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1526197931]
+
+[node name="HackArea" type="Area2D" parent="." unique_id=1518452102]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HackArea" unique_id=856442739]
+shape = SubResource("CircleShape2D_nk2vc")
