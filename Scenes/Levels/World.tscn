@@ -2,9 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_5cjrv"]
 [ext_resource type="PackedScene" uid="uid://brfu7bf3slm48" path="res://Scenes/Levels/RoomStart.tscn" id="2_w0a6n"]
+[ext_resource type="PackedScene" uid="uid://u7gpcslf1xmy" path="res://Scenes/Objects/Enemy.tscn" id="3_28y5c"]
 
 [node name="World" type="Node2D" unique_id=586736019]
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
 
 [node name="RoomStart" parent="." unique_id=203248451 instance=ExtResource("2_w0a6n")]
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("3_28y5c")]
+position = Vector2(180, -292)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://u7gpcslf1xmy"]
 
-[ext_resource type="Script" uid="uid://cq7cf7c08k0hq" path="res://Scripts/Enemy/Enemy_script.gd" id="1_qlasq"]
+[ext_resource type="Script" uid="uid://b05d2qmh2yhxv" path="res://Scripts/Enemy/Melee_enemy_script.gd" id="1_qlasq"]
 [ext_resource type="Texture2D" uid="uid://3tflq7mtrosa" path="res://Assets/Sprites/melee_sprite-Sheet.png" id="2_qlasq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3l5w"]
@@ -196,7 +196,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Walking",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
@@ -207,7 +207,9 @@ script = ExtResource("1_qlasq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]
 shape = SubResource("RectangleShape2D_t3l5w")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
+[node name="Sword" type="AnimatedSprite2D" parent="." unique_id=1940052134]
+rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Left Slash"
-frame_progress = 0.5170346
+animation = &"Walking"
+autoplay = "Waking up"
+frame_progress = 0.26070076
