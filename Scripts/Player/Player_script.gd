@@ -7,6 +7,13 @@ const ACCELERATION: int = 15
 const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
 
+var TYPE: String = ""
+
+var HEALTH: float = 100.0
+
+# Array contains Health then speed
+var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
+
 func _ready():
 	add_to_group("player")
 
@@ -15,7 +22,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("hack"):
-		swap_with_robot()
+		hack_robot()
 
 func _movement(delta: float) -> void:
 	var input = Vector2(
@@ -48,7 +55,7 @@ func closest_robot() -> Enemy:
 	
 	return closest_robot
 
-func swap_with_robot():
+func hack_robot():
 	var robot = closest_robot()
 	
 	if robot == null:
@@ -57,7 +64,12 @@ func swap_with_robot():
 	var player_pos = global_position
 	var robot_pos = robot.global_position
 	
-	print(robot_pos)
+	TYPE = robot.type
+	HEALTH = ROBOTS[TYPE][0]
+	MAX_SPEED = ROBOTS[TYPE][1]
+	
+	print(TYPE, HEALTH, MAX_SPEED)
+	
 	global_position = robot_pos
 	robot.global_position = player_pos
 	

@@ -1,9 +1,8 @@
 extends "Enemy_script.gd"
 
-
 @onready var anim = $Sword
 
-
+var type = "Tank"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
