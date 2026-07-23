@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://brfu7bf3slm48"]
 
 [ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/walls.tscn" id="1_60lb5"]
-[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/Objects/player.tscn" id="1_spvsr"]
+[ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_spvsr"]
+[ext_resource type="PackedScene" uid="uid://u7gpcslf1xmy" path="res://Scenes/Objects/Enemy.tscn" id="3_l3vns"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_l3vns"]
 scenes/1/scene = ExtResource("1_60lb5")
@@ -40,3 +41,6 @@ tile_set = SubResource("TileSet_u7v55")
 [node name="SpawnTerminal" type="Node2D" parent="." unique_id=1859525417]
 
 [node name="CharacterBody2D" parent="." unique_id=2130104624 instance=ExtResource("1_spvsr")]
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("3_l3vns")]
+position = Vector2(678, -4)
