@@ -1,8 +1,12 @@
 extends CharacterBody2D
+class_name Player
 
 const ACCELERATION: int = 15
 const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
+
+func _ready():
+	add_to_group("player")
 
 func _physics_process(delta):
 	_movement(delta)
