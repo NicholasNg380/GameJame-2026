@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://lbb18ium25nn"]
 
-[ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/walls.tscn" id="1_direy"]
+[ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/wall.tscn" id="1_direy"]
+[ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="2_2dses"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_l3vns"]
 scenes/1/scene = ExtResource("1_direy")
+scenes/2/scene = ExtResource("2_2dses")
 
 [sub_resource type="TileSet" id="TileSet_u7v55"]
 tile_size = Vector2i(128, 128)
