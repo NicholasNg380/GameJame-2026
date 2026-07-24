@@ -63,7 +63,8 @@ func _movement(delta: float) -> void:
 	
 	velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
 	if velocity.length() > 0:
-		rotation = atan2(velocity.y, velocity.x)
+		if TYPE != "Magnet":
+			rotation = atan2(velocity.y, velocity.x)
 	
 	if ANIM_PLAYER != null and not ANIM_PLAYER.is_playing():
 			ANIM_PLAYER.play("Walking")
@@ -128,6 +129,7 @@ func robot_change(type) -> void:
 			ANIM_PLAYER = tank_anim
 		"Magnet":
 			magnet_anim.visible = true
+			rotation = 0;
 			ANIM_PLAYER = magnet_anim
 	
 func do_sword_attack():

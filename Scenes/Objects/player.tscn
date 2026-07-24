@@ -521,7 +521,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Walking",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfgsd"]
@@ -550,10 +550,9 @@ autoplay = "Waking up"
 
 [node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
 visible = false
-rotation = -1.5707964
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_xbekk")
-animation = &"Waking up"
+animation = &"Walking"
 autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
