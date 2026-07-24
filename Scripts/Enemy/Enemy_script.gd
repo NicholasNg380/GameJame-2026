@@ -33,11 +33,11 @@ func _physics_process(_delta):
 			move_and_slide()
 		State.ATTACK:
 			velocity = Vector2.ZERO
+			anim.play("Left Slash")
 			start_cooldown()
 
 func attack_status(distance: float) -> void:
-	if distance <= 60:
-		print("test")
+	if distance <= 70:
 		if current_state != State.COOLDOWN:
 			current_state = State.ATTACK
 		
