@@ -6,8 +6,11 @@ class_name Player
 @onready var sword_anim = $Sword
 @onready var tank_anim = $Tank
 @onready var magnet_anim = $Magnet
+@onready var minigame = $Node2D/Minigame
 
-signal hacking
+signal hacking(robot)
+signal canHack(robot)
+signal cannotHack
 
 const ACCELERATION: int = 15
 const FRICTION: int = 0
@@ -25,6 +28,7 @@ var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magn
 
 func _ready():
 	add_to_group("player")
+	robot_change("Sword")
 
 func _physics_process(delta):
 	_movement(delta)
@@ -52,6 +56,7 @@ func _physics_process(delta):
 	if combo1Timer > 0 or combo2Timer > 0:
 		combo1Timer -= delta
 		combo2Timer -= delta
+	closest_robot()
 
 func _movement(delta: float) -> void:
 	var input = Vector2(
@@ -73,6 +78,7 @@ func closest_robot() -> Enemy:
 	var overlapping_bodies = hack_area.get_overlapping_bodies()
 	
 	if overlapping_bodies.is_empty():
+		cannotHack.emit()
 		return null
 		
 	var closest_robot: Enemy = null
@@ -87,29 +93,31 @@ func closest_robot() -> Enemy:
 		if dist_sq < min_distance:
 			min_distance = dist_sq
 			closest_robot = body
-	
+	canHack.emit(closest_robot)
 	return closest_robot
 
 func hack_robot():
-	hacking.emit()
+	
 	var robot = closest_robot()
 	
 	if robot == null:
 		return
-	
-	var player_pos = global_position
-	var robot_pos = robot.global_position
-	
-	robot_change(robot.type)
-	
-	camera.position_smoothing_enabled = true
-	
-	global_position = robot_pos
-	robot.global_position = player_pos
-	
-	robot.queue_free()
-	await get_tree().create_timer(0.3).timeout
-	camera.position_smoothing_enabled = false
+	hacking.emit(robot)
+	#
+	#var player_pos = global_position
+	#var robot_pos = robot.global_position
+	#
+	#
+	#robot_change(robot.type)
+	#
+	#camera.position_smoothing_enabled = true
+	#
+	#global_position = robot_pos
+	#robot.global_position = player_pos
+	#
+	#robot.queue_free()
+	#await get_tree().create_timer(0.3).timeout
+	#camera.position_smoothing_enabled = false
 
 
 func robot_change(type) -> void:
