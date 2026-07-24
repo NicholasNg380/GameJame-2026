@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="3_jbq8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3l5w"]
-size = Vector2(28.5, 34.5)
+size = Vector2(20.25, 34.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wc14k"]
 atlas = ExtResource("2_jbq8x")
@@ -227,7 +227,7 @@ collision_layer = 2
 script = ExtResource("1_o5hcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]
-position = Vector2(1.75, 0)
+position = Vector2(-2.375, 0)
 shape = SubResource("RectangleShape2D_t3l5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
