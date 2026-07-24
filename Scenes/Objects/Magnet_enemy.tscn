@@ -120,7 +120,6 @@ position = Vector2(1.75, 0)
 shape = SubResource("RectangleShape2D_t3l5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
-scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_ou3y7")
 animation = &"Waking up"
 

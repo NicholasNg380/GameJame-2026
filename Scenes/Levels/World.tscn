@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_f4gmh"]
 [ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="5_fxmlw"]
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
-[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="6_h33no"]
+[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="7_r3u2c"]
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="8_k4ffd"]
+[ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
+[ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ahnss"]
 scenes/1/scene = ExtResource("4_fb73i")
@@ -199,6 +201,18 @@ region_rect = Rect2(0, 0, 37.958473, 21)
 scale = Vector2(4, 4)
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameController" unique_id=540864384]
+
+[node name="Death Timer" type="TextureProgressBar" parent="GameController/CanvasLayer" unique_id=801256612]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 489.0
+offset_bottom = 41.0
+scale = Vector2(4, 4)
+value = 100.0
+texture_under = ExtResource("15_fxmlw")
+texture_progress = ExtResource("16_h33no")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)

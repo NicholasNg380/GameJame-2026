@@ -536,7 +536,7 @@ script = ExtResource("1_v0iea")
 
 [node name="Sword" type="AnimatedSprite2D" parent="." unique_id=852005037]
 rotation = -1.5707964
-scale = Vector2(4, 4.087)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_picsy")
 animation = &"Combo Slash"
 autoplay = "Waking up"
@@ -544,14 +544,14 @@ autoplay = "Waking up"
 [node name="Tank" type="AnimatedSprite2D" parent="." unique_id=625596878]
 visible = false
 rotation = -1.5707964
-scale = Vector2(3.5, 3.511)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_yu8t6")
 animation = &"Shield Bash"
 autoplay = "Waking up"
 
 [node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
 visible = false
-scale = Vector2(2.5, 2.5)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xbekk")
 animation = &"Walking"
 autoplay = "Waking up"

@@ -99,27 +99,13 @@ func closest_robot() -> Enemy:
 	return closest_robot
 
 func hack_robot():
+	velocity = Vector2(0, 0)
 	isHacking = true
 	var robot = closest_robot()
 	
 	if robot == null:
 		return
 	hacking.emit(robot)
-	#
-	#var player_pos = global_position
-	#var robot_pos = robot.global_position
-	#
-	#
-	#robot_change(robot.type)
-	#
-	#camera.position_smoothing_enabled = true
-	#
-	#global_position = robot_pos
-	#robot.global_position = player_pos
-	#
-	#robot.queue_free()
-	#await get_tree().create_timer(0.3).timeout
-	#camera.position_smoothing_enabled = false
 
 func _on_game_controller_hack_success(robot) -> void:
 	var player_pos = global_position

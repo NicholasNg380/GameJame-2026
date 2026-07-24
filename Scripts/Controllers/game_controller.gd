@@ -1,11 +1,12 @@
 extends Node
 class_name GameController
 
-const HOST_TIME := 30.0
+const HOST_TIME := 10.0
 
 var won: bool = false
 var current_robot = null
 var time_remaining := 0.0
+var update_timer := 0.0
 
 const TIME_SLOW = 0.1
 
@@ -25,12 +26,14 @@ var robot_being_hacked
 @onready var minigame_init_msg = $Sprite2D
 @onready var host_timer: Timer = $HostTimer
 @onready var minigame = $HBoxContainer
+@onready var health = $"CanvasLayer/Death Timer"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 
 func _ready():
 	minigame_init_msg.visible = false
 	host_timer.timeout.connect(_on_host_timer_finished)
+	time_remaining = HOST_TIME
 
 # -------------------------
 # WIN SYSTEM
@@ -61,9 +64,20 @@ func _on_host_timer_finished():
 
 
 func _process(delta):
+	#Update health bar
+	if time_remaining > 0:
+		time_remaining -= delta
+		update_timer += delta
+		if update_timer >= 0.5:
+			update_timer = 0.0
+			health.value = 100 * (1-((HOST_TIME-time_remaining)/HOST_TIME))
+			
 	if is_hacking:
 		if hackListPointer == HACK_DIFFICULTY + hack_modifier:
+			time_remaining = HOST_TIME
+			update_timer = 0.5
 			hackSuccess.emit(robot_being_hacked)
+			
 			is_hacking=false
 			minigame.visible = false
 			Engine.time_scale = 1
@@ -121,7 +135,7 @@ func _on_player_hacking(robot) -> void:
 	minigame.global_position = robot.global_position + Vector2(0, -60)
 	for i in range(HACK_DIFFICULTY + hack_modifier):
 		var rand = rng.randi_range(0, 3)
-		print(rand)
+		
 		var key_scene = load(MINIGAME_KEY)
 		var key = key_scene.instantiate()
 		key.texture = key.texture.duplicate()
