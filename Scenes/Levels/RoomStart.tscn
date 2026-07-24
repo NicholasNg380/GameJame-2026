@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bc6iyqr23qaxb" path="res://Tileset/tilemap.png" id="3_6b255"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_l3vns"]
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="4_oeeai"]
-[ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="5_kjl6c"]
 [ext_resource type="PackedScene" uid="uid://bx06v16cclptx" path="res://Scenes/Objects/Sword_enemy.tscn" id="8_1aqmg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8uh6"]

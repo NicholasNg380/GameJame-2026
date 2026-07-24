@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_f4gmh"]
 [ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="5_fxmlw"]
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
-[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="6_h33no"]
+[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="7_r3u2c"]
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="8_k4ffd"]
 
