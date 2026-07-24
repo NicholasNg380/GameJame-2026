@@ -2,8 +2,10 @@ extends CharacterBody2D
 class_name Enemy
 
 var player: Player
-
 var on: bool = false
+var spawning: bool = false
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 """enum State { PATROL, CHASE, ATTACK }
 var current_state: State = State.PATROL
@@ -15,24 +17,24 @@ var direction: Vector2 = Vector2.ZERO
 var roam_target: Vector2
 var roam_timer: float"""
 
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-
 func _ready():
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(_delta):
+	if player == null:
+		player = get_tree().get_first_node_in_group("player")
+		return
+		
+	if global_position.distance_to(player.global_position) < 450 and !on and !spawning:
+		spawning = true
+		anim.play("Waking up")
+	
 	if on:
 		var direction = global_position.direction_to(player.global_position)
-		velocity = direction * 100
-		look_at(player.global_position)
-		
+		velocity = direction * 400
 		move_and_slide()
 		
-	if global_position.distance_to(player.global_position) < 450:
-		on = true
-	
-	move_and_slide()
 	
 """func patrol_behaviour(_delta) -> void:
 	roam_timer -= _delta

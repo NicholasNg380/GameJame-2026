@@ -524,7 +524,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxnd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfgsd"]
+radius = 6.4633703
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk2vc"]
 radius = 301.02658
@@ -557,7 +558,7 @@ autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
 scale = Vector2(6.5, 6.5)
-shape = SubResource("RectangleShape2D_0yxnd")
+shape = SubResource("CircleShape2D_dfgsd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1526197931]
 position_smoothing_speed = 14.0

@@ -9,7 +9,9 @@ const ROOM_SIZE := Vector2i(2048, 2048)
 @export var total_rooms := 5
 
 @export var room_start: PackedScene
-@export var room_1: PackedScene
+
+# Add all possible rooms here
+@export var room_types: Array[PackedScene]
 
 
 @onready var rooms_parent := $"../Rooms"
@@ -61,7 +63,7 @@ func generate_map():
 
 	current_grid_pos += Vector2i.UP
 
-	spawn_room(room_1, current_grid_pos)
+	spawn_room(get_random_room(), current_grid_pos)
 
 
 
@@ -93,12 +95,19 @@ func generate_map():
 		current_grid_pos += chosen_dir
 
 
-		spawn_room(room_1, current_grid_pos)
+		spawn_room(get_random_room(), current_grid_pos)
 
 
 
 	# Once all rooms exist, update corridors
 	update_room_connections()
+
+
+
+
+func get_random_room() -> PackedScene:
+
+	return room_types.pick_random()
 
 
 

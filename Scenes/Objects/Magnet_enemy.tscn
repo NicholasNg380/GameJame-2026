@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2g7p")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Death",
 "speed": 7.0
 }, {
@@ -86,7 +86,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jo2uv")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Waking up",
 "speed": 5.0
 }, {
@@ -117,10 +117,9 @@ script = ExtResource("1_admd3")
 position = Vector2(1.75, 0)
 shape = SubResource("RectangleShape2D_t3l5w")
 
-[node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1940052134]
-rotation = 4.712389
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Walking"
-autoplay = "Waking up"
-frame_progress = 0.80032915
+animation = &"Waking up"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

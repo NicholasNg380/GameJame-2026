@@ -23,7 +23,6 @@ var combo2Timer: float = 0;
 # Array contains Health then speed
 var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
 
-
 func _ready():
 	add_to_group("player")
 
