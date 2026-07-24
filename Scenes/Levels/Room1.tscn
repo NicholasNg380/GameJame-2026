@@ -137,19 +137,19 @@ size = Vector2(256, 256)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ahg1b"]
 cull_mode = 2
-polygon = PackedVector2Array(-896, -128, -896, -896, -128, -896, -128, -832, -832, -832, -832, -128)
+polygon = PackedVector2Array(-1024, -192, -1024, -1024, -208, -1024, -208, -848, -848, -848, -848, -192)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jlipd"]
 cull_mode = 2
-polygon = PackedVector2Array(-896, -832, -896, -896, -128, -896, -128, -128, -192, -128, -192, -832)
+polygon = PackedVector2Array(-816, -848, -816, -1024, 0, -1024, 0, -208, -176, -208, -176, -848)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jblwj"]
 cull_mode = 2
-polygon = PackedVector2Array(-896, -128, -192, -128, -192, -896, -128, -896, -128, -64, -896, -64)
+polygon = PackedVector2Array(-816, -128, -176, -128, -176, -768, 0, -768, 0, 0, -816, 0)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6uwql"]
 cull_mode = 2
-polygon = PackedVector2Array(-896, -896, -832, -896, -832, -128, -128, -128, -128, -64, -896, -64)
+polygon = PackedVector2Array(-1024, -768, -848, -768, -848, -128, -208, -128, -208, 0, -1024, 0)
 
 [node name="Room1" type="Node2D" unique_id=203248451]
 script = ExtResource("1_me5mj")

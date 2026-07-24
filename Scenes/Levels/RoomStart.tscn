@@ -133,6 +133,10 @@ sources/0 = SubResource("TileSetAtlasSource_mjqay")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3vns"]
 size = Vector2(256, 256)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6b255"]
+cull_mode = 2
+polygon = PackedVector2Array(-272, -1024, -272, -848, -400, -848, -400, 384, 272, 384, 272, -848, 144, -848, 144, -1024, 960, -1024, 960, 1024, -1088, 1024, -1088, -1024)
+
 [node name="RoomStart" type="Node2D" unique_id=203248451]
 script = ExtResource("2_60lb5")
 
@@ -201,3 +205,8 @@ shape = SubResource("RectangleShape2D_l3vns")
 
 [node name="Terminal" parent="." unique_id=75197368 instance=ExtResource("4_oeeai")]
 position = Vector2(0, 192)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1247984764]
+position = Vector2(64, 0)
+occluder = SubResource("OccluderPolygon2D_6b255")
+metadata/_edit_group_ = true

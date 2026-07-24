@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b155ogi2t20ry" path="res://Scripts/Enemy/Magnet_enemy_script.gd" id="1_admd3"]
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="2_70i61"]
+[ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="3_70i61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3l5w"]
 size = Vector2(28.5, 34.5)
@@ -122,5 +123,12 @@ shape = SubResource("RectangleShape2D_t3l5w")
 scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_ou3y7")
 animation = &"Waking up"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1025857536]
+color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_70i61")
+texture_scale = 0.5
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

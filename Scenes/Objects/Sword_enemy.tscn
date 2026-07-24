@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b05d2qmh2yhxv" path="res://Scripts/Enemy/Melee_enemy_script.gd" id="1_cktof"]
 [ext_resource type="Texture2D" uid="uid://3tflq7mtrosa" path="res://Assets/Sprites/melee_sprite-Sheet.png" id="2_da27k"]
+[ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="3_da27k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3l5w"]
 
@@ -245,5 +246,12 @@ shape = SubResource("RectangleShape2D_t3l5w")
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_ou3y7")
 animation = &"Waking up"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=393909658]
+color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_da27k")
+texture_scale = 0.5
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
