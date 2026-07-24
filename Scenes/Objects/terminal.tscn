@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bo3b2l7xdrsb1"]
 
-[ext_resource type="Texture2D" uid="uid://bf8kd42k3lea1" path="res://Assets/Sprites/icon.svg" id="1_ma0ow"]
+[ext_resource type="Texture2D" uid="uid://bf8kd42k3lea1" path="res://Assets/icon.svg" id="1_ma0ow"]
 
 [node name="Terminal" type="Node2D" unique_id=75197368]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwpduf828opft"]
 
-[ext_resource type="Texture2D" uid="uid://bf8kd42k3lea1" path="res://Assets/Sprites/icon.svg" id="1_lepg4"]
+[ext_resource type="Texture2D" uid="uid://bf8kd42k3lea1" path="res://Assets/icon.svg" id="1_lepg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7v55"]
 

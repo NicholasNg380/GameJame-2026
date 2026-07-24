@@ -220,6 +220,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
+z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_o5hcr")
