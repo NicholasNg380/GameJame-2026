@@ -12,6 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func attack() -> void:
+	anim.play("Left Slash")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
@@ -19,5 +21,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		current_state = State.CHASE
 		anim.play("Walking")
 	if anim.animation == "Left Slash":
-		current_state = State.CHASE
 		anim.play("Walking")
+		current_state = State.COOLDOWN
+		await get_tree().create_timer(0.5).timeout # 1-second attack delay
+		current_state = State.CHASE

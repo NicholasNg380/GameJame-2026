@@ -33,15 +33,12 @@ func _physics_process(_delta):
 			move_and_slide()
 		State.ATTACK:
 			velocity = Vector2.ZERO
-			anim.play("Left Slash")
-			start_cooldown()
+			attack()
+
+func attack() -> void:
+	pass
 
 func attack_status(distance: float) -> void:
-	if distance <= 70:
+	if distance <= 70 and current_state != State.COOLDOWN:
 		if current_state != State.COOLDOWN:
 			current_state = State.ATTACK
-		
-func start_cooldown() -> void:
-	current_state = State.COOLDOWN
-	await get_tree().create_timer(1.0).timeout # 1-second attack delay
-	current_state = State.CHASE
