@@ -139,6 +139,9 @@ polygon = PackedVector2Array(-272, -1024, -272, -848, -400, -848, -400, 384, 272
 
 [node name="RoomStart" type="Node2D" unique_id=203248451]
 script = ExtResource("2_60lb5")
+has_east_door = false
+has_south_door = false
+has_west_door = false
 
 [node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_60lb5")]
 scale = Vector2(4, 4)
