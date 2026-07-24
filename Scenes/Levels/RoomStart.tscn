@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bc6iyqr23qaxb" path="res://Tileset/tilemap.png" id="3_6b255"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_l3vns"]
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="4_oeeai"]
+[ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="5_kjl6c"]
+[ext_resource type="PackedScene" uid="uid://bx06v16cclptx" path="res://Scenes/Objects/Sword_enemy.tscn" id="8_1aqmg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8uh6"]
 texture = ExtResource("3_6b255")
@@ -213,3 +215,6 @@ shape = SubResource("RectangleShape2D_bcjo6")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")
 metadata/_edit_group_ = true
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("8_1aqmg")]
+position = Vector2(200, -64)
