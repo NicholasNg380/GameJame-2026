@@ -54,3 +54,5 @@ color = Color(0, 0, 0, 1)
 [connection signal="canHack" from="Player" to="GameController" method="_on_player_can_hack"]
 [connection signal="cannotHack" from="Player" to="GameController" method="_on_player_cannot_hack"]
 [connection signal="hacking" from="Player" to="GameController" method="_on_player_hacking"]
+[connection signal="hackFail" from="GameController" to="Player" method="_on_game_controller_hack_fail"]
+[connection signal="hackSuccess" from="GameController" to="Player" method="_on_game_controller_hack_success"]

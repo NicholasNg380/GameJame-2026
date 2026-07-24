@@ -8,6 +8,8 @@ class_name Player
 @onready var magnet_anim = $Magnet
 @onready var minigame = $Node2D/Minigame
 
+var isHacking = false
+
 signal hacking(robot)
 signal canHack(robot)
 signal cannotHack
@@ -63,13 +65,13 @@ func _movement(delta: float) -> void:
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
-	
-	var lerp_weight = delta * (ACCELERATION if input else 50)
-	
-	velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
-	if velocity.length() > 0:
-		if TYPE != "Magnet":
-			rotation = atan2(velocity.y, velocity.x)
+	if !isHacking:
+		var lerp_weight = delta * (ACCELERATION if input else 50)
+		
+		velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
+		if velocity.length() > 0:
+			if TYPE != "Magnet":
+				rotation = atan2(velocity.y, velocity.x)
 	
 	if ANIM_PLAYER != null and not ANIM_PLAYER.is_playing():
 			ANIM_PLAYER.play("Walking")
@@ -97,7 +99,7 @@ func closest_robot() -> Enemy:
 	return closest_robot
 
 func hack_robot():
-	
+	isHacking = true
 	var robot = closest_robot()
 	
 	if robot == null:
@@ -119,7 +121,27 @@ func hack_robot():
 	#await get_tree().create_timer(0.3).timeout
 	#camera.position_smoothing_enabled = false
 
+func _on_game_controller_hack_success(robot) -> void:
+	var player_pos = global_position
+	var robot_pos = robot.global_position
+	
+	
+	robot_change(robot.type)
 
+	camera.position_smoothing_enabled = true
+	
+	global_position = robot_pos
+	robot.global_position = player_pos
+	
+	robot.queue_free()
+	await get_tree().create_timer(0.3).timeout
+	camera.position_smoothing_enabled = false
+	
+	isHacking = false
+	
+func _on_game_controller_hack_fail() -> void:
+	isHacking = false
+	
 func robot_change(type) -> void:
 	TYPE = type
 	HEALTH = ROBOTS[TYPE][0]

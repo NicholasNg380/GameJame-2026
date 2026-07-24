@@ -6,12 +6,21 @@ const HOST_TIME := 30.0
 var won: bool = false
 var current_robot = null
 var time_remaining := 0.0
+
+const TIME_SLOW = 0.1
+
 const HACK_DIFFICULTY = 4
 var hack_modifier = 0
 var is_hacking = false
 
 signal hackFail
-signal hackSuccess
+signal hackSuccess(robot)
+
+var hackList
+var hackListReferences
+var hackListPointer = 0
+var robot_being_hacked
+
 
 @onready var minigame_init_msg = $Sprite2D
 @onready var host_timer: Timer = $HostTimer
@@ -52,10 +61,34 @@ func _on_host_timer_finished():
 
 
 func _process(delta):
+	if is_hacking:
+		if hackListPointer == HACK_DIFFICULTY + hack_modifier:
+			hackSuccess.emit(robot_being_hacked)
+			is_hacking=false
+			minigame.visible = false
+			Engine.time_scale = 1
+		if Input.is_action_just_pressed("up"):
+			successfulInput(0, hackList[hackListPointer])
+		elif Input.is_action_just_pressed("left"):
+			successfulInput(1, hackList[hackListPointer])
+		elif Input.is_action_just_pressed("down"):
+			successfulInput(2, hackList[hackListPointer])
+		elif Input.is_action_just_pressed("right"):
+			successfulInput(3, hackList[hackListPointer])
 	if !host_timer.is_stopped():
 		time_remaining = host_timer.time_left
 		print(time_remaining)
+	
 
+func successfulInput(input, required):
+	if required == input:
+		hackListReferences[hackListPointer].texture.region.position.x += 9
+		hackListPointer += 1
+	else:
+		hackFail.emit()
+		Engine.time_scale = 1
+		is_hacking = false
+		minigame.visible = false
 
 # -------------------------
 # HACKING TIMER SYSTEM
@@ -74,21 +107,28 @@ func _on_player_cannot_hack() -> void:
 
 func _on_player_hacking(robot) -> void:
 	#Makes it look like it was pressed
+	minigame.visible = true
+	Engine.time_scale = TIME_SLOW
+	robot_being_hacked = robot
 	is_hacking = true
 	minigame_init_msg.visible = false
 	for n in minigame.get_children():
 		n.queue_free()
 	var rng = RandomNumberGenerator.new()
-	var hackList: Array = []
+	hackList = []
+	hackListReferences = []
+	hackListPointer = 0
 	minigame.global_position = robot.global_position + Vector2(0, -60)
 	for i in range(HACK_DIFFICULTY + hack_modifier):
 		var rand = rng.randi_range(0, 3)
 		print(rand)
 		var key_scene = load(MINIGAME_KEY)
 		var key = key_scene.instantiate()
+		key.texture = key.texture.duplicate()
 		key.texture.region.position.x = 18*rand
 		minigame.add_child(key)
-		hackList.append(key)
+		hackList.append(rand)
+		hackListReferences.append(key)
 	
 	
 	
