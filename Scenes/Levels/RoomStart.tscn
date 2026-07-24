@@ -142,7 +142,7 @@ size = Vector2(256, 256)
 cull_mode = 2
 polygon = PackedVector2Array(-212, -1024, -212, -856, -340, -856, -340, -600, -468, -600, -468, 512, 468, 512, 468, -600, 340, -600, 340, -856, 212, -856, 212, -1024, 544, -1024, 544, 576, -544, 576, -544, -1024)
 
-[node name="Room1" type="Node2D" unique_id=203248451]
+[node name="RoomStart" type="Node2D" unique_id=203248451]
 script = ExtResource("2_60lb5")
 
 [node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_60lb5")]
