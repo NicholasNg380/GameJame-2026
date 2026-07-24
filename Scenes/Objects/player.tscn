@@ -1,185 +1,10 @@
 [gd_scene format=3 uid="uid://j3ilpa66a2iw"]
 
 [ext_resource type="Script" uid="uid://dkjq0wn6l3vbm" path="res://Scripts/Player/Player_script.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://be812iyjhea03" path="res://Assets/Sprites/terminal-Sheet.png" id="2_5uqce"]
 [ext_resource type="Texture2D" uid="uid://3tflq7mtrosa" path="res://Assets/Sprites/melee_sprite-Sheet.png" id="2_kvv6r"]
 [ext_resource type="Texture2D" uid="uid://di8yfa26wo42x" path="res://Assets/Sprites/tanky_bot-Sheet.png" id="3_picsy"]
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="4_dfgsd"]
 [ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="5_xbekk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6odyb"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ea56u"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymo74"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnoed"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mas6k"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqjst"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l384v"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fxsay"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nw5df"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wb8nb"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfru8"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qags"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v73bw"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(160, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sr0fy"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(192, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uovta"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(224, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pievq"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlrcr"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxw1d"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gty2"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpv00"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ggxvv"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3by2"]
-atlas = ExtResource("2_5uqce")
-region = Rect2(192, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5uqce"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h6i5h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6odyb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ea56u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ymo74")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jnoed")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mas6k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqjst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l384v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fxsay")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nw5df")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wb8nb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfru8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qags")
-}],
-"loop": 0,
-"name": &"Boot",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v73bw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sr0fy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uovta")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pievq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rlrcr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gxw1d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1gty2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpv00")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ggxvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i3by2")
-}],
-"loop": 1,
-"name": &"Loop",
-"speed": 6.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_picsy"]
 atlas = ExtResource("2_kvv6r")
@@ -709,15 +534,7 @@ radius = 301.02658
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2130104624]
 script = ExtResource("1_v0iea")
 
-[node name="Terminal" type="AnimatedSprite2D" parent="." unique_id=117311457]
-rotation = -1.5707964
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_5uqce")
-animation = &"Loop"
-autoplay = "Boot"
-
 [node name="Sword" type="AnimatedSprite2D" parent="." unique_id=852005037]
-visible = false
 rotation = -1.5707964
 scale = Vector2(4, 4.087)
 sprite_frames = SubResource("SpriteFrames_picsy")
@@ -761,5 +578,3 @@ texture_scale = 6.0
 color = Color(0.57004696, 0, 0.08261449, 1)
 shadow_enabled = true
 texture = ExtResource("5_xbekk")
-
-[connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]
