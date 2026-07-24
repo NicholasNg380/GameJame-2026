@@ -23,6 +23,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 tile_set = SubResource("TileSet_vi80n")
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
+position = Vector2(1, 173)
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")

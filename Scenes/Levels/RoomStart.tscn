@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="4_1aqmg"]
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="4_oeeai"]
 [ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="5_kjl6c"]
+[ext_resource type="PackedScene" uid="uid://bx06v16cclptx" path="res://Scenes/Objects/Sword_enemy.tscn" id="8_1aqmg"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ahnss"]
 scenes/1/scene = ExtResource("3_6b255")
@@ -139,9 +140,6 @@ polygon = PackedVector2Array(-272, -1024, -272, -848, -400, -848, -400, 384, 272
 
 [node name="RoomStart" type="Node2D" unique_id=203248451]
 script = ExtResource("2_60lb5")
-has_east_door = false
-has_south_door = false
-has_west_door = false
 
 [node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_60lb5")]
 scale = Vector2(4, 4)
@@ -213,3 +211,6 @@ position = Vector2(0, 192)
 position = Vector2(64, 0)
 occluder = SubResource("OccluderPolygon2D_6b255")
 metadata/_edit_group_ = true
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("8_1aqmg")]
+position = Vector2(200, -64)
