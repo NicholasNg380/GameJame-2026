@@ -2,6 +2,8 @@ extends "Enemy_script.gd"
 
 @onready var anim = $Magnet
 
+
+
 var type = "Magnet"
 
 # Called when the node enters the scene tree for the first time.
