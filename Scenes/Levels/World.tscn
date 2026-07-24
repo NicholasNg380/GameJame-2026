@@ -1,14 +1,10 @@
-[gd_scene format=4 uid="uid://b2mo1tqwb87av"]
+[gd_scene format=3 uid="uid://b2mo1tqwb87av"]
 
 [ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_5cjrv"]
-[ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="2_6sbj7"]
 [ext_resource type="PackedScene" uid="uid://curkhkvtdufhy" path="res://Scenes/Levels/Room1.tscn" id="3_28y5c"]
-[ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="3_n7pht"]
-[ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/wall.tscn" id="4_fb73i"]
 [ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/room_controller.gd" id="4_vi80n"]
 [ext_resource type="PackedScene" uid="uid://cdteatvpljg2x" path="res://Scenes/Levels/RoomStart.tscn" id="5_exae8"]
 [ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_f4gmh"]
-[ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="5_fxmlw"]
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
 [ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="6_h33no"]
 [ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
@@ -16,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="8_k4ffd"]
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
+[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ahnss"]
 scenes/1/scene = ExtResource("4_fb73i")
@@ -139,6 +136,7 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mjqay")
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3vns"]
 size = Vector2(256, 256)
 
@@ -172,11 +170,8 @@ sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
-[node name="RoomMap" type="TileMapLayer" parent="." unique_id=1110879741]
-tile_set = SubResource("TileSet_vi80n")
-
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
-position = Vector2(0, -11)
+position = Vector2(0, 180)
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")

@@ -4,70 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_o6lan"]
 [ext_resource type="Texture2D" uid="uid://bc6iyqr23qaxb" path="res://Tileset/tilemap.png" id="3_e6t5x"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_f44ty"]
+[ext_resource type="TileSet" uid="uid://cmkgy5jq4g86v" path="res://Tileset/FloorTiles.tres" id="3_jlipd"]
 [ext_resource type="PackedScene" uid="uid://c271w1lj05b7d" path="res://Scenes/Objects/Tank_enemy.tscn" id="4_bcjo6"]
 [ext_resource type="PackedScene" uid="uid://3r5r4bju32ot" path="res://Scenes/Objects/Magnet_enemy.tscn" id="5_bcjo6"]
 [ext_resource type="PackedScene" uid="uid://bx06v16cclptx" path="res://Scenes/Objects/Sword_enemy.tscn" id="5_i8noo"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8uh6"]
-texture = ExtResource("3_e6t5x")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, 10.666668, -16, 10.666668, 16, -5.333333, 16)
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, -16, 5.333334, -16, 5.333334, 16, -10.666666, 16)
-5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, -16, 5.333334, -16, 5.333334, 16, -16, 16, -16, 5.333334, -10.666666, 5.333334)
-6:2/0 = 0
-6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, -16, 5.333334, -16, 5.333334, 5.333334, 16, 5.333334, 16, 16, -10.666666, 16)
-7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, 5.333334, -10.666666, 16, 16, 16, 16, 5.333334)
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_suuho"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_k8uh6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlipd"]
 texture = ExtResource("3_e6t5x")
@@ -137,8 +77,17 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jlipd")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlipd"]
+size = Vector2(296, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jblwj"]
+size = Vector2(296, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uwql"]
+size = Vector2(236, 332)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjo6"]
-size = Vector2(256, 256)
+size = Vector2(236, 332)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ahg1b"]
 cull_mode = 2
@@ -162,11 +111,11 @@ script = ExtResource("1_me5mj")
 [node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_o6lan")]
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD6//r/AAADAAAAAAD6//v/AAAGAAEAAAD6//z/AAACAAEAAAD6//3/AAAGAAEAAAD6//7/AAAEAAEAAAD6////AAAEAAAAAAD6/wAAAAADAAAAAAD6/wEAAAADAAEAAAD6/wIAAAAGAAEAAAD6/wMAAAAFAAEAAAD6/wQAAAAFAAEAAAD6/wUAAAACAAEAAAD7//r/AAAGAAEAAAD7//v/AAADAAAAAAD7//z/AAAEAAEAAAD7//3/AAAAAAAAAAD7//7/AAAGAAEAAAD7////AAAEAAAAAAD7/wAAAAADAAAAAAD7/wEAAAADAAEAAAD7/wIAAAAAAAAAAAD7/wMAAAACAAEAAAD7/wQAAAAEAAEAAAD7/wUAAAADAAAAAAD8//r/AAADAAAAAAD8//v/AAADAAEAAAD8//z/AAAEAAEAAAD8//3/AAACAAEAAAD8//7/AAAAAAAAAAD8////AAAFAAEAAAD8/wAAAAAGAAEAAAD8/wEAAAAEAAAAAAD8/wIAAAAEAAEAAAD8/wMAAAAGAAEAAAD8/wQAAAAEAAEAAAD8/wUAAAAEAAAAAAD9//r/AAADAAAAAAD9//v/AAAFAAEAAAD9//z/AAAEAAEAAAD9//3/AAADAAEAAAD9//7/AAADAAEAAAD9////AAAAAAAAAAD9/wAAAAACAAEAAAD9/wEAAAAEAAEAAAD9/wIAAAADAAAAAAD9/wMAAAACAAEAAAD9/wQAAAACAAEAAAD9/wUAAAAEAAEAAAD+//r/AAAEAAEAAAD+//v/AAAEAAEAAAD+//z/AAAAAAAAAAD+//3/AAADAAAAAAD+//7/AAAEAAEAAAD+////AAADAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAFAAEAAAD+/wIAAAAFAAEAAAD+/wMAAAAGAAEAAAD+/wQAAAADAAAAAAD+/wUAAAAAAAAAAAD///r/AAACAAEAAAD///v/AAADAAAAAAD///z/AAAGAAEAAAD///3/AAADAAEAAAD///7/AAAFAAEAAAD/////AAAFAAEAAAD//wAAAAAAAAAAAAD//wEAAAACAAEAAAD//wIAAAACAAEAAAD//wMAAAADAAAAAAD//wQAAAADAAEAAAD//wUAAAADAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAEAAAAAAAAAP7/AAAEAAEAAAAAAP//AAADAAAAAAAAAAAAAAAFAAEAAAAAAAEAAAAFAAEAAAAAAAIAAAADAAAAAAAAAAMAAAAGAAEAAAAAAAQAAAAFAAEAAAAAAAUAAAAEAAEAAAABAPr/AAADAAEAAAABAPv/AAAEAAAAAAABAPz/AAADAAAAAAABAP3/AAAEAAAAAAABAP7/AAAAAAAAAAABAP//AAAGAAEAAAABAAAAAAAEAAEAAAABAAEAAAAFAAEAAAABAAIAAAAGAAEAAAABAAMAAAAFAAEAAAABAAQAAAAEAAAAAAABAAUAAAADAAEAAAACAPr/AAADAAAAAAACAPv/AAACAAEAAAACAPz/AAAEAAAAAAACAP3/AAADAAAAAAACAP7/AAAGAAEAAAACAP//AAACAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAAAAAACAAIAAAADAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAAAAAACAAUAAAADAAEAAAADAPr/AAADAAAAAAADAPv/AAAEAAEAAAADAPz/AAAEAAAAAAADAP3/AAAEAAAAAAADAP7/AAADAAAAAAADAP//AAAGAAEAAAADAAAAAAAAAAAAAAADAAEAAAADAAEAAAADAAIAAAAFAAEAAAADAAMAAAACAAEAAAADAAQAAAAGAAEAAAADAAUAAAADAAAAAAAEAPr/AAACAAEAAAAEAPv/AAAEAAEAAAAEAPz/AAADAAEAAAAEAP3/AAACAAEAAAAEAP7/AAADAAEAAAAEAP//AAAFAAEAAAAEAAAAAAADAAAAAAAEAAEAAAAFAAEAAAAEAAIAAAAEAAAAAAAEAAMAAAADAAAAAAAEAAQAAAACAAEAAAAEAAUAAAAGAAEAAAAFAPr/AAACAAEAAAAFAPv/AAADAAEAAAAFAPz/AAAEAAEAAAAFAP3/AAACAAEAAAAFAP7/AAADAAEAAAAFAP//AAAEAAEAAAAFAAAAAAAAAAAAAAAFAAEAAAAEAAAAAAAFAAIAAAADAAEAAAAFAAMAAAACAAEAAAAFAAQAAAAGAAEAAAAFAAUAAAADAAEAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAD///j/AAAAAAAAAAD///n/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD5////AAAAAAAAAAD5/wAAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_suuho")
+tile_set = ExtResource("3_jlipd")
 
 [node name="WallTileMap" parent="." unique_id=972401874 instance=ExtResource("1_o6lan")]
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAD6//n/AAAFAAMAAAD7//n/AAAFAAMAAAD8//n/AAAFAAMAAAD9//n/AAAFAAMAAAACAPn/AAAFAAMAAAADAPn/AAAFAAMAAAAEAPn/AAAFAAMAAAAFAPn/AAAFAAMAAAD6/wYAAAAAAAQAAAD7/wYAAAAAAAQAAAD8/wYAAAAAAAQAAAD9/wYAAAAAAAQAAAACAAYAAAAAAAQAAAADAAYAAAAAAAQAAAAEAAYAAAAAAAQAAAAFAAYAAAAAAAQAAAD5/wEAAAAAAAMAAAD5/wIAAAAHAAEAAAD5/wMAAAAHAAEAAAD5/wQAAAAHAAEAAAD5/wUAAAAHAAEAAAD5//r/AAAHAAEAAAD5//v/AAAHAAEAAAD5//z/AAAHAAEAAAD5//3/AAAHAAEAAAD5//7/AAABAAMAAAAGAPr/AAAEAAIAAAAGAPv/AAAEAAIAAAAGAPz/AAAEAAIAAAAGAP3/AAAEAAIAAAAGAP7/AAAGAAIAAAAGAAIAAAAEAAIAAAAGAAMAAAAEAAIAAAAGAAQAAAAEAAIAAAAGAAUAAAAEAAIAAAAGAAYAAAAFAAIAAAD5/wYAAAACAAMAAAD5//n/AAADAAMAAAAGAPn/AAAEAAMAAAABAAYAAAAHAAIAAAD+/wYAAAAAAAMAAAD+//n/AAABAAMAAAABAPn/AAAGAAIAAAD4//7/AAAFAAMAAAAHAP7/AAAFAAMAAAAHAAEAAAAAAAQAAAD4/wEAAAAAAAQAAAD+/wcAAAAHAAEAAAABAAcAAAAEAAIAAAAGAAEAAAAHAAIAAAA=")
+tile_map_data = PackedByteArray("AAD6//n/AAAFAAMAAAD7//n/AAAFAAMAAAD8//n/AAAFAAMAAAD9//n/AAAFAAMAAAACAPn/AAAFAAMAAAADAPn/AAAFAAMAAAAEAPn/AAAFAAMAAAAFAPn/AAAFAAMAAAD6/wYAAAAAAAQAAAD7/wYAAAAAAAQAAAD8/wYAAAAAAAQAAAD9/wYAAAAAAAQAAAACAAYAAAAAAAQAAAADAAYAAAAAAAQAAAAEAAYAAAAAAAQAAAAFAAYAAAAAAAQAAAD5/wEAAAAAAAMAAAD5/wIAAAAHAAEAAAD5/wMAAAAHAAEAAAD5/wQAAAAHAAEAAAD5/wUAAAAHAAEAAAD5//r/AAAHAAEAAAD5//v/AAAHAAEAAAD5//z/AAAHAAEAAAD5//3/AAAHAAEAAAD5//7/AAABAAMAAAAGAPr/AAAEAAIAAAAGAPv/AAAEAAIAAAAGAPz/AAAEAAIAAAAGAP3/AAAEAAIAAAAGAP7/AAAGAAIAAAAGAAIAAAAEAAIAAAAGAAMAAAAEAAIAAAAGAAQAAAAEAAIAAAAGAAUAAAAEAAIAAAAGAAYAAAAFAAIAAAD5/wYAAAACAAMAAAD5//n/AAADAAMAAAAGAPn/AAAEAAMAAAABAAYAAAAHAAIAAAD+/wYAAAAAAAMAAAD+//n/AAABAAMAAAABAPn/AAAGAAIAAAD4//7/AAAFAAMAAAAHAP7/AAAFAAMAAAAHAAEAAAAAAAQAAAD4/wEAAAAAAAQAAAD+/wcAAAAHAAEAAAABAAcAAAAEAAIAAAAGAAEAAAAHAAIAAAABAPj/AAAEAAIAAAD+//j/AAAHAAEAAAA=")
 tile_set = SubResource("TileSet_jlipd")
 
 [node name="Doors" type="Node2D" parent="." unique_id=146560041]
@@ -175,48 +124,56 @@ tile_set = SubResource("TileSet_jlipd")
 script = ExtResource("3_f44ty")
 
 [node name="TileMapLayer" parent="Doors/NorthDoor" unique_id=810012039 instance=ExtResource("1_o6lan")]
-tile_map_data = PackedByteArray("AAD///n/AAAAAAAAAgAAAPn/AAAAAAAAAgAAAPj/AAAAAAAAAgD///j/AAAAAAAAAgA=")
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+//n/AAAFAAMAAAD///n/AAAFAAMAAAAAAPn/AAAFAAMAAAABAPn/AAAFAAMAAAA=")
+tile_set = ExtResource("3_jlipd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Doors/NorthDoor" unique_id=504615050]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/NorthDoor/StaticBody2D" unique_id=411576886]
 position = Vector2(0, -896)
-shape = SubResource("RectangleShape2D_bcjo6")
+shape = SubResource("RectangleShape2D_jlipd")
 
 [node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1008036757]
 script = ExtResource("3_f44ty")
 
 [node name="TileMapLayer" parent="Doors/SouthDoor" unique_id=348734682 instance=ExtResource("1_o6lan")]
-tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAgAAAAcAAAAAAAAAAgD//wcAAAAAAAAAAgD//wYAAAAAAAAAAgA=")
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+/wYAAAAAAAQAAAD//wYAAAAAAAQAAAAAAAYAAAAAAAQAAAABAAYAAAAAAAQAAAA=")
+tile_set = ExtResource("3_jlipd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Doors/SouthDoor" unique_id=1214480841]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/SouthDoor/StaticBody2D" unique_id=2065275187]
-position = Vector2(0, 896)
-shape = SubResource("RectangleShape2D_bcjo6")
+position = Vector2(0, 934)
+shape = SubResource("RectangleShape2D_jblwj")
 
 [node name="EastDoor" type="Node2D" parent="Doors" unique_id=628604612]
 script = ExtResource("3_f44ty")
 
 [node name="TileMapLayer" parent="Doors/EastDoor" unique_id=1297248527 instance=ExtResource("1_o6lan")]
-tile_map_data = PackedByteArray("AAAHAP//AAAAAAAAAgAGAP//AAAAAAAAAgAGAAAAAAAAAAAAAgAHAAAAAAAAAAAAAgA=")
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAGAP7/AAAEAAIAAAAGAP//AAAEAAIAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAIAAAA=")
+tile_set = ExtResource("3_jlipd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Doors/EastDoor" unique_id=545439538]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EastDoor/StaticBody2D" unique_id=198350603]
-position = Vector2(896, 0)
-shape = SubResource("RectangleShape2D_bcjo6")
+position = Vector2(906, 38)
+shape = SubResource("RectangleShape2D_6uwql")
 
 [node name="WestDoor" type="Node2D" parent="Doors" unique_id=2027299392]
 script = ExtResource("3_f44ty")
 
 [node name="TileMapLayer" parent="Doors/WestDoor" unique_id=2106612380 instance=ExtResource("1_o6lan")]
-tile_map_data = PackedByteArray("AAD5////AAAAAAAAAgD4////AAAAAAAAAgD4/wAAAAAAAAAAAgD5/wAAAAAAAAAAAgA=")
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD5//7/AAAHAAEAAAD5////AAAHAAEAAAD5/wAAAAAHAAEAAAD5/wEAAAAHAAEAAAA=")
+tile_set = ExtResource("3_jlipd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Doors/WestDoor" unique_id=1650725682]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=387179059]
-position = Vector2(-896, 0)
+position = Vector2(-906, 38)
 shape = SubResource("RectangleShape2D_bcjo6")
 
 [node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("5_bcjo6")]

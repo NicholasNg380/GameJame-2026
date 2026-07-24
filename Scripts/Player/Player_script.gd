@@ -6,7 +6,10 @@ class_name Player
 @onready var sword_anim = $Sword
 @onready var tank_anim = $Tank
 @onready var magnet_anim = $Magnet
+@onready var terminal_anim = $Terminal
 @onready var minigame = $Node2D/Minigame
+
+var gameStart = false
 
 var isHacking = false
 
@@ -19,20 +22,31 @@ const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
 var TYPE: String = ""
 var HEALTH: float = 100.0
-var ANIM_PLAYER: AnimatedSprite2D = sword_anim;
+var ANIM_PLAYER: AnimatedSprite2D = terminal_anim;
 
 var combo1Timer: float = 0;
 var COMBO_LEEWAY: float = 0.6;
 var combo2Timer: float = 0;
 
+var hackFail = true
+
 # Array contains Health then speed
 var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
 
 func _ready():
-	add_to_group("player")
-	robot_change("Sword")
+	ANIM_PLAYER = terminal_anim
+	
 
 func _physics_process(delta):
+	if !gameStart:
+		closest_robot()
+		if Input.is_action_just_pressed("hack"):
+			hack_robot()
+		if !hackFail:
+				add_to_group("player")
+				gameStart = true
+		return
+	
 	_movement(delta)
 	move_and_slide()
 	
@@ -110,7 +124,7 @@ func hack_robot():
 func _on_game_controller_hack_success(robot) -> void:
 	var player_pos = global_position
 	var robot_pos = robot.global_position
-	
+	hackFail = false
 	
 	robot_change(robot.type)
 
@@ -127,6 +141,7 @@ func _on_game_controller_hack_success(robot) -> void:
 	
 func _on_game_controller_hack_fail() -> void:
 	isHacking = false
+	hackFail = true
 	
 func robot_change(type) -> void:
 	TYPE = type
@@ -136,6 +151,7 @@ func robot_change(type) -> void:
 	sword_anim.visible = false
 	tank_anim.visible = false
 	magnet_anim.visible = false
+	terminal_anim.visible = false
 	match type:
 		"Sword":
 			sword_anim.visible = true
@@ -174,3 +190,7 @@ func do_magnet_attack():
 
 func do_magnet_special():
 	pass
+
+func _on_terminal_animation_finished() -> void:
+	if ANIM_PLAYER.animation == "Boot":
+		ANIM_PLAYER.play("Loop")
