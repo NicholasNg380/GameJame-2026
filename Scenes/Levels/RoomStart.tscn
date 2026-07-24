@@ -29,6 +29,7 @@ position = Vector2(0, -896)
 shape = SubResource("RectangleShape2D_l3vns")
 
 [node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1637311103]
+visible = false
 script = ExtResource("3_l3vns")
 
 [node name="TileMapLayer" parent="Doors/SouthDoor" unique_id=2002005650 instance=ExtResource("1_60lb5")]
@@ -41,6 +42,7 @@ position = Vector2(0, 896)
 shape = SubResource("RectangleShape2D_l3vns")
 
 [node name="EastDoor" type="Node2D" parent="Doors" unique_id=739197822]
+visible = false
 script = ExtResource("3_l3vns")
 
 [node name="TileMapLayer" parent="Doors/EastDoor" unique_id=1360390500 instance=ExtResource("1_60lb5")]
@@ -53,6 +55,7 @@ position = Vector2(896, 0)
 shape = SubResource("RectangleShape2D_l3vns")
 
 [node name="WestDoor" type="Node2D" parent="Doors" unique_id=1787670120]
+visible = false
 script = ExtResource("3_l3vns")
 
 [node name="TileMapLayer" parent="Doors/WestDoor" unique_id=934574073 instance=ExtResource("1_60lb5")]
