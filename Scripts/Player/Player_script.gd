@@ -14,6 +14,11 @@ const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
 var TYPE: String = ""
 var HEALTH: float = 100.0
+var ANIM_PLAYER: AnimatedSprite2D = sword_anim;
+
+var combo1Timer: float = 0;
+var COMBO_LEEWAY: float = 0.6;
+var combo2Timer: float = 0;
 
 # Array contains Health then speed
 var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
@@ -27,6 +32,26 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("hack"):
 		hack_robot()
+	
+	if Input.is_action_just_pressed("attack"):
+		match TYPE:
+			"Sword":
+				do_sword_attack();
+			"Tank":
+				do_tank_attack();
+			"Magnet":
+				do_magnet_attack();
+	if Input.is_action_just_pressed("special"):
+		match TYPE:
+			"Sword":
+				do_sword_special();
+			"Tank":
+				do_tank_special();
+			"Magnet":
+				do_magnet_special();
+	if combo1Timer > 0 or combo2Timer > 0:
+		combo1Timer -= delta
+		combo2Timer -= delta
 
 func _movement(delta: float) -> void:
 	var input = Vector2(
@@ -38,9 +63,12 @@ func _movement(delta: float) -> void:
 	
 	velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
 	if velocity.length() > 0:
-		rotation = atan2(velocity.y, velocity.x)
+		if TYPE != "Magnet":
+			rotation = atan2(velocity.y, velocity.x)
 	
-
+	if ANIM_PLAYER != null and not ANIM_PLAYER.is_playing():
+			ANIM_PLAYER.play("Walking")
+		
 func closest_robot() -> Enemy:
 	var overlapping_bodies = hack_area.get_overlapping_bodies()
 	
@@ -95,8 +123,38 @@ func robot_change(type) -> void:
 	match type:
 		"Sword":
 			sword_anim.visible = true
+			ANIM_PLAYER = sword_anim
 		"Tank":
 			tank_anim.visible = true
+			ANIM_PLAYER = tank_anim
 		"Magnet":
 			magnet_anim.visible = true
+			rotation = 0;
+			ANIM_PLAYER = magnet_anim
 	
+func do_sword_attack():
+	if combo2Timer > 0:
+		ANIM_PLAYER.play("Combo Slash")
+		combo2Timer = 0;
+	elif combo1Timer > 0:
+		ANIM_PLAYER.play("Right Slash")
+		combo2Timer = COMBO_LEEWAY
+		combo1Timer = 0;
+	else:
+		ANIM_PLAYER.play("Left Slash")
+		combo1Timer = COMBO_LEEWAY;
+
+func do_sword_special():
+	ANIM_PLAYER.play("Parry")
+
+func do_tank_attack():
+	ANIM_PLAYER.play("Shield Bash")
+
+func do_tank_special():
+	ANIM_PLAYER.play("Grapple")
+
+func do_magnet_attack():
+	ANIM_PLAYER.play("Spit")
+
+func do_magnet_special():
+	pass

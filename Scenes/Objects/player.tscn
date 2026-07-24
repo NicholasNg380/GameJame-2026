@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="4_dfgsd"]
 [ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="5_xbekk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvv6r"]
-atlas = ExtResource("2_kvv6r")
-region = Rect2(128, 128, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_picsy"]
 atlas = ExtResource("2_kvv6r")
 region = Rect2(64, 160, 32, 32)
@@ -25,10 +21,6 @@ region = Rect2(128, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uqce"]
 atlas = ExtResource("2_kvv6r")
 region = Rect2(160, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
-atlas = ExtResource("2_kvv6r")
-region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y42te"]
 atlas = ExtResource("2_kvv6r")
@@ -46,10 +38,6 @@ region = Rect2(32, 192, 32, 32)
 atlas = ExtResource("2_kvv6r")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6odyb"]
-atlas = ExtResource("2_kvv6r")
-region = Rect2(128, 128, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mxid"]
 atlas = ExtResource("2_kvv6r")
 region = Rect2(0, 160, 32, 32)
@@ -57,10 +45,6 @@ region = Rect2(0, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2jbs"]
 atlas = ExtResource("2_kvv6r")
 region = Rect2(32, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ea56u"]
-atlas = ExtResource("2_kvv6r")
-region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ietw"]
 atlas = ExtResource("2_kvv6r")
@@ -73,10 +57,6 @@ region = Rect2(64, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2cyj"]
 atlas = ExtResource("2_kvv6r")
 region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymo74"]
-atlas = ExtResource("2_kvv6r")
-region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp0mo"]
 atlas = ExtResource("2_kvv6r")
@@ -118,9 +98,6 @@ region = Rect2(0, 128, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kvv6r")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_picsy")
 }, {
 "duration": 1.0,
@@ -132,14 +109,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5uqce")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Combo Slash",
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h6i5h")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y42te")
 }, {
@@ -152,28 +126,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0b04c")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Death",
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6odyb")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1mxid")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h2jbs")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Left Slash",
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ea56u")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ietw")
 }, {
@@ -183,21 +151,18 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u2cyj")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Parry",
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ymo74")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bp0mo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uaqrc")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Right Slash",
 "speed": 8.0
 }, {
@@ -351,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kkk37")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Death",
 "speed": 7.0
 }, {
@@ -362,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0ykjt")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Enemy Grapple",
 "speed": 5.0
 }, {
@@ -373,9 +338,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kgbis")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Grapple",
-"speed": 6.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -387,9 +352,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1bkec")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Shield Bash",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -404,7 +369,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywefo")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Waking up",
 "speed": 6.0
 }, {
@@ -441,7 +406,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1b5i0")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Wall Grapple",
 "speed": 5.0
 }]
@@ -465,6 +430,10 @@ region = Rect2(0, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4tdx"]
 atlas = ExtResource("4_dfgsd")
 region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t8ey"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6ikd"]
 atlas = ExtResource("4_dfgsd")
@@ -512,9 +481,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s4tdx")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Death",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t8ey")
+}],
+"loop": 0,
+"name": &"Spit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -526,9 +503,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_js6hq")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Waking up",
-"speed": 5.0
+"speed": 1.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -543,9 +520,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ljsdr")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Walking",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfgsd"]
@@ -561,7 +538,7 @@ script = ExtResource("1_v0iea")
 rotation = -1.5707964
 scale = Vector2(4, 4.087)
 sprite_frames = SubResource("SpriteFrames_picsy")
-animation = &"Waking up"
+animation = &"Combo Slash"
 autoplay = "Waking up"
 
 [node name="Tank" type="AnimatedSprite2D" parent="." unique_id=625596878]
@@ -569,16 +546,14 @@ visible = false
 rotation = -1.5707964
 scale = Vector2(3.5, 3.511)
 sprite_frames = SubResource("SpriteFrames_yu8t6")
-animation = &"Wall Grapple"
+animation = &"Shield Bash"
 autoplay = "Waking up"
-frame_progress = 0.7046548
 
 [node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
 visible = false
-rotation = -1.5707964
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_xbekk")
-animation = &"Death"
+animation = &"Walking"
 autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
