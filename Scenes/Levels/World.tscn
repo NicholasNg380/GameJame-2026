@@ -25,7 +25,6 @@ tile_set = SubResource("TileSet_vi80n")
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
-total_rooms = 15
 room_start = ExtResource("2_w0a6n")
 room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
