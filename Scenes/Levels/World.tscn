@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_5cjrv"]
 [ext_resource type="PackedScene" uid="uid://brfu7bf3slm48" path="res://Scenes/Levels/RoomStart.tscn" id="2_w0a6n"]
 [ext_resource type="PackedScene" uid="uid://curkhkvtdufhy" path="res://Scenes/Levels/Room1.tscn" id="3_28y5c"]
-[ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/RoomController.gd" id="4_vi80n"]
+[ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/room_controller.gd" id="4_vi80n"]
+[ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vi80n"]
 scenes/1/scene = ExtResource("3_28y5c")
@@ -18,13 +19,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
-[node name="RoomStart" parent="Rooms" unique_id=203248451 instance=ExtResource("2_w0a6n")]
-visible = false
-
-[node name="Room1" parent="Rooms" unique_id=914249743 instance=ExtResource("3_28y5c")]
-visible = false
-position = Vector2(0, -2048)
-
 [node name="RoomMap" type="TileMapLayer" parent="." unique_id=1110879741]
 tile_set = SubResource("TileSet_vi80n")
 
@@ -33,3 +27,10 @@ script = ExtResource("4_vi80n")
 room_start = ExtResource("2_w0a6n")
 room_1 = ExtResource("3_28y5c")
 metadata/_custom_type_script = "uid://dd3n7forj01b"
+
+[node name="GameController" type="Node" parent="." unique_id=1467009610]
+script = ExtResource("5_l0cnv")
+
+[node name="HostTimer" type="Timer" parent="GameController" unique_id=1575510637]
+wait_time = 30.0
+one_shot = true

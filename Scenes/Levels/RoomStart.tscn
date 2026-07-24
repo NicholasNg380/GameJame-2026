@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_60lb5"]
 [ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="2_60lb5"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_l3vns"]
+[ext_resource type="PackedScene" uid="uid://bo3b2l7xdrsb1" path="res://Scenes/Objects/terminal.tscn" id="4_oeeai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3vns"]
 size = Vector2(256, 256)
@@ -62,3 +63,6 @@ tile_map_data = PackedByteArray("AAD5////AAAAAAAAAgD4////AAAAAAAAAgD4/wAAAAAAAAA
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=1699174052]
 position = Vector2(-896, 0)
 shape = SubResource("RectangleShape2D_l3vns")
+
+[node name="Terminal" parent="." unique_id=75197368 instance=ExtResource("4_oeeai")]
+position = Vector2(0, 192)
