@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://curkhkvtdufhy"]
 
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_o6lan"]
+[ext_resource type="PackedScene" uid="uid://c271w1lj05b7d" path="res://Scenes/Objects/Tank_enemy.tscn" id="3_f44ty"]
 [ext_resource type="PackedScene" uid="uid://u7gpcslf1xmy" path="res://Scenes/Objects/Enemy.tscn" id="3_me5mj"]
 
 [node name="Room1" type="Node2D" unique_id=203248451]
@@ -10,3 +11,6 @@ tile_map_data = PackedByteArray("AAD9//r/AAAAAAAAAQD6//3/AAAAAAAAAQD6/wIAAAAAAAA
 
 [node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("3_me5mj")]
 position = Vector2(-384, -512)
+
+[node name="Enemy2" parent="." unique_id=1510817175 instance=ExtResource("3_f44ty")]
+position = Vector2(297, -440)
