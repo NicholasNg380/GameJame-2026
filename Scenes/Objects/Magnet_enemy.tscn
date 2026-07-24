@@ -113,10 +113,6 @@ scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_admd3")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1468136239]
-rotation = -1.5707964
-scale = Vector2(0.65, 0.65)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]
 position = Vector2(1.75, 0)
 shape = SubResource("RectangleShape2D_t3l5w")
@@ -128,5 +124,3 @@ sprite_frames = SubResource("SpriteFrames_ou3y7")
 animation = &"Walking"
 autoplay = "Waking up"
 frame_progress = 0.80032915
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=32855024]

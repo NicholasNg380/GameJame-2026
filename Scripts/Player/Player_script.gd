@@ -7,6 +7,8 @@ class_name Player
 @onready var tank_anim = $Tank
 @onready var magnet_anim = $Magnet
 
+signal hacking
+
 const ACCELERATION: int = 15
 const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
@@ -62,6 +64,7 @@ func closest_robot() -> Enemy:
 	return closest_robot
 
 func hack_robot():
+	hacking.emit()
 	var robot = closest_robot()
 	
 	if robot == null:
