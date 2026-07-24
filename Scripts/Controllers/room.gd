@@ -10,6 +10,11 @@ var grid_position: Vector2i
 @onready var south_door = $Doors/SouthDoor
 @onready var west_door = $Doors/WestDoor
 
+@export var has_north_door := true
+@export var has_east_door := true
+@export var has_south_door := true
+@export var has_west_door := true
+
 
 
 func set_connections(north, east, south, west):

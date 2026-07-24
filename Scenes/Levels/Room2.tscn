@@ -2,63 +2,233 @@
 
 [ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="1_tq8h7"]
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="3_j0qmu"]
+[ext_resource type="PackedScene" uid="uid://bwpduf828opft" path="res://Tileset/wall.tscn" id="3_u4kb4"]
+[ext_resource type="PackedScene" uid="uid://diorns0pbue82" path="res://Tileset/door.tscn" id="4_g8o4w"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="4_u4kb4"]
+[ext_resource type="Texture2D" uid="uid://dok8ootp3bf24" path="res://Tileset/tilemap-Sheet.png" id="5_01khi"]
+[ext_resource type="PackedScene" uid="uid://bx06v16cclptx" path="res://Scenes/Objects/Sword_enemy.tscn" id="7_u4kb4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjo6"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wjhog"]
+scenes/1/scene = ExtResource("3_u4kb4")
+scenes/2/scene = ExtResource("4_g8o4w")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_culkw"]
+texture = ExtResource("5_01khi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 16, 16, 16, -16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 16, 16, 16, -16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.333334, -16, 5.333334, 16, -16, 16, -16, -16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 16, 16, 16, -16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.333334, -16, 5.333334, 16, -16, 16, -16, -16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.333334, -16, 5.333334, 16, -16, 16, -16, -16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.333333, 16, -5.333333, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.333333, 16, -5.333333, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.333333, 16, -5.333333, 16, 16, -16, 16)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.333334, 16, 5.333334, 16, 16, -16, 16)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.333334, 16, 5.333334, 16, 16, -16, 16)
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b5ygr"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetScenesCollectionSource_wjhog")
+sources/1 = SubResource("TileSetAtlasSource_culkw")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6v2r3"]
+texture = ExtResource("5_01khi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 10.666668, 16, 10.666668, -16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 10.666668, 16, 10.666668, -16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.333334, -16, 5.333334, 16, -10.666666, 16, -10.666666, -16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.333333, -16, -5.333333, 16, 10.666668, 16, 10.666668, -16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, -16, 5.333334, -16, 5.333334, 16, -10.666666, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.666666, -16, 5.333334, -16, 5.333334, 16, -10.666666, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.333333, 16, -5.333333, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -5.333333, -16, -5.333333, -16, 16, 16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.333333, 16, -5.333333, 16, 16, -16, 16)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.333334, 16, 5.333334, 16, 16, -16, 16)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 5.333334, 16, 5.333334, 16, 16, -16, 16)
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_oasrw"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_6v2r3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vahp"]
 size = Vector2(256, 256)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_goxuq"]
+cull_mode = 2
+polygon = PackedVector2Array(-1024, -192, -1024, -1024, -208, -1024, -208, -848, -848, -848, -848, -192)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_twwu6"]
+cull_mode = 2
+polygon = PackedVector2Array(-816, -848, -816, -1024, 0, -1024, 0, -208, -176, -208, -176, -848)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kspta"]
+cull_mode = 2
+polygon = PackedVector2Array(-816, -128, -176, -128, -176, -768, 0, -768, 0, 0, -816, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_da7oo"]
+cull_mode = 2
+polygon = PackedVector2Array(-1024, -768, -848, -768, -848, -128, -208, -128, -208, 0, -1024, 0)
 
 [node name="Room2" type="Node2D" unique_id=203248451]
 script = ExtResource("1_tq8h7")
 
-[node name="WallTileMap" parent="." unique_id=1914282033 instance=ExtResource("3_j0qmu")]
-tile_map_data = PackedByteArray("AAD+/wYAAAAAAAAAAQD+/wcAAAAAAAAAAQABAAYAAAAAAAAAAQABAAcAAAAAAAAAAQAGAAEAAAAAAAAAAQAHAAEAAAAAAAAAAQAGAP7/AAAAAAAAAQAHAP7/AAAAAAAAAQABAPj/AAAAAAAAAQABAPn/AAAAAAAAAQD+//n/AAAAAAAAAQD+//j/AAAAAAAAAQD4//7/AAAAAAAAAQD5/wEAAAAAAAAAAQD4/wEAAAAAAAAAAQD5//7/AAAAAAAAAQD5//3/AAAAAAAAAQD9//n/AAAAAAAAAQACAPn/AAAAAAAAAQAGAP3/AAAAAAAAAQAGAAIAAAAAAAAAAQACAAYAAAAAAAAAAQD9/wYAAAAAAAAAAQD5/wIAAAAAAAAAAQD9/wIAAAAAAAAAAQD9/wMAAAAAAAAAAQD9/wQAAAAAAAAAAQD9/wUAAAAAAAAAAQD8/wIAAAAAAAAAAQD7/wIAAAAAAAAAAQD6/wIAAAAAAAAAAQACAAUAAAAAAAAAAQACAAQAAAAAAAAAAQACAAMAAAAAAAAAAQACAAIAAAAAAAAAAQADAAIAAAAAAAAAAQAEAAIAAAAAAAAAAQAFAAIAAAAAAAAAAQAFAP3/AAAAAAAAAQAEAP3/AAAAAAAAAQADAP3/AAAAAAAAAQACAP3/AAAAAAAAAQACAPz/AAAAAAAAAQACAPv/AAAAAAAAAQACAPr/AAAAAAAAAQD9//r/AAAAAAAAAQD9//v/AAAAAAAAAQD9//z/AAAAAAAAAQD9//3/AAAAAAAAAQD8//3/AAAAAAAAAQD7//3/AAAAAAAAAQD6//3/AAAAAAAAAQA=")
+[node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("3_j0qmu")]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD7//7/AQAAAAAAAAD7////AQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD8/wMAAQAAAAAAAAD9//z/AQAAAAAAAAD9//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD+//r/AQAAAAAAAAD+//v/AQAAAAAAAAD+//z/AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD+////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD+/wMAAQAAAAAAAAD+/wQAAQAAAAAAAAD+/wUAAQAAAAAAAAD///r/AQAAAAAAAAD///v/AQAAAAAAAAD///z/AQAAAAAAAAD///3/AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAD//wQAAQAAAAAAAAD//wUAAQAAAAAAAAAAAPr/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAP3/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAABAPr/AQAAAAAAAAABAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAADAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAHAP//AQAAAAAAAAAHAAAAAQAAAAAAAAD///j/AQAAAAAAAAD///n/AQAAAAAAAAAAAPj/AQAAAAAAAAAAAPn/AQAAAAAAAAD4////AQAAAAAAAAD4/wAAAQAAAAAAAAD5////AQAAAAAAAAD5/wAAAQAAAAAAAAD//wYAAQAAAAEAAAD//wcAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAADAPz/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_b5ygr")
 
-[node name="Doors" type="Node2D" parent="." unique_id=146560041]
+[node name="WallTileMap" parent="." unique_id=778607253 instance=ExtResource("3_j0qmu")]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD7/wIAAAAFAAEAAAD7/wMAAAAFAAEAAAD9/wQAAAAFAAEAAAD9/wUAAAAFAAEAAAD5/wEAAAAFAAEAAAD+/wYAAAAFAAEAAAD+/wcAAAAFAAEAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAACAAQAAAACAAIAAAACAAUAAAACAAIAAAAEAAMAAAACAAIAAAAEAAIAAAACAAIAAAAGAAEAAAACAAIAAAAGAP7/AAACAAIAAAAEAP3/AAACAAIAAAAEAPz/AAACAAIAAAACAPv/AAACAAIAAAACAPr/AAACAAIAAAABAPn/AAACAAIAAAABAPj/AAACAAIAAAD5//7/AAAFAAEAAAD7//3/AAAFAAEAAAD7//z/AAAFAAEAAAD9//v/AAAFAAEAAAD9//r/AAAFAAEAAAD+//n/AAAFAAEAAAD+//j/AAAFAAEAAAD8//v/AAADAAIAAAADAPv/AAADAAIAAAAFAP3/AAADAAIAAAD6//3/AAADAAIAAAADAAQAAAAGAAIAAAAFAAIAAAAGAAIAAAD8/wQAAAAGAAIAAAD6/wIAAAAGAAIAAAD4//7/AAADAAIAAAD4/wEAAAAGAAIAAAAHAAEAAAAGAAIAAAAHAP7/AAADAAIAAAA=")
+tile_set = SubResource("TileSet_oasrw")
 
-[node name="NorthDoor" type="Node2D" parent="Doors" unique_id=479618372]
+[node name="Doors" type="Node2D" parent="." unique_id=780711175]
+
+[node name="NorthDoor" type="Node2D" parent="Doors" unique_id=973514054]
 script = ExtResource("4_u4kb4")
 
-[node name="TileMapLayer" parent="Doors/NorthDoor" unique_id=810012039 instance=ExtResource("3_j0qmu")]
+[node name="TileMapLayer" parent="Doors/NorthDoor" unique_id=446130233 instance=ExtResource("3_j0qmu")]
 tile_map_data = PackedByteArray("AAD///n/AAAAAAAAAgAAAPn/AAAAAAAAAgAAAPj/AAAAAAAAAgD///j/AAAAAAAAAgA=")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Doors/NorthDoor" unique_id=504615050]
+[node name="StaticBody2D" type="StaticBody2D" parent="Doors/NorthDoor" unique_id=198361881]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/NorthDoor/StaticBody2D" unique_id=411576886]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/NorthDoor/StaticBody2D" unique_id=1536050862]
 position = Vector2(0, -896)
-shape = SubResource("RectangleShape2D_bcjo6")
+shape = SubResource("RectangleShape2D_2vahp")
 
-[node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1008036757]
+[node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1498490686]
 script = ExtResource("4_u4kb4")
 
-[node name="TileMapLayer" parent="Doors/SouthDoor" unique_id=348734682 instance=ExtResource("3_j0qmu")]
+[node name="TileMapLayer" parent="Doors/SouthDoor" unique_id=1858642938 instance=ExtResource("3_j0qmu")]
 tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAgAAAAcAAAAAAAAAAgD//wcAAAAAAAAAAgD//wYAAAAAAAAAAgA=")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Doors/SouthDoor" unique_id=1214480841]
+[node name="StaticBody2D" type="StaticBody2D" parent="Doors/SouthDoor" unique_id=586394165]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/SouthDoor/StaticBody2D" unique_id=2065275187]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/SouthDoor/StaticBody2D" unique_id=156615994]
 position = Vector2(0, 896)
-shape = SubResource("RectangleShape2D_bcjo6")
+shape = SubResource("RectangleShape2D_2vahp")
 
-[node name="EastDoor" type="Node2D" parent="Doors" unique_id=628604612]
+[node name="EastDoor" type="Node2D" parent="Doors" unique_id=156871825]
 script = ExtResource("4_u4kb4")
 
-[node name="TileMapLayer" parent="Doors/EastDoor" unique_id=1297248527 instance=ExtResource("3_j0qmu")]
+[node name="TileMapLayer" parent="Doors/EastDoor" unique_id=1683693728 instance=ExtResource("3_j0qmu")]
 tile_map_data = PackedByteArray("AAAHAP//AAAAAAAAAgAGAP//AAAAAAAAAgAGAAAAAAAAAAAAAgAHAAAAAAAAAAAAAgA=")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Doors/EastDoor" unique_id=545439538]
+[node name="StaticBody2D" type="StaticBody2D" parent="Doors/EastDoor" unique_id=1255299079]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EastDoor/StaticBody2D" unique_id=198350603]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EastDoor/StaticBody2D" unique_id=164824831]
 position = Vector2(896, 0)
-shape = SubResource("RectangleShape2D_bcjo6")
+shape = SubResource("RectangleShape2D_2vahp")
 
-[node name="WestDoor" type="Node2D" parent="Doors" unique_id=2027299392]
+[node name="WestDoor" type="Node2D" parent="Doors" unique_id=2074576585]
 script = ExtResource("4_u4kb4")
 
-[node name="TileMapLayer" parent="Doors/WestDoor" unique_id=2106612380 instance=ExtResource("3_j0qmu")]
+[node name="TileMapLayer" parent="Doors/WestDoor" unique_id=980263990 instance=ExtResource("3_j0qmu")]
 tile_map_data = PackedByteArray("AAD5////AAAAAAAAAgD4////AAAAAAAAAgD4/wAAAAAAAAAAAgD5/wAAAAAAAAAAAgA=")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Doors/WestDoor" unique_id=1650725682]
+[node name="StaticBody2D" type="StaticBody2D" parent="Doors/WestDoor" unique_id=69379905]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=387179059]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=1322672158]
 position = Vector2(-896, 0)
-shape = SubResource("RectangleShape2D_bcjo6")
+shape = SubResource("RectangleShape2D_2vahp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=744143624]
+occluder = SubResource("OccluderPolygon2D_goxuq")
+metadata/_edit_group_ = true
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1169544844]
+position = Vector2(1024, 0)
+occluder = SubResource("OccluderPolygon2D_twwu6")
+metadata/_edit_group_ = true
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=1537960041]
+position = Vector2(1024, 1024)
+occluder = SubResource("OccluderPolygon2D_kspta")
+metadata/_edit_group_ = true
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="." unique_id=67270924]
+position = Vector2(0, 1024)
+occluder = SubResource("OccluderPolygon2D_da7oo")
+metadata/_edit_group_ = true
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("7_u4kb4")]
