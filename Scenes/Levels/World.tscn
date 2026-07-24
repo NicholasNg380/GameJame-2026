@@ -12,22 +12,24 @@ scenes/2/scene = ExtResource("2_w0a6n")
 [sub_resource type="TileSet" id="TileSet_vi80n"]
 sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 
-
 [node name="World" type="Node2D" unique_id=586736019]
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
 
-[node name="RoomControl" type="Node2D" parent="." unique_id=1540764981]
+[node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
-[node name="RoomStart" parent="RoomControl" unique_id=203248451 instance=ExtResource("2_w0a6n")]
+[node name="RoomStart" parent="Rooms" unique_id=203248451 instance=ExtResource("2_w0a6n")]
+visible = false
 
-[node name="Room1" parent="RoomControl" unique_id=914249743 instance=ExtResource("3_28y5c")]
+[node name="Room1" parent="Rooms" unique_id=914249743 instance=ExtResource("3_28y5c")]
+visible = false
 position = Vector2(0, -2048)
 
 [node name="RoomMap" type="TileMapLayer" parent="." unique_id=1110879741]
 tile_set = SubResource("TileSet_vi80n")
 
-[node name="RoomController" type="Node" parent="." unique_id=1643441790 node_paths=PackedStringArray("tilemap_layer")]
+[node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
-tilemap_layer = NodePath("../RoomMap")
+room_start = ExtResource("2_w0a6n")
+room_1 = ExtResource("3_28y5c")
 metadata/_custom_type_script = "uid://dd3n7forj01b"
