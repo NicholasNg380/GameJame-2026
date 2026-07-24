@@ -16,12 +16,12 @@ sources/0 = SubResource("TileSetScenesCollectionSource_vi80n")
 
 [node name="World" type="Node2D" unique_id=586736019]
 
-[node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
-
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
 [node name="RoomMap" type="TileMapLayer" parent="." unique_id=1110879741]
 tile_set = SubResource("TileSet_vi80n")
+
+[node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
