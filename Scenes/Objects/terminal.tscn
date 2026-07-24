@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bo3b2l7xdrsb1"]
+
+[ext_resource type="Texture2D" uid="uid://bf8kd42k3lea1" path="res://Assets/Sprites/icon.svg" id="1_ma0ow"]
+
+[node name="Terminal" type="Node2D" unique_id=75197368]
+
+[node name="TerminalSprite" type="Sprite2D" parent="." unique_id=966009148]
+modulate = Color(0, 0.30980393, 1, 1)
+texture = ExtResource("1_ma0ow")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TerminalSprite" unique_id=877331003]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerminalSprite/StaticBody2D" unique_id=1012200999]

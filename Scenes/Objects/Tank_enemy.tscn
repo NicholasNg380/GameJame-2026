@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://c271w1lj05b7d"]
+
+[ext_resource type="Script" uid="uid://c5ka2meg0hjq" path="res://Scripts/Enemy/Tank_enemy_script.gd" id="1_o5hcr"]
+[ext_resource type="Texture2D" uid="uid://di8yfa26wo42x" path="res://Assets/Sprites/tanky_bot-Sheet.png" id="2_jbq8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3l5w"]
+size = Vector2(28.5, 34.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc14k"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v78c"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(200, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03qow"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(240, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mytd1"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(280, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkk37"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(0, 120, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gra3g"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(0, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ykjt"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(40, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34odq"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(120, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgbis"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(160, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4fta"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(200, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn5df"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(240, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bkec"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(280, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvp2y"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swcju"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjk7v"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywefo"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wanxr"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f816i"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uhll"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_curc8"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie0gn"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqn4g"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(80, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2va4"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(120, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqigt"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(160, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b5i0"]
+atlas = ExtResource("2_jbq8x")
+region = Rect2(80, 80, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ou3y7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc14k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v78c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03qow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mytd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkk37")
+}],
+"loop": 1,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gra3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ykjt")
+}],
+"loop": 1,
+"name": &"Grapple",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34odq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgbis")
+}],
+"loop": 1,
+"name": &"Player Grapple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4fta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn5df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bkec")
+}],
+"loop": 1,
+"name": &"Shield Bash",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvp2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swcju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjk7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywefo")
+}],
+"loop": 1,
+"name": &"Waking up",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wanxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f816i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uhll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_curc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie0gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqn4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2va4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqigt")
+}],
+"loop": 1,
+"name": &"Walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b5i0")
+}],
+"loop": 1,
+"name": &"Wall Grapple",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_o5hcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]
+position = Vector2(1.75, 0)
+shape = SubResource("RectangleShape2D_t3l5w")
+
+[node name="Tank" type="AnimatedSprite2D" parent="." unique_id=1940052134]
+rotation = 4.712389
+sprite_frames = SubResource("SpriteFrames_ou3y7")
+animation = &"Death"
+autoplay = "Waking up"
+frame_progress = 0.46151298
