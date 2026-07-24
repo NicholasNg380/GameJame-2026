@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b30g3btxsuhkw"]
+
+[ext_resource type="Texture2D" uid="uid://ux0ubf8b4xq4" path="res://Assets/UI/minigame_keys-Sheet.png" id="1_2prcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecjq5"]
+atlas = ExtResource("1_2prcy")
+region = Rect2(0, 0, 9, 10)
+
+[node name="TextureRect" type="TextureRect" unique_id=1510931429]
+offset_right = 9.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ecjq5")

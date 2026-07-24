@@ -5,9 +5,18 @@ var type = "Tank"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	SPEED = 250
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
 		spawning = false
-		on = true
+		current_state = State.CHASE
 		anim.play("Walking")
+	if anim.animation == "Shield Bash":
+		anim.play("Walking")
+		current_state = State.COOLDOWN
+		await get_tree().create_timer(0.5).timeout # 1-second attack delay
+		current_state = State.CHASE
+
+func attack() -> void:
+	anim.play("Shield Bash")

@@ -109,7 +109,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
+[node name="Enemy2" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 2
