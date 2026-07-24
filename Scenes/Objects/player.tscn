@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dkjq0wn6l3vbm" path="res://Scripts/Player/Player_script.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://3tflq7mtrosa" path="res://Assets/Sprites/melee_sprite-Sheet.png" id="2_kvv6r"]
 [ext_resource type="Texture2D" uid="uid://di8yfa26wo42x" path="res://Assets/Sprites/tanky_bot-Sheet.png" id="3_picsy"]
+[ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="4_dfgsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvv6r"]
 atlas = ExtResource("2_kvv6r")
@@ -444,6 +445,108 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu8t6"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ihj2"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uau3f"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d25y8"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4tdx"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6ikd"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dasuw"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js6hq"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e78nj"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbqjm"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvwgy"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljsdr"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbekk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu8t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ihj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uau3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d25y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4tdx")
+}],
+"loop": 1,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6ikd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dasuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js6hq")
+}],
+"loop": 1,
+"name": &"Waking up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e78nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbqjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvwgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljsdr")
+}],
+"loop": 1,
+"name": &"Walking",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0yxnd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk2vc"]
@@ -453,29 +556,35 @@ radius = 301.02658
 script = ExtResource("1_v0iea")
 
 [node name="Sword" type="AnimatedSprite2D" parent="." unique_id=852005037]
-position = Vector2(0.32523155, -0.28922462)
 rotation = -1.5707964
-scale = Vector2(4.0180764, 4.104673)
+scale = Vector2(4, 4.087)
 sprite_frames = SubResource("SpriteFrames_picsy")
 animation = &"Waking up"
 autoplay = "Waking up"
 
 [node name="Tank" type="AnimatedSprite2D" parent="." unique_id=625596878]
 visible = false
-position = Vector2(0.19277573, 0.38554382)
 rotation = -1.5707964
-scale = Vector2(3.2361507, 3.245789)
+scale = Vector2(3.5, 3.511)
 sprite_frames = SubResource("SpriteFrames_yu8t6")
 animation = &"Wall Grapple"
 autoplay = "Waking up"
 frame_progress = 0.7046548
+
+[node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
+visible = false
+rotation = -1.5707964
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xbekk")
+animation = &"Death"
+autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
 scale = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_0yxnd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1526197931]
-position_smoothing_speed = 3.0
+position_smoothing_speed = 14.0
 
 [node name="HackArea" type="Area2D" parent="." unique_id=1518452102]
 collision_mask = 2

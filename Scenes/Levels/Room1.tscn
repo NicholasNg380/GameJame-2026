@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="1_me5mj"]
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_o6lan"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_f44ty"]
-[ext_resource type="PackedScene" uid="uid://u7gpcslf1xmy" path="res://Scenes/Objects/Enemy.tscn" id="3_me5mj"]
+[ext_resource type="PackedScene" uid="uid://3r5r4bju32ot" path="res://Scenes/Objects/Magnet_enemy.tscn" id="5_bcjo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjo6"]
 size = Vector2(256, 256)
 
 [node name="Room1" type="Node2D" unique_id=203248451]
 script = ExtResource("1_me5mj")
+
+[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("5_bcjo6")]
 
 [node name="WallTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_o6lan")]
 tile_map_data = PackedByteArray("AAD+/wYAAAAAAAAAAQD+/wcAAAAAAAAAAQABAAYAAAAAAAAAAQABAAcAAAAAAAAAAQAGAAEAAAAAAAAAAQAHAAEAAAAAAAAAAQAGAP7/AAAAAAAAAQAHAP7/AAAAAAAAAQABAPj/AAAAAAAAAQABAPn/AAAAAAAAAQD+//n/AAAAAAAAAQD+//j/AAAAAAAAAQD4//7/AAAAAAAAAQD5/wEAAAAAAAAAAQD4/wEAAAAAAAAAAQD5//7/AAAAAAAAAQD5//3/AAAAAAAAAQD5//z/AAAAAAAAAQD5//v/AAAAAAAAAQD5//r/AAAAAAAAAQD5//n/AAAAAAAAAQD6//n/AAAAAAAAAQD7//n/AAAAAAAAAQD8//n/AAAAAAAAAQD9//n/AAAAAAAAAQACAPn/AAAAAAAAAQADAPn/AAAAAAAAAQAEAPn/AAAAAAAAAQAFAPn/AAAAAAAAAQAGAPn/AAAAAAAAAQAGAPr/AAAAAAAAAQAGAPv/AAAAAAAAAQAGAPz/AAAAAAAAAQAGAP3/AAAAAAAAAQAGAAIAAAAAAAAAAQAGAAMAAAAAAAAAAQAGAAQAAAAAAAAAAQAGAAUAAAAAAAAAAQAGAAYAAAAAAAAAAQAFAAYAAAAAAAAAAQAEAAYAAAAAAAAAAQADAAYAAAAAAAAAAQACAAYAAAAAAAAAAQD9/wYAAAAAAAAAAQD8/wYAAAAAAAAAAQD7/wYAAAAAAAAAAQD6/wYAAAAAAAAAAQD5/wYAAAAAAAAAAQD5/wUAAAAAAAAAAQD5/wQAAAAAAAAAAQD5/wMAAAAAAAAAAQD5/wIAAAAAAAAAAQA=")
@@ -63,5 +65,3 @@ tile_map_data = PackedByteArray("AAD5////AAAAAAAAAgD4////AAAAAAAAAgD4/wAAAAAAAAA
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=387179059]
 position = Vector2(-896, 0)
 shape = SubResource("RectangleShape2D_bcjo6")
-
-[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("3_me5mj")]

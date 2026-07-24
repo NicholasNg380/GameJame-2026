@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://u7gpcslf1xmy"]
+[gd_scene format=3 uid="uid://couclvtgok2bm"]
 
 [ext_resource type="Script" uid="uid://b05d2qmh2yhxv" path="res://Scripts/Enemy/Melee_enemy_script.gd" id="1_qlasq"]
 [ext_resource type="Texture2D" uid="uid://3tflq7mtrosa" path="res://Assets/Sprites/melee_sprite-Sheet.png" id="2_qlasq"]
