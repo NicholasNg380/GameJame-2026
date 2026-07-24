@@ -3,22 +3,27 @@ class_name Player
 
 @onready var hack_area: Area2D = $HackArea
 @onready var camera = $Camera2D
+@onready var sword_anim = $Sword
+@onready var tank_anim = $Tank
 
 const ACCELERATION: int = 15
 const FRICTION: int = 0
 var MAX_SPEED: float = 500.0
-
 var TYPE: String = ""
-
 var HEALTH: float = 100.0
 
 # Array contains Health then speed
 var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
 
+var can_move: bool = true
+
 func _ready():
 	add_to_group("player")
 
 func _physics_process(delta):
+	if not can_move:
+		return
+	
 	_movement(delta)
 	move_and_slide()
 	
@@ -34,6 +39,9 @@ func _movement(delta: float) -> void:
 	var lerp_weight = delta * (ACCELERATION if input else 50)
 	
 	velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
+	if velocity.length() > 0:
+		rotation = atan2(velocity.y, velocity.x)
+	
 
 func closest_robot() -> Enemy:
 	var overlapping_bodies = hack_area.get_overlapping_bodies()
@@ -65,11 +73,10 @@ func hack_robot():
 	var player_pos = global_position
 	var robot_pos = robot.global_position
 	
-	TYPE = robot.type
-	HEALTH = ROBOTS[TYPE][0]
-	MAX_SPEED = ROBOTS[TYPE][1]
+	robot_change(robot.type)
 	
 	camera.position_smoothing_enabled = true
+	can_move = false
 	
 	global_position = robot_pos
 	robot.global_position = player_pos
@@ -77,3 +84,18 @@ func hack_robot():
 	robot.queue_free()
 	await get_tree().create_timer(1.75).timeout
 	camera.position_smoothing_enabled = false
+	can_move = true
+
+func robot_change(type) -> void:
+	TYPE = type
+	HEALTH = ROBOTS[TYPE][0]
+	MAX_SPEED = ROBOTS[TYPE][1]
+	
+	sword_anim.visible = false
+	tank_anim.visible = false
+	match type:
+		"Sword":
+			sword_anim.visible = true
+		"Tank":
+			tank_anim.visible = true
+	

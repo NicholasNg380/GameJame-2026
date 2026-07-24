@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="1_me5mj"]
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="1_o6lan"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="3_f44ty"]
+[ext_resource type="PackedScene" uid="uid://c271w1lj05b7d" path="res://Scenes/Objects/Tank_enemy.tscn" id="3_f44ty"]
 [ext_resource type="PackedScene" uid="uid://u7gpcslf1xmy" path="res://Scenes/Objects/Enemy.tscn" id="3_me5mj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjo6"]
