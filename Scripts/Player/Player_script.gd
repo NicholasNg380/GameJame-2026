@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var hack_area: Area2D = $HackArea
+@onready var camera = $Camera2D
 
 const ACCELERATION: int = 15
 const FRICTION: int = 0
@@ -68,9 +69,11 @@ func hack_robot():
 	HEALTH = ROBOTS[TYPE][0]
 	MAX_SPEED = ROBOTS[TYPE][1]
 	
-	print(TYPE, HEALTH, MAX_SPEED)
+	camera.position_smoothing_enabled = true
 	
 	global_position = robot_pos
 	robot.global_position = player_pos
 	
 	robot.queue_free()
+	await get_tree().create_timer(1.75).timeout
+	camera.position_smoothing_enabled = false

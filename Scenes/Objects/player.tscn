@@ -19,6 +19,7 @@ scale = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_0yxnd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1526197931]
+position_smoothing_speed = 3.0
 
 [node name="HackArea" type="Area2D" parent="." unique_id=1518452102]
 collision_mask = 2
