@@ -13,7 +13,7 @@
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
-position = Vector2(0, -11)
+position = Vector2(0, 180)
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
