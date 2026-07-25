@@ -1,12 +1,13 @@
 extends Node
 class_name GameController
 
-const HOST_TIME := 10.0
+const HOST_TIME := 20.0
 
 var won: bool = false
 var current_robot = null
 var time_remaining := 0.0
 var update_timer := 0.0
+var timer_active := false
 
 const TIME_SLOW = 0.1
 
@@ -65,17 +66,23 @@ func _on_host_timer_finished():
 
 func _process(delta):
 	#Update health bar
-	if time_remaining > 0:
+	if timer_active and time_remaining > 0:
 		time_remaining -= delta
 		update_timer += delta
+	
 		if update_timer >= 0.5:
 			update_timer = 0.0
-			health.value = 100 * (1-((HOST_TIME-time_remaining)/HOST_TIME))
-			
+			health.value = 100 * (time_remaining / HOST_TIME)
+	
 	if is_hacking:
 		if hackListPointer == HACK_DIFFICULTY + hack_modifier:
 			time_remaining = HOST_TIME
 			update_timer = 0.5
+			
+			if !timer_active:
+				timer_active = true
+				print("Virus timer started")
+			
 			hackSuccess.emit(robot_being_hacked)
 			
 			is_hacking=false
@@ -89,9 +96,6 @@ func _process(delta):
 			successfulInput(2, hackList[hackListPointer])
 		elif Input.is_action_just_pressed("right"):
 			successfulInput(3, hackList[hackListPointer])
-	if !host_timer.is_stopped():
-		time_remaining = host_timer.time_left
-		print(time_remaining)
 	
 
 func successfulInput(input, required):

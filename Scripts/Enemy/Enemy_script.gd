@@ -58,7 +58,7 @@ func _physics_process(_delta):
 			move_and_slide()
 		State.KNOCKED:
 			velocity = Vector2.ZERO
-		
+
 func isKnocked():
 	return knocked
 
