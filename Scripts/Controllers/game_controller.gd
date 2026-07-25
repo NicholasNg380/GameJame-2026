@@ -29,6 +29,8 @@ var robot_being_hacked
 @onready var host_timer: Timer = $HostTimer
 @onready var minigame = $HBoxContainer
 @onready var health = $"CanvasLayer/Death Timer"
+@onready var countdown = $CanvasLayer/Label
+@onready var audio = $"../AudioStreamPlayer"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 
@@ -67,6 +69,7 @@ func _on_host_timer_finished():
 
 func _process(delta):
 	#Update health bar
+	countdown.text = str(int(ceil(time_remaining)))
 	if timer_active and time_remaining > 0:
 		time_remaining -= delta
 		update_timer += delta
@@ -76,6 +79,8 @@ func _process(delta):
 			health.value = 100 * (time_remaining / HOST_TIME)
 	
 	if is_hacking:
+		#audio.volume_db = -20
+		#audio.pitch_scale = 0.7
 		if hackListPointer == HACK_DIFFICULTY + hack_modifier:
 			time_remaining = HOST_TIME
 			update_timer = 0.5
@@ -97,6 +102,10 @@ func _process(delta):
 			successfulInput(2, hackList[hackListPointer])
 		elif Input.is_action_just_pressed("right"):
 			successfulInput(3, hackList[hackListPointer])
+	else:
+		pass
+		#audio.volume_db = -15
+		#audio.pitch_scale = 1
 	
 
 func successfulInput(input, required):

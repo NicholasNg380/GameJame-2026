@@ -17,6 +17,8 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
 
+var robots = {"Sword": preload("res://Scenes/Objects/Sword_enemy.tscn"), "Magnet": preload("res://Scenes/Objects/Magnet_enemy.tscn"), 
+"Tank": preload("res://Scenes/Objects/Tank_enemy.tscn")}
 
 const MAGNET_BOMB = preload("res://Scenes/Objects/magnet_bomb.tscn")
 @export var max_magnets := 3
@@ -54,9 +56,6 @@ var dash_speed: int = 10
 var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
-
-
-
 
 
 var hackFail = true
@@ -171,15 +170,21 @@ func _on_game_controller_hack_success(robot) -> void:
 		var player_pos = global_position
 		var robot_pos = robot.global_position
 		hackFail = false
-		
+		if TYPE != "":
+			var death_anim = robots[TYPE].instantiate()
+			death_anim.global_position = player_pos
+			death_anim.rotation = rotation
+			get_tree().current_scene.add_child(death_anim)
+			
+			death_anim.die()
 		robot_change(robot.type)
 
 		camera.position_smoothing_enabled = true
 		
 		global_position = robot_pos
-		robot.global_position = player_pos
-		
 		robot.queue_free()
+		
+		robot.die()
 		await get_tree().create_timer(0.3).timeout
 		camera.position_smoothing_enabled = false
 		
@@ -212,6 +217,7 @@ func robot_change(type) -> void:
 			magnet_anim.visible = true
 			rotation = 0;
 			ANIM_PLAYER = magnet_anim
+	ANIM_PLAYER.play("Waking up")
 	
 func do_sword_attack():
 	if combo2Timer > 0:

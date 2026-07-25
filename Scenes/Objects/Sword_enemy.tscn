@@ -27,10 +27,6 @@ region = Rect2(96, 64, 32, 32)
 atlas = ExtResource("2_da27k")
 region = Rect2(128, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wr3rb"]
-atlas = ExtResource("2_da27k")
-region = Rect2(64, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vutls"]
 atlas = ExtResource("2_da27k")
 region = Rect2(160, 64, 32, 32)
@@ -150,9 +146,6 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wr3rb")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vutls")
 }, {
@@ -285,8 +278,7 @@ shape = SubResource("RectangleShape2D_t3l5w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Knocked"
-frame = 1
+animation = &"Waking up"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=393909658]
 color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)

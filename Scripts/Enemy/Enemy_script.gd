@@ -76,6 +76,13 @@ func take_a_lot_of_damage_magnet():
 	#anim.play("Hit")
 	health -= 1000
 
+func die():
+	health = -10
+	knocked=true
+	current_state = State.KNOCKED
+	can_be_hacked = false
+	anim.play("Death")
+
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
 		current_state = State.HIT
