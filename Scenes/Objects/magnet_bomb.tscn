@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://isiqoyp40wi8" path="res://Scenes/Objects/magnet_bomb.gd" id="1_6e834"]
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="2_m6tsf"]
+[ext_resource type="Texture2D" uid="uid://dbwxxracptxbo" path="res://Assets/Sprites/electric_explosion-Sheet.png" id="3_a185r"]
 [ext_resource type="Texture2D" uid="uid://cwhxqeix5g8o1" path="res://Assets/Light/circle.png" id="3_g4dst"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a185r"]
@@ -11,6 +12,22 @@ region = Rect2(64, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1un1q"]
 atlas = ExtResource("2_m6tsf")
 region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqjyl"]
+atlas = ExtResource("3_a185r")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djmra"]
+atlas = ExtResource("3_a185r")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj4e6"]
+atlas = ExtResource("3_a185r")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jol0"]
+atlas = ExtResource("3_a185r")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvsrl"]
 animations = [{
@@ -25,30 +42,62 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }, {
-"frames": [],
-"loop": 1,
-"name": &"new_animation",
-"speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqjyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djmra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj4e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jol0")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xa11k"]
 radius = 198.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvsrl"]
+radius = 31.016125
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=116202591]
 collision_layer = 256
-collision_mask = 2
 script = ExtResource("1_6e834")
+pull_speed = 1000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1415126853]
 z_index = 12
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_vvsrl")
+animation = &"explode"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=416501118]
 texture = ExtResource("3_g4dst")
 texture_scale = 4.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1208791608]
+collision_layer = 0
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1470520683]
 shape = SubResource("CircleShape2D_xa11k")
+
+[node name="collide_with_wall" type="Area2D" parent="." unique_id=1351042336]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collide_with_wall" unique_id=783426978]
+shape = SubResource("CircleShape2D_vvsrl")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="area_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_area_entered"]
+[connection signal="area_shape_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_area_shape_entered"]
+[connection signal="body_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_body_entered"]
+[connection signal="body_shape_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_body_shape_entered"]

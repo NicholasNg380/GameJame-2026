@@ -17,8 +17,11 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
 
+
+const MAGNET_BOMB = preload("res://Scenes/Objects/magnet_bomb.tscn")
 @export var max_magnets := 3
 var current_magnets = 0
+var magnet_list = []
 
 var gameStart = false
 
@@ -52,7 +55,9 @@ var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
 
-const MAGNET_BOMB = preload("res://Scenes/Objects/magnet_bomb.tscn")
+
+
+
 
 var hackFail = true
 
@@ -140,7 +145,6 @@ func closest_robot() -> Enemy:
 		# Ignore the player itself if it accidentally triggers the area
 		if body == self or !body.canBeHacked(): 
 			continue
-			
 		var dist_sq = global_position.distance_squared_to(body.global_position)
 		if dist_sq < min_distance:
 			min_distance = dist_sq
@@ -327,10 +331,15 @@ func do_magnet_attack():
 		obj.global_position = position
 		get_tree().current_scene.add_child(obj)
 		obj.launch(position, player_direction)
+		magnet_list.append(obj)
 
 func do_magnet_special():
+	for i in magnet_list:
+		i.activate()
+		
+		magnet_list.erase(i)
 	current_magnets = 0
-	pass
+	
 	
 
 func _on_terminal_animation_finished() -> void:

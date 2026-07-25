@@ -23,6 +23,7 @@ func _ready():
 
 func _process(_delta):
 	if health <= 0 and !knocked:
+		print("GFD")
 		can_be_hacked = true
 		health -= 1
 		knocked = true
@@ -70,6 +71,10 @@ func attack() -> void:
 func attack_status(distance: float) -> void:
 	if distance <= 70 and current_state == State.CHASE and type != "Magnet":
 		current_state = State.ATTACK
+
+func take_a_lot_of_damage_magnet():
+	#anim.play("Hit")
+	health -= 1000
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:

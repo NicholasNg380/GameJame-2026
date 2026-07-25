@@ -144,7 +144,7 @@ radius = 14.508618
 [node name="Enemy3" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_admd3")
 
@@ -154,7 +154,7 @@ shape = SubResource("CircleShape2D_qlasq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Death"
+animation = &"Waking up"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1025857536]
 color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)
