@@ -9,7 +9,6 @@ var type: String
 var health: int
 var knocked: bool = false
 
-var game_started := false
 
 var can_be_hacked: bool = true
 
@@ -17,8 +16,6 @@ var can_be_hacked: bool = true
 @onready var damaging_hitbox = $"Damaging Hitbox"
 @onready var attack_hitbox: CollisionShape2D = $"Attack Hitbox/CollisionShape2D"
 
-var attack_damage := 10
-var attacking := false
 
 enum State {REST, CHASE, ATTACK, HIT, COOLDOWN, KNOCKED}
 var current_state: State = State.REST
@@ -52,7 +49,6 @@ func _physics_process(_delta):
 			velocity = direction * SPEED
 			if type != "Magnet":
 				look_at(player.global_position)
-			move_and_slide()
 		State.ATTACK:
 			velocity = Vector2.ZERO
 			attack()
@@ -60,9 +56,9 @@ func _physics_process(_delta):
 			anim.play("Hit")
 			var direction = global_position.direction_to(player.global_position)
 			velocity = -direction * (SPEED/2)
-			move_and_slide()
 		State.KNOCKED:
 			velocity = Vector2.ZERO
+	move_and_slide()
 
 func isKnocked():
 	return knocked

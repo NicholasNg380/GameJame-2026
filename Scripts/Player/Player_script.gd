@@ -123,7 +123,7 @@ func closest_robot() -> Enemy:
 		cannotHack.emit()
 		return null
 		
-	var closest_robot: Enemy = null
+	var closest: Enemy = null
 	var min_distance: float = INF
 	
 	for body in overlapping_bodies:
@@ -134,12 +134,12 @@ func closest_robot() -> Enemy:
 		var dist_sq = global_position.distance_squared_to(body.global_position)
 		if dist_sq < min_distance:
 			min_distance = dist_sq
-			closest_robot = body
-	if closest_robot != null:
-		canHack.emit(closest_robot)
+			closest = body
+	if closest != null:
+		canHack.emit(closest)
 	else:
 		cannotHack.emit()
-	return closest_robot
+	return closest
 	
 
 func hack_robot():

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="3_j0qmu"]
 [ext_resource type="Texture2D" uid="uid://bc6iyqr23qaxb" path="res://Tileset/tilemap.png" id="3_u4kb4"]
 [ext_resource type="Script" uid="uid://2q53edko7hrb" path="res://Scripts/Controllers/door.gd" id="4_u4kb4"]
-[ext_resource type="PackedScene" uid="uid://3r5r4bju32ot" path="res://Scenes/Objects/Magnet_enemy.tscn" id="5_u4kb4"]
 [ext_resource type="TileSet" uid="uid://cmkgy5jq4g86v" path="res://Tileset/FloorTiles.tres" id="6_j0qmu"]
+[ext_resource type="PackedScene" uid="uid://c271w1lj05b7d" path="res://Scenes/Objects/Tank_enemy.tscn" id="6_u4kb4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8uh6"]
 texture = ExtResource("3_u4kb4")
@@ -263,7 +263,7 @@ shape = SubResource("RectangleShape2D_wjhog")
 position = Vector2(0, -1880)
 occluder = SubResource("OccluderPolygon2D_j0qmu")
 
-[node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("5_u4kb4")]
+[node name="Tank1" parent="." unique_id=1258840285 instance=ExtResource("6_u4kb4")]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")
