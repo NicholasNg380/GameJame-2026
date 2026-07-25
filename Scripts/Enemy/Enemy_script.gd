@@ -14,7 +14,6 @@ var can_be_hacked: bool = true
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damaging_hitbox = $"Damaging Hitbox"
-@onready var attack_hitbox: CollisionShape2D = $"Attack Hitbox/CollisionShape2D"
 
 
 enum State {REST, CHASE, ATTACK, HIT, COOLDOWN, KNOCKED}

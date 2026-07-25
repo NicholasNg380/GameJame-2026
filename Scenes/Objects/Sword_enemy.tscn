@@ -268,9 +268,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_da27k"]
 radius = 14.508618
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahg1b"]
-size = Vector2(13, 12)
-
 [node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
@@ -284,7 +281,8 @@ shape = SubResource("RectangleShape2D_t3l5w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Waking up"
+animation = &"Knocked"
+frame = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=393909658]
 color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)
@@ -301,13 +299,5 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_da27k")
 debug_color = Color(0.727528, 0.451104, 0.4141794, 0.41960785)
 
-[node name="Attack Hitbox" type="Area2D" parent="." unique_id=1784793461]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Hitbox" unique_id=653382601]
-position = Vector2(5.5, 0)
-shape = SubResource("RectangleShape2D_ahg1b")
-disabled = true
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="Damaging Hitbox" to="." method="_on_damaging_hitbox_area_shape_entered"]
-[connection signal="area_entered" from="Attack Hitbox" to="." method="_on_attack_hitbox_area_entered"]

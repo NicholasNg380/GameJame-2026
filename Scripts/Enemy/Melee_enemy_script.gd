@@ -11,14 +11,6 @@ func _ready() -> void:
 
 func attack() -> void:
 	anim.play("Left Slash")
-	
-	await get_tree().create_timer(0.25).timeout # wait before sword hits
-	
-	attack_hitbox.disabled = false
-	
-	await get_tree().create_timer(0.1).timeout # hitbox active duration
-	
-	attack_hitbox.disabled = true
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
@@ -46,16 +38,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		anim.play("Death")
 
 
-func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+func _on_damaging_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if !knocked:
 		current_state = State.HIT
 		health -= 1
 	elif knocked and can_be_hacked:
 		can_be_hacked = false
 		anim.play("Death")
-
-
-func _on_attack_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		var hit_player = area.get_parent()
-		hit_player.take_damage(10, global_position)
