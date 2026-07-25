@@ -1,7 +1,8 @@
 extends "Enemy_script.gd"
 
+@onready var attack_hitbox = $Attack_Hitbox/CollisionShape2D
+var is_attacking := false
 
-@onready var hitbox = $"Damaging Hitbox"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -36,13 +37,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 
 func attack() -> void:
+	if is_attacking:
+		return
+	is_attacking = true
 	anim.play("Shield Bash")
+	attack_hitbox.disabled = false
+	await get_tree().create_timer(0.1).timeout
+	attack_hitbox.disabled = true
+	is_attacking = false
 
-
-func _on_damaging_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if !knocked:
-		current_state = State.HIT
-		health -= 1
-	elif knocked and can_be_hacked:
-		can_be_hacked = false
-		anim.play("Death")
+func _on_attack_hitbox_area_entered(area: Area2D) -> void:
+	var target = area.get_parent()
+	if target and target.is_in_group("player"):
+		target.take_damage(10, global_position)

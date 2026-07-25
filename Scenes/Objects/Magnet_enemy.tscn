@@ -141,10 +141,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecjq5"]
 radius = 14.508618
 
-[node name="Enemy2" type="CharacterBody2D" unique_id=1258840285]
+[node name="Enemy3" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_admd3")
 
 [node name="Physical Hitbox" type="CollisionShape2D" parent="." unique_id=1868702960]
@@ -163,7 +164,7 @@ texture = ExtResource("3_70i61")
 texture_scale = 0.5
 
 [node name="Damaging Hitbox" type="Area2D" parent="." unique_id=662219710]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damaging Hitbox" unique_id=2056876538]

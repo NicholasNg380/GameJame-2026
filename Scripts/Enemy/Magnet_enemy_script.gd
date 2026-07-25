@@ -1,7 +1,5 @@
 extends Enemy
 
-@onready var hitbox = $"Damaging Hitbox/CollisionShape2D"
-
 func _ready():
 	super()
 	SPEED = 550
@@ -37,13 +35,3 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 func attack():
 	anim.play("Spit")
-	
-func _on_damaging_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if !knocked:
-		current_state = State.HIT
-		health -= 1
-	elif knocked and can_be_hacked:
-		can_be_hacked = false
-		anim.play("Death")
-		
-	

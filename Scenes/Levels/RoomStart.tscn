@@ -134,19 +134,33 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_jlipd"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_jlipd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6b255"]
 size = Vector2(296, 256)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oppcx"]
+polygon = PackedVector2Array(-212, 856, -212, 1024, 212, 1024, 212, 856)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aqmg"]
 size = Vector2(296, 180)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6b255"]
+polygon = PackedVector2Array(-212, 2776, 212, 2776, 212, 2904, -212, 2904)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjl6c"]
 size = Vector2(236, 332)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1aqmg"]
+polygon = PackedVector2Array(852, 1664, 1024, 1664, 1024, 2136, 852, 2136)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahnss"]
 size = Vector2(236, 332)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kjl6c"]
+cull_mode = 2
+polygon = PackedVector2Array(-1024, 1664, -852, 1664, -848, 2132, -1024, 2132)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ahg1b"]
 cull_mode = 2
@@ -154,6 +168,9 @@ polygon = PackedVector2Array(-212, -1024, -212, -856, -340, -856, -340, -600, -4
 
 [node name="RoomStart" type="Node2D" unique_id=203248451]
 script = ExtResource("2_60lb5")
+has_east_door = false
+has_south_door = false
+has_west_door = false
 
 [node name="FloorTileMap" parent="." unique_id=1914282033 instance=ExtResource("1_60lb5")]
 scale = Vector2(4, 4)
@@ -181,6 +198,10 @@ tile_set = ExtResource("5_oppcx")
 position = Vector2(0, -896)
 shape = SubResource("RectangleShape2D_6b255")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/NorthDoor" unique_id=590708764]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_oppcx")
+
 [node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1724776742]
 visible = false
 script = ExtResource("3_l3vns")
@@ -195,6 +216,10 @@ tile_set = ExtResource("5_oppcx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/SouthDoor/StaticBody2D" unique_id=1889476298]
 position = Vector2(0, 934)
 shape = SubResource("RectangleShape2D_1aqmg")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/SouthDoor" unique_id=1841371952]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_6b255")
 
 [node name="EastDoor" type="Node2D" parent="Doors" unique_id=577106125]
 visible = false
@@ -211,6 +236,10 @@ tile_set = ExtResource("5_oppcx")
 position = Vector2(906, 38)
 shape = SubResource("RectangleShape2D_kjl6c")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/EastDoor" unique_id=1837802858]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_1aqmg")
+
 [node name="WestDoor" type="Node2D" parent="Doors" unique_id=1919756374]
 visible = false
 script = ExtResource("3_l3vns")
@@ -225,6 +254,10 @@ tile_set = ExtResource("5_oppcx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=1386626497]
 position = Vector2(-906, 38)
 shape = SubResource("RectangleShape2D_ahnss")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/WestDoor" unique_id=314285102]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_kjl6c")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")
