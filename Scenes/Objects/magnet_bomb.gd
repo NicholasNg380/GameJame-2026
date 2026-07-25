@@ -38,9 +38,12 @@ func _process(delta: float) -> void:
 			light.visible = !light.visible
 	if activated:
 		if enemies.is_empty():
-			for enemy in enemies_to_kill:
-				enemy.take_a_lot_of_damage_magnet()
-				anim.play("explode")
+			if !enemies_to_kill.is_empty():
+				for enemy in enemies_to_kill:
+					enemy.take_a_lot_of_damage_magnet()
+					anim.play("explode")
+			else:
+				queue_free()
 		for enemy in enemies:
 			if !is_instance_valid(enemy):
 				continue
