@@ -13,9 +13,14 @@ class_name Player
 @onready var grapple = $GrappleHook
 @onready var raycast = $RayCast2D
 
+@export var max_magnets := 3
+var current_magnets = 0
+
 var gameStart = false
 
 var isHacking = false
+
+var player_direction
 
 signal hacking(robot)
 signal canHack(robot)
@@ -40,7 +45,7 @@ var grapple_target_global: Vector2
 var dash_speed: int = 10
 var is_dashing
 
-const MAGNET_BOMB = "res://Scenes/Objects/magnet_bomb.tscn"
+const MAGNET_BOMB = preload("res://Scenes/Objects/magnet_bomb.tscn")
 
 var hackFail = true
 
@@ -95,14 +100,14 @@ func _physics_process(delta):
 		grapple.set_point_position(1, grapple.to_local(grapple_target_global))
 
 func _movement(delta: float) -> void:
-	var input = Vector2(
+	player_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
 	if !isHacking and !is_grappling and !is_dashing:
-		var lerp_weight = delta * (ACCELERATION if input else 50)
+		var lerp_weight = delta * (ACCELERATION if player_direction else 50)
 		
-		velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
+		velocity = lerp(velocity, player_direction * (MAX_SPEED), lerp_weight)
 		if velocity.length() > 0:
 			if TYPE != "Magnet":
 				rotation = atan2(velocity.y, velocity.x)
@@ -280,13 +285,16 @@ func move_to_grapple(target):
 	await tween.finished
 
 func do_magnet_attack():
-	ANIM_PLAYER.play("Spit")
-	var mb = load(MAGNET_BOMB)
-	var obj = mb.instantiate()
-	obj.global_position = position
-	add_child(obj)
+	if current_magnets < max_magnets:
+		current_magnets += 1
+		ANIM_PLAYER.play("Spit")
+		var obj = MAGNET_BOMB.instantiate()
+		obj.global_position = position
+		get_tree().current_scene.add_child(obj)
+		obj.launch(position, player_direction)
 
 func do_magnet_special():
+	current_magnets = 0
 	pass
 	
 
