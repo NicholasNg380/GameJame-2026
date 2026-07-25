@@ -60,9 +60,16 @@ var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
 
+
 var scrap = 0
 
+const SHOCKWAVE_RADIUS := 250.0
+const SHOCKWAVE_FORCE := 700.0
+
+
 var hackFail = true
+
+var sword_hurtbox_users := 0
 
 # Array contains Health then speed
 var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
@@ -189,6 +196,7 @@ func _on_game_controller_hack_success(robot) -> void:
 		robot.queue_free()
 		
 		robot.die()
+		trigger_shockwave(robot_pos)
 		await get_tree().create_timer(0.3).timeout
 		camera.position_smoothing_enabled = false
 		
@@ -234,9 +242,9 @@ func do_sword_attack():
 	else:
 		ANIM_PLAYER.play("Left Slash")
 		combo1Timer = COMBO_LEEWAY;
-	sword_hurtbox.disabled = false
+	_enable_sword_hurtbox()
 	await get_tree().create_timer(0.1).timeout
-	sword_hurtbox.disabled = true
+	_disable_sword_hurtbox()
 
 func do_sword_special():
 	if special_on_cooldown:
@@ -247,9 +255,9 @@ func do_sword_special():
 	velocity *= dash_speed
 	is_dashing = true
 
-	sword_hurtbox.disabled = false
+	_enable_sword_hurtbox()
 	await get_tree().create_timer(0.1).timeout
-	sword_hurtbox.disabled = true
+	_disable_sword_hurtbox()
 	is_dashing = false
 
 	await get_tree().create_timer(SPECIAL_COOLDOWN - 0.1).timeout
@@ -349,8 +357,6 @@ func do_magnet_special():
 		
 		magnet_list.erase(i)
 	current_magnets = 0
-	
-	
 
 func _on_terminal_animation_finished() -> void:
 	if ANIM_PLAYER.animation == "Boot":
@@ -375,3 +381,21 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 	is_invulnerable = false
 	HEALTH -= amount
 	damaged.emit(amount)
+
+func trigger_shockwave(origin: Vector2) -> void:
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		if is_instance_valid(enemy) and not enemy.isKnocked():
+			var dist = origin.distance_to(enemy.global_position)
+			if dist <= SHOCKWAVE_RADIUS:
+				enemy.apply_knockback(origin, SHOCKWAVE_FORCE)
+
+func _enable_sword_hurtbox() -> void:
+	sword_hurtbox_users += 1
+	sword_hurtbox.disabled = false
+
+func _disable_sword_hurtbox() -> void:
+	sword_hurtbox_users -= 1
+	if sword_hurtbox_users <= 0:
+		sword_hurtbox_users = 0
+		sword_hurtbox.disabled = true

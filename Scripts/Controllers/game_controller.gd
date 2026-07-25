@@ -5,6 +5,7 @@ class_name GameController
 const DAMAGE_TIME_PENALTY := 1.0
 
 var won: bool = false
+var lost: bool = false
 var current_robot = null
 var time_remaining := 0.0
 var update_timer := 0.0
@@ -35,6 +36,7 @@ var robot_being_hacked
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 
 func _ready():
+	add_to_group("game_controller")
 	minigame_init_msg.visible = false
 	host_timer.timeout.connect(_on_host_timer_finished)
 	time_remaining = HOST_TIME
@@ -77,6 +79,10 @@ func _process(delta):
 		if update_timer >= 0.5:
 			update_timer = 0.0
 			health.value = 100 * (time_remaining / HOST_TIME)
+
+		if time_remaining <= 0.0:
+			time_remaining = 0.0
+			_on_time_up()
 	
 	if is_hacking:
 		#audio.volume_db = -20
@@ -162,3 +168,16 @@ func _on_player_damaged(_amount: float) -> void:
 	if timer_active:
 		time_remaining = max(0.0, time_remaining - DAMAGE_TIME_PENALTY)
 		health.value = 100 * (time_remaining / HOST_TIME)
+
+func _on_time_up() -> void:
+	if lost:
+		return
+	lost = true
+	timer_active = false
+	print("Time's up — Game Over")
+	# TODO: actual game-over flow (freeze player, show a screen, reload level, etc.)
+	get_tree().paused = true
+
+func _on_died():
+	await get_tree().create_timer(0.5).timeout # wait a sec
+	check_win()
