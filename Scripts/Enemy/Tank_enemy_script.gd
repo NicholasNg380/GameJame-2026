@@ -1,11 +1,10 @@
 extends "Enemy_script.gd"
 
-var type = "Tank"
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	SPEED = 250
+	SPEED = 225
+	type = "Tank"
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
@@ -20,3 +19,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func attack() -> void:
 	anim.play("Shield Bash")
+
+
+func _on_damaging_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	anim.play("Hit")
+	var direction = global_position.direction_to(player.global_position)
+	velocity += -direction*SPEED

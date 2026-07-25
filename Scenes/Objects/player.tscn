@@ -373,6 +373,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecjq5"]
+size = Vector2(54, 56)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wc14k"]
 atlas = ExtResource("3_picsy")
 region = Rect2(200, 120, 40, 40)
@@ -586,6 +589,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dmts"]
+size = Vector2(59, 105)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yu8t6"]
 atlas = ExtResource("4_dfgsd")
 region = Rect2(128, 64, 32, 32)
@@ -701,12 +707,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfgsd"]
-radius = 6.4633703
+radius = 3.8492296
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nk2vc"]
 radius = 301.02658
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2130104624]
+collision_mask = 3
 script = ExtResource("1_v0iea")
 
 [node name="Terminal" type="AnimatedSprite2D" parent="." unique_id=117311457]
@@ -724,6 +731,16 @@ sprite_frames = SubResource("SpriteFrames_picsy")
 animation = &"Combo Slash"
 autoplay = "Waking up"
 
+[node name="Sword_Hurtbox" type="Area2D" parent="." unique_id=1774474186]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_Hurtbox" unique_id=1502250185]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_ecjq5")
+disabled = true
+debug_color = Color(0.82178944, 0.13659218, 0.9099394, 0.41960785)
+
 [node name="Tank" type="AnimatedSprite2D" parent="." unique_id=625596878]
 visible = false
 rotation = -1.5707964
@@ -731,6 +748,15 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_yu8t6")
 animation = &"Shield Bash"
 autoplay = "Waking up"
+
+[node name="Tank_Hurtbox" type="Area2D" parent="." unique_id=1658456939]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank_Hurtbox" unique_id=1141043837]
+position = Vector2(49.5, 5)
+shape = SubResource("RectangleShape2D_4dmts")
+disabled = true
 
 [node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
 visible = false

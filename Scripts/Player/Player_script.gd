@@ -8,6 +8,9 @@ class_name Player
 @onready var magnet_anim = $Magnet
 @onready var terminal_anim = $Terminal
 @onready var minigame = $Node2D/Minigame
+@onready var sword_hurtbox = $Sword_Hurtbox/CollisionShape2D
+@onready var tank_hurtbox = $Tank_Hurtbox/CollisionShape2D
+
 
 var gameStart = false
 
@@ -175,6 +178,9 @@ func do_sword_attack():
 	else:
 		ANIM_PLAYER.play("Left Slash")
 		combo1Timer = COMBO_LEEWAY;
+	sword_hurtbox.disabled = false
+	await get_tree().create_timer(0.1).timeout
+	sword_hurtbox.disabled = true
 
 func do_sword_special():
 	ANIM_PLAYER.play("Parry")

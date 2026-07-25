@@ -5,10 +5,13 @@ var player: Player
 var on: bool = false
 var spawning: bool = false
 var SPEED: float = 0.0
+var type: String
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var damaging_hitbox = $"Damaging Hitbox"
 
-enum State {REST, CHASE, ATTACK, COOLDOWN}
+
+enum State {REST, CHASE, ATTACK, HIT, COOLDOWN}
 var current_state: State = State.REST
 
 func _ready():
@@ -29,16 +32,20 @@ func _physics_process(_delta):
 		State.CHASE:
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * SPEED
-			look_at(player.global_position)
+			if type != "Magnet":
+				look_at(player.global_position)
 			move_and_slide()
 		State.ATTACK:
 			velocity = Vector2.ZERO
 			attack()
+		State.HIT:
+			anim.play("Hit")
+			var direction = global_position.direction_to(player.global_position)
+			velocity = -1 * direction * 10
 
 func attack() -> void:
 	pass
 
 func attack_status(distance: float) -> void:
 	if distance <= 70 and current_state != State.COOLDOWN:
-		if current_state != State.COOLDOWN:
-			current_state = State.ATTACK
+		current_state = State.ATTACK
