@@ -178,7 +178,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Loop",
-"speed": 6.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_picsy"]
@@ -639,6 +639,10 @@ region = Rect2(0, 96, 32, 32)
 atlas = ExtResource("4_dfgsd")
 region = Rect2(32, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v440u"]
+atlas = ExtResource("4_dfgsd")
+region = Rect2(128, 96, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2t8ey"]
 atlas = ExtResource("4_dfgsd")
 region = Rect2(224, 0, 32, 32)
@@ -692,6 +696,14 @@ animations = [{
 "loop": 0,
 "name": &"Death",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v440u")
+}],
+"loop": 0,
+"name": &"Hit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -778,7 +790,7 @@ visible = false
 rotation = -1.5707964
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_yu8t6")
-animation = &"Hit"
+animation = &"Grapple"
 autoplay = "Waking up"
 
 [node name="Tank_Hurtbox" type="Area2D" parent="." unique_id=1658456939]
@@ -806,7 +818,7 @@ texture_mode = 1
 visible = false
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xbekk")
-animation = &"Walking"
+animation = &"Hit"
 autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
@@ -837,7 +849,7 @@ texture = ExtResource("5_xbekk")
 position = Vector2(-17, -34)
 scale = Vector2(1.1483872, 1)
 target_position = Vector2(1980, 0)
-collision_mask = 9
+collision_mask = 5
 
 [node name="PlayerHitbox" type="Area2D" parent="." unique_id=1316512264]
 collision_layer = 16

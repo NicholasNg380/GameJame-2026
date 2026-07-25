@@ -15,6 +15,7 @@ class_name Player
 @export var knockback_strength: float = 4.0
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
+var is_invulnerable := false
 
 @export var max_magnets := 3
 var current_magnets = 0
@@ -48,6 +49,8 @@ var grapple_target_global: Vector2
 
 var dash_speed: int = 10
 var is_dashing
+var special_on_cooldown := false
+const SPECIAL_COOLDOWN := 1.0
 
 const MAGNET_BOMB = preload("res://Scenes/Objects/magnet_bomb.tscn")
 
@@ -222,11 +225,21 @@ func do_sword_attack():
 	sword_hurtbox.disabled = true
 
 func do_sword_special():
+	if special_on_cooldown:
+		return
+	special_on_cooldown = true
+
 	ANIM_PLAYER.play("Dash")
 	velocity *= dash_speed
 	is_dashing = true
+
+	sword_hurtbox.disabled = false
 	await get_tree().create_timer(0.1).timeout
+	sword_hurtbox.disabled = true
 	is_dashing = false
+
+	await get_tree().create_timer(SPECIAL_COOLDOWN - 0.1).timeout
+	special_on_cooldown = false
 
 func do_tank_attack():
 	ANIM_PLAYER.play("Shield Bash")
@@ -235,24 +248,39 @@ func do_tank_attack():
 	tank_hurtbox.disabled = true
 
 func do_tank_special():	
-	
+	if special_on_cooldown:
+		return
+	special_on_cooldown = true
 	raycast.force_raycast_update()
-	
+
 	if raycast.is_colliding():
+		var target_body = raycast.get_collider()
+		var hit_enemy = target_body if target_body is CharacterBody2D and target_body.is_in_group("enemies") else null
+
 		velocity = Vector2.ZERO
 		ANIM_PLAYER.play("Grapple")
 		is_grappling = true
-		ANIM_PLAYER.speed_scale = 1 
-		
+		is_invulnerable = true
+		ANIM_PLAYER.speed_scale = 1
+
 		grapple.visible = true
 		grapple_target_global = raycast.get_collision_point()
 		await animate_grapple(grapple_target_global)
 		await move_to_grapple(grapple_target_global)
-		
+
+		if hit_enemy and is_instance_valid(hit_enemy):
+			tank_hurtbox.disabled = false
+			await get_tree().create_timer(0.1).timeout
+			tank_hurtbox.disabled = true
+
 		grapple.visible = false
 		is_grappling = false
+		is_invulnerable = false
 		ANIM_PLAYER.pause()
 		ANIM_PLAYER.frame = ANIM_PLAYER.sprite_frames.get_frame_count("Grapple") - 1
+	
+	await get_tree().create_timer(SPECIAL_COOLDOWN).timeout
+	special_on_cooldown = false
 
 func animate_grapple(target):
 	grapple.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
@@ -310,16 +338,20 @@ func _on_terminal_animation_finished() -> void:
 		ANIM_PLAYER.play("Loop")
 
 func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
-	if TYPE == "Sword":
+	if is_invulnerable:
+		return
+	elif TYPE == "Sword":
 		sword_anim.play("Hit")
 	elif TYPE == "Tank":
 		tank_anim.play("Hit")
+	elif TYPE == "Magnet":
+		magnet_anim.play("Hit")
 	
 	var direction = global_position.direction_to(source_position)
 	knockback_velocity = -direction * (MAX_SPEED / knockback_strength)
 	is_knocked_back = true
 	await get_tree().create_timer(0.15).timeout
 	is_knocked_back = false
-	print("took:", amount)
+	print("took:", amount, "hp: ", HEALTH)
 	HEALTH -= amount
 	damaged.emit(amount)

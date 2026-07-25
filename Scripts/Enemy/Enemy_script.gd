@@ -22,7 +22,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 
 func _process(_delta):
-	if health == 0 and !knocked:
+	if health <= 0 and !knocked:
 		can_be_hacked = true
 		health -= 1
 		knocked = true
@@ -73,7 +73,10 @@ func attack_status(distance: float) -> void:
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
 		current_state = State.HIT
-		health -= 1
+		if player.TYPE == "Sword":
+			health -= 1
+		elif player.TYPE == "Tank":
+			health -= 2
 	elif knocked and can_be_hacked:
 		can_be_hacked = false
 		anim.play("Death")
