@@ -28,8 +28,8 @@ func _process(delta):
 		can_be_hacked = true
 		health -= 1
 		knocked = true
-		anim.play("Knocked")
 		current_state = State.KNOCKED
+		anim.play("Knocked")
 		
 
 func _physics_process(_delta):
@@ -41,6 +41,7 @@ func _physics_process(_delta):
 		State.REST:
 			if global_position.distance_to(player.global_position) < 450 and !on and !spawning:
 				spawning = true
+				can_be_hacked = false
 				anim.play("Waking up")
 		State.CHASE:
 			var direction = global_position.direction_to(player.global_position)
