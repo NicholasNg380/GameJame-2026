@@ -7,7 +7,7 @@ var is_attacking := false
 func _ready() -> void:
 	super()
 	SPEED = 400
-	health = 7
+	health = 5
 	type = "Sword"
 
 

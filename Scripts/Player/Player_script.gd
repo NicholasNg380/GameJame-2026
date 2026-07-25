@@ -350,8 +350,9 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 	var direction = global_position.direction_to(source_position)
 	knockback_velocity = -direction * (MAX_SPEED / knockback_strength)
 	is_knocked_back = true
-	await get_tree().create_timer(0.15).timeout
+	is_invulnerable = true
+	await get_tree().create_timer(0.3).timeout
 	is_knocked_back = false
-	print("took:", amount, "hp: ", HEALTH)
+	is_invulnerable = false
 	HEALTH -= amount
 	damaged.emit(amount)

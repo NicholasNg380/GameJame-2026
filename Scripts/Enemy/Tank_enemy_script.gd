@@ -8,7 +8,7 @@ func _ready() -> void:
 	super()
 	SPEED = 225
 	type = "Tank"
-	health = 10
+	health = 8
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":

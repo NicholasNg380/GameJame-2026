@@ -9,7 +9,7 @@ var type: String
 var health: int
 var knocked: bool = false
 var can_be_hacked: bool = true
-@export var knockback_strength: float = 0.5
+@export var knockback_force: float = 400.0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox = $"Damaging Hitbox"
@@ -50,9 +50,10 @@ func _physics_process(_delta):
 			velocity = Vector2.ZERO
 			attack()
 		State.HIT:
-			anim.play("Hit")
-			var direction = global_position.direction_to(player.global_position)
-			velocity = -direction * (SPEED/knockback_strength)
+			pass
+			#anim.play("Hit")
+			#var direction = global_position.direction_to(player.global_position)
+			#velocity = -direction * (SPEED/knockback_strength)
 		State.KNOCKED:
 			velocity = Vector2.ZERO
 	move_and_slide()
@@ -73,6 +74,9 @@ func attack_status(distance: float) -> void:
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
 		current_state = State.HIT
+		anim.play("Hit")
+		var direction = global_position.direction_to(player.global_position)
+		velocity = -direction * knockback_force
 		if player.TYPE == "Sword":
 			health -= 1
 		elif player.TYPE == "Tank":

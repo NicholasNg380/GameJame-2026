@@ -16,6 +16,7 @@
 
 [node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_5cjrv")]
 position = Vector2(0, 180)
+knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")

@@ -4,7 +4,7 @@ func _ready():
 	super()
 	SPEED = 550
 	type = "Magnet"
-	health = 5
+	health = 3
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
