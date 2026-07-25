@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dmkw15vbeics8" path="res://Scripts/Controllers/map_room.gd" id="1_prg43"]
 [ext_resource type="Texture2D" uid="uid://efvme1qdhdxi" path="res://Assets/icon.svg" id="2_s47ub"]
-[ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="3_s47ub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk2vc"]
 
@@ -99,7 +98,7 @@ points = PackedVector2Array(0, -13, -8, -12, -13, -9, -13, -3, -13, 5, -13, 10, 
 width = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=21922996]
-position = Vector2(-1.9073486e-06, -1.9073486e-06)
+position = Vector2(-5.9604645e-08, 0)
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_s47ub")
 
@@ -109,15 +108,5 @@ shape = SubResource("RectangleShape2D_nk2vc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=647712124]
 libraries/ = SubResource("AnimationLibrary_trhn4")
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1966905651]
-shadow_enabled = true
-texture = ExtResource("3_s47ub")
-texture_scale = 6.0
-
-[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1969576854]
-color = Color(0.57004696, 0, 0.08261449, 1)
-shadow_enabled = true
-texture = ExtResource("3_s47ub")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
