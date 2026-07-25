@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c4jodmve8y67j"]
+
+[ext_resource type="Texture2D" uid="uid://3kh6glklu53x" path="res://Assets/UI/title_screen.png" id="1_ainjc"]
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="2_60ddj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa11k"]
+atlas = ExtResource("2_60ddj")
+region = Rect2(0, 0, 71, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvsrl"]
+atlas = ExtResource("2_60ddj")
+region = Rect2(71, 0, 71, 20)
+
+[node name="StartScreen" type="Control" unique_id=1767037233]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=35526657]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_ainjc")
+
+[node name="Start" type="TextureButton" parent="." unique_id=1015507902]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.5
+offset_top = 450.0
+offset_right = 35.5
+offset_bottom = 470.0001
+grow_horizontal = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(35.5, 10)
+texture_normal = SubResource("AtlasTexture_xa11k")
+texture_pressed = SubResource("AtlasTexture_vvsrl")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1095575087]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
