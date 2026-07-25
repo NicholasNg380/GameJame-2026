@@ -7,7 +7,7 @@ class_name Player
 @onready var tank_anim = $Tank
 @onready var magnet_anim = $Magnet
 @onready var terminal_anim = $Terminal
-@onready var minigame = $Node2D/Minigame
+#@onready var minigame = $Node2D/Minigame
 @onready var sword_hurtbox = $Sword_Hurtbox/CollisionShape2D
 @onready var tank_hurtbox = $Tank_Hurtbox/CollisionShape2D
 

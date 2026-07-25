@@ -80,14 +80,26 @@ sources/0 = SubResource("TileSetAtlasSource_jlipd")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlipd"]
 size = Vector2(296, 256)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k8uh6"]
+polygon = PackedVector2Array(-212, -1024, 212, -1024, 212, -856, -212, -856)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jblwj"]
 size = Vector2(296, 180)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_do7go"]
+polygon = PackedVector2Array(-212, 2776, 212, 2776, 212, 2904, -212, 2904)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uwql"]
 size = Vector2(236, 332)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8ydns"]
+polygon = PackedVector2Array(852, 1664, 1024, 1664, 1024, 2136, 852, 2136)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjo6"]
 size = Vector2(236, 332)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_suuho"]
+polygon = PackedVector2Array(-1024, 1664, -852, 1664, -852, 2136, -1024, 2136)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ahg1b"]
 cull_mode = 2
@@ -134,6 +146,9 @@ tile_set = ExtResource("3_jlipd")
 position = Vector2(0, -896)
 shape = SubResource("RectangleShape2D_jlipd")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/NorthDoor" unique_id=23848500]
+occluder = SubResource("OccluderPolygon2D_k8uh6")
+
 [node name="SouthDoor" type="Node2D" parent="Doors" unique_id=1008036757]
 script = ExtResource("3_f44ty")
 
@@ -147,6 +162,10 @@ tile_set = ExtResource("3_jlipd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/SouthDoor/StaticBody2D" unique_id=2065275187]
 position = Vector2(0, 934)
 shape = SubResource("RectangleShape2D_jblwj")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/SouthDoor" unique_id=1211769339]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_do7go")
 
 [node name="EastDoor" type="Node2D" parent="Doors" unique_id=628604612]
 script = ExtResource("3_f44ty")
@@ -162,6 +181,10 @@ tile_set = ExtResource("3_jlipd")
 position = Vector2(906, 38)
 shape = SubResource("RectangleShape2D_6uwql")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/EastDoor" unique_id=1078449029]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_8ydns")
+
 [node name="WestDoor" type="Node2D" parent="Doors" unique_id=2027299392]
 script = ExtResource("3_f44ty")
 
@@ -175,6 +198,10 @@ tile_set = ExtResource("3_jlipd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/WestDoor/StaticBody2D" unique_id=387179059]
 position = Vector2(-906, 38)
 shape = SubResource("RectangleShape2D_bcjo6")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Doors/WestDoor" unique_id=1554225320]
+position = Vector2(0, -1880)
+occluder = SubResource("OccluderPolygon2D_suuho")
 
 [node name="Enemy" parent="." unique_id=1258840285 instance=ExtResource("5_bcjo6")]
 position = Vector2(-150, 184)
