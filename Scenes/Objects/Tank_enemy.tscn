@@ -233,10 +233,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgwab"]
 radius = 14.508618
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbq8x"]
+size = Vector2(15, 20)
+
 [node name="Enemy2" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
-collision_layer = 2
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_o5hcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868702960]
@@ -256,12 +260,24 @@ texture = ExtResource("3_jbq8x")
 texture_scale = 0.5
 
 [node name="Damaging Hitbox" type="Area2D" parent="." unique_id=526829239]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damaging Hitbox" unique_id=174034250]
 shape = SubResource("CircleShape2D_sgwab")
 debug_color = Color(0.727528, 0.451104, 0.4141794, 0.41960785)
 
+[node name="Attack_Hitbox" type="Area2D" parent="." unique_id=228398995]
+visible = false
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Hitbox" unique_id=1182182383]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_jbq8x")
+disabled = true
+debug_color = Color(0.82178944, 0.13659218, 0.9099394, 0.41960785)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="Damaging Hitbox" to="." method="_on_damaging_hitbox_area_shape_entered"]
+[connection signal="area_entered" from="Attack_Hitbox" to="." method="_on_attack_hitbox_area_entered"]

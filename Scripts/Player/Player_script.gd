@@ -12,6 +12,9 @@ class_name Player
 @onready var tank_hurtbox = $Tank_Hurtbox/CollisionShape2D
 @onready var grapple = $GrappleHook
 @onready var raycast = $RayCast2D
+@export var knockback_strength: float = 4.0
+var knockback_velocity: Vector2 = Vector2.ZERO
+var is_knocked_back := false
 
 @export var max_magnets := 3
 var current_magnets = 0
@@ -67,6 +70,9 @@ func _physics_process(delta):
 		return
 	
 	_movement(delta)
+	if knockback_velocity.length() >= 10:
+		velocity += knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 1500.0 * delta)
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("hack"):
@@ -104,7 +110,7 @@ func _movement(delta: float) -> void:
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
-	if !isHacking and !is_grappling and !is_dashing:
+	if !isHacking and !is_grappling and !is_dashing and !is_knocked_back:
 		var lerp_weight = delta * (ACCELERATION if player_direction else 50)
 		
 		velocity = lerp(velocity, player_direction * (MAX_SPEED), lerp_weight)
@@ -215,7 +221,7 @@ func do_sword_attack():
 	sword_hurtbox.disabled = true
 
 func do_sword_special():
-	ANIM_PLAYER.play("Parry")
+	ANIM_PLAYER.play("Dash")
 	velocity *= dash_speed
 	is_dashing = true
 	await get_tree().create_timer(0.1).timeout
@@ -301,3 +307,19 @@ func do_magnet_special():
 func _on_terminal_animation_finished() -> void:
 	if ANIM_PLAYER.animation == "Boot":
 		ANIM_PLAYER.play("Loop")
+
+func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
+	if TYPE == "Sword":
+		sword_anim.play("Hit")
+	elif TYPE == "Tank":
+		tank_anim.play("Hit")
+	
+	var direction = global_position.direction_to(source_position)
+	knockback_velocity = -direction * (MAX_SPEED / knockback_strength)
+	is_knocked_back = true
+	await get_tree().create_timer(0.15).timeout
+	is_knocked_back = false
+	print("took:", amount)
+	HEALTH -= amount
+	if HEALTH <= 0:
+		print("die")
