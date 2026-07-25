@@ -7,14 +7,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlasq"]
 radius = 6.0466933
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cmo4"]
-atlas = ExtResource("2_70i61")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0k3sp"]
-atlas = ExtResource("2_70i61")
-region = Rect2(0, 32, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1s7s"]
 atlas = ExtResource("2_70i61")
 region = Rect2(32, 32, 32, 32)
@@ -30,6 +22,14 @@ region = Rect2(96, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v440u"]
 atlas = ExtResource("2_70i61")
 region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu5ul"]
+atlas = ExtResource("2_70i61")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1typy"]
+atlas = ExtResource("2_70i61")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70i61"]
 atlas = ExtResource("2_70i61")
@@ -67,12 +67,6 @@ region = Rect2(192, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cmo4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0k3sp")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_i1s7s")
 }, {
 "duration": 1.0,
@@ -83,7 +77,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Death",
-"speed": 7.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -95,11 +89,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gu5ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1typy")
+}],
+"loop": 0,
+"name": &"Knocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_70i61")
 }],
 "loop": 0,
 "name": &"Spit",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -148,7 +153,7 @@ shape = SubResource("CircleShape2D_qlasq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1940052134]
 sprite_frames = SubResource("SpriteFrames_ou3y7")
-animation = &"Hit"
+animation = &"Death"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1025857536]
 color = Color(2.5509298e-06, 0.53925097, 0.54146814, 1)

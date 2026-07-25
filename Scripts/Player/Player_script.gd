@@ -105,42 +105,51 @@ func closest_robot() -> Enemy:
 	
 	for body in overlapping_bodies:
 		# Ignore the player itself if it accidentally triggers the area
-		if body == self: 
+		if body == self or !body.canBeHacked(): 
 			continue
 			
 		var dist_sq = global_position.distance_squared_to(body.global_position)
 		if dist_sq < min_distance:
 			min_distance = dist_sq
 			closest_robot = body
-	canHack.emit(closest_robot)
+	if closest_robot != null:
+		canHack.emit(closest_robot)
+	else:
+		cannotHack.emit()
 	return closest_robot
+	
 
 func hack_robot():
-	velocity = Vector2(0, 0)
-	isHacking = true
+	
 	var robot = closest_robot()
 	
 	if robot == null:
 		return
+	velocity = Vector2(0, 0)
+	isHacking = true
 	hacking.emit(robot)
 
 func _on_game_controller_hack_success(robot) -> void:
-	var player_pos = global_position
-	var robot_pos = robot.global_position
-	hackFail = false
-	
-	robot_change(robot.type)
+	if robot:
+		var player_pos = global_position
+		var robot_pos = robot.global_position
+		hackFail = false
+		
+		robot_change(robot.type)
 
-	camera.position_smoothing_enabled = true
-	
-	global_position = robot_pos
-	robot.global_position = player_pos
-	
-	robot.queue_free()
-	await get_tree().create_timer(0.3).timeout
-	camera.position_smoothing_enabled = false
-	
-	isHacking = false
+		camera.position_smoothing_enabled = true
+		
+		global_position = robot_pos
+		robot.global_position = player_pos
+		
+		robot.queue_free()
+		await get_tree().create_timer(0.3).timeout
+		camera.position_smoothing_enabled = false
+		
+		isHacking = false
+	else:
+		_on_game_controller_hack_fail()
+		
 	
 func _on_game_controller_hack_fail() -> void:
 	isHacking = false
@@ -187,6 +196,9 @@ func do_sword_special():
 
 func do_tank_attack():
 	ANIM_PLAYER.play("Shield Bash")
+	tank_hurtbox.disabled = false
+	await get_tree().create_timer(0.1).timeout
+	tank_hurtbox.disabled = true
 
 func do_tank_special():
 	ANIM_PLAYER.play("Grapple")
