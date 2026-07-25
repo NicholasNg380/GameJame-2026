@@ -592,6 +592,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dmts"]
 size = Vector2(59, 105)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5uqce"]
+load_path = "res://.godot/imported/grapple_hook_body_player.png-5d97f1f33d3418876d242e9da46312e9.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yu8t6"]
 atlas = ExtResource("4_dfgsd")
 region = Rect2(128, 64, 32, 32)
@@ -731,6 +734,7 @@ animation = &"Combo Slash"
 autoplay = "Waking up"
 
 [node name="Sword_Hurtbox" type="Area2D" parent="." unique_id=1774474186]
+visible = false
 collision_layer = 8
 collision_mask = 2
 
@@ -749,13 +753,25 @@ animation = &"Shield Bash"
 autoplay = "Waking up"
 
 [node name="Tank_Hurtbox" type="Area2D" parent="." unique_id=1658456939]
+visible = false
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tank_Hurtbox" unique_id=1141043837]
+visible = false
 position = Vector2(49.5, 5)
 shape = SubResource("RectangleShape2D_4dmts")
 disabled = true
+
+[node name="GrappleHook" type="Line2D" parent="." unique_id=774507311]
+visible = false
+texture_repeat = 2
+position = Vector2(45, -33)
+scale = Vector2(4, 4)
+points = PackedVector2Array(135, 1, 0, 0)
+width = 2.0
+texture = SubResource("CompressedTexture2D_5uqce")
+texture_mode = 1
 
 [node name="Magnet" type="AnimatedSprite2D" parent="." unique_id=1516996227]
 visible = false
@@ -783,8 +799,15 @@ texture = ExtResource("5_xbekk")
 texture_scale = 6.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1677038025]
+position = Vector2(8, -3)
 color = Color(0.57004696, 0, 0.08261449, 1)
 shadow_enabled = true
 texture = ExtResource("5_xbekk")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2118170359]
+position = Vector2(-17, -34)
+scale = Vector2(1.1483872, 1)
+target_position = Vector2(1980, 0)
+collision_mask = 3
 
 [connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]

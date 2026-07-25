@@ -10,6 +10,8 @@ class_name Player
 #@onready var minigame = $Node2D/Minigame
 @onready var sword_hurtbox = $Sword_Hurtbox/CollisionShape2D
 @onready var tank_hurtbox = $Tank_Hurtbox/CollisionShape2D
+@onready var grapple = $GrappleHook
+@onready var raycast = $RayCast2D
 
 
 var gameStart = false
@@ -31,6 +33,11 @@ var combo1Timer: float = 0;
 var COMBO_LEEWAY: float = 0.6;
 var combo2Timer: float = 0;
 
+var grapple_speed = 1500
+var grapple_distance: float = 500.0
+var is_grappling = false
+var grapple_target_global: Vector2
+
 var hackFail = true
 
 # Array contains Health then speed
@@ -41,6 +48,7 @@ func _ready():
 	
 
 func _physics_process(delta):
+	print(is_grappling)
 	if !gameStart:
 		closest_robot()
 		if Input.is_action_just_pressed("hack"):
@@ -69,20 +77,26 @@ func _physics_process(delta):
 			"Sword":
 				do_sword_special();
 			"Tank":
-				do_tank_special();
+				if !is_grappling:
+					do_tank_special();
 			"Magnet":
 				do_magnet_special();
 	if combo1Timer > 0 or combo2Timer > 0:
 		combo1Timer -= delta
 		combo2Timer -= delta
 	closest_robot()
+	
+	if is_grappling:
+		var start = global_position + Vector2(45, -33).rotated(rotation)
+		grapple.set_point_position(0, grapple.to_local(start))
+		grapple.set_point_position(1, grapple.to_local(grapple_target_global))
 
 func _movement(delta: float) -> void:
 	var input = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
-	if !isHacking:
+	if !isHacking and !is_grappling:
 		var lerp_weight = delta * (ACCELERATION if input else 50)
 		
 		velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
@@ -90,8 +104,9 @@ func _movement(delta: float) -> void:
 			if TYPE != "Magnet":
 				rotation = atan2(velocity.y, velocity.x)
 	
-	if ANIM_PLAYER != null and not ANIM_PLAYER.is_playing():
-			ANIM_PLAYER.play("Walking")
+	if ANIM_PLAYER != null and not ANIM_PLAYER.is_playing(): #and  ANIM_PLAYER.animation != "Grapple":
+		
+		ANIM_PLAYER.play("Walking")
 		
 func closest_robot() -> Enemy:
 	var overlapping_bodies = hack_area.get_overlapping_bodies()
@@ -200,8 +215,64 @@ func do_tank_attack():
 	await get_tree().create_timer(0.1).timeout
 	tank_hurtbox.disabled = true
 
-func do_tank_special():
-	ANIM_PLAYER.play("Grapple")
+func do_tank_special():	
+	
+	raycast.force_raycast_update()
+	
+	if raycast.is_colliding():
+		velocity = Vector2.ZERO
+		ANIM_PLAYER.play("Grapple")
+		is_grappling = true
+		ANIM_PLAYER.speed_scale = 1 
+		
+		grapple.visible = true
+		grapple_target_global = raycast.get_collision_point()
+		await animate_grapple(grapple_target_global)
+		await move_to_grapple(grapple_target_global)
+		
+		grapple.visible = false
+		is_grappling = false
+		ANIM_PLAYER.pause()
+		ANIM_PLAYER.frame = ANIM_PLAYER.sprite_frames.get_frame_count("Grapple") - 1
+
+func animate_grapple(target):
+	grapple.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	grapple.texture_mode = Line2D.LINE_TEXTURE_TILE
+	var start = global_position + Vector2(45, -33).rotated(rotation)
+	var local_target = grapple.to_local(target)
+
+
+	
+	grapple.clear_points()
+	grapple.add_point(grapple.to_local(start))
+	grapple.add_point(grapple.to_local(start))
+
+	var distance = start.distance_to(target)
+	var time = distance / grapple_speed
+
+	var tween = create_tween()
+	tween.tween_method(
+		func(pos): grapple.set_point_position(1, pos),
+		grapple.to_local(start),
+		local_target,
+		time
+	)
+
+	await tween.finished
+
+func move_to_grapple(target):
+	var distance = global_position.distance_to(target)
+	var time = distance / grapple_speed
+
+	var tween = create_tween()
+	tween.tween_property(
+		self,
+		"global_position",
+		target,
+		time
+	)
+
+	await tween.finished
 
 func do_magnet_attack():
 	ANIM_PLAYER.play("Spit")
