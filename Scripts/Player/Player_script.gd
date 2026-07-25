@@ -57,6 +57,8 @@ var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
 
+const SHOCKWAVE_RADIUS := 250.0
+const SHOCKWAVE_FORCE := 700.0
 
 var hackFail = true
 
@@ -185,6 +187,7 @@ func _on_game_controller_hack_success(robot) -> void:
 		robot.queue_free()
 		
 		robot.die()
+		trigger_shockwave(robot_pos)
 		await get_tree().create_timer(0.3).timeout
 		camera.position_smoothing_enabled = false
 		
@@ -371,3 +374,11 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 	is_invulnerable = false
 	HEALTH -= amount
 	damaged.emit(amount)
+
+func trigger_shockwave(origin: Vector2) -> void:
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		if is_instance_valid(enemy) and not enemy.isKnocked():
+			var dist = origin.distance_to(enemy.global_position)
+			if dist <= SHOCKWAVE_RADIUS:
+				enemy.apply_knockback(origin, SHOCKWAVE_FORCE)

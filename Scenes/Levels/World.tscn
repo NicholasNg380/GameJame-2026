@@ -72,7 +72,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865101754]
 stream = ExtResource("10_73dir")
-volume_db = -15.813
+volume_db = -27.673
 autoplay = true
 
 [connection signal="canHack" from="Player" to="GameController" method="_on_player_can_hack"]

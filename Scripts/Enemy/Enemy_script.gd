@@ -96,3 +96,11 @@ func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area
 	elif knocked and can_be_hacked:
 		can_be_hacked = false
 		anim.play("Death")
+
+func apply_knockback(source_position: Vector2, force: float) -> void:
+	if knocked:
+		return
+	current_state = State.HIT
+	anim.play("Hit")
+	var direction = global_position.direction_to(source_position)
+	velocity = -direction * force
