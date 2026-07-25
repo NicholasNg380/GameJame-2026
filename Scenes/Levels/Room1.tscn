@@ -208,6 +208,7 @@ position = Vector2(-480, -552)
 
 [node name="MagnetEnemy1" parent="." unique_id=1329063503 instance=ExtResource("5_bcjo6")]
 position = Vector2(456, 576)
+collision_layer = 2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")

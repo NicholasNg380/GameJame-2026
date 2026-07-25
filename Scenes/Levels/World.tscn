@@ -22,7 +22,7 @@ knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
-total_rooms = 10
+total_rooms = 3
 room_start = ExtResource("5_exae8")
 room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
