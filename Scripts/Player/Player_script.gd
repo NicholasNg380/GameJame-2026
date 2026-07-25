@@ -13,7 +13,6 @@ class_name Player
 @onready var grapple = $GrappleHook
 @onready var raycast = $RayCast2D
 
-
 var gameStart = false
 
 var isHacking = false
@@ -38,6 +37,11 @@ var grapple_distance: float = 500.0
 var is_grappling = false
 var grapple_target_global: Vector2
 
+var dash_speed: int = 10
+var is_dashing
+
+const MAGNET_BOMB = "res://Scenes/Objects/magnet_bomb.tscn"
+
 var hackFail = true
 
 # Array contains Health then speed
@@ -48,7 +52,6 @@ func _ready():
 	
 
 func _physics_process(delta):
-	print(is_grappling)
 	if !gameStart:
 		closest_robot()
 		if Input.is_action_just_pressed("hack"):
@@ -96,7 +99,7 @@ func _movement(delta: float) -> void:
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
-	if !isHacking and !is_grappling:
+	if !isHacking and !is_grappling and !is_dashing:
 		var lerp_weight = delta * (ACCELERATION if input else 50)
 		
 		velocity = lerp(velocity, input * (MAX_SPEED), lerp_weight)
@@ -208,6 +211,10 @@ func do_sword_attack():
 
 func do_sword_special():
 	ANIM_PLAYER.play("Parry")
+	velocity *= dash_speed
+	is_dashing = true
+	await get_tree().create_timer(0.1).timeout
+	is_dashing = false
 
 func do_tank_attack():
 	ANIM_PLAYER.play("Shield Bash")
@@ -240,8 +247,6 @@ func animate_grapple(target):
 	grapple.texture_mode = Line2D.LINE_TEXTURE_TILE
 	var start = global_position + Vector2(45, -33).rotated(rotation)
 	var local_target = grapple.to_local(target)
-
-
 	
 	grapple.clear_points()
 	grapple.add_point(grapple.to_local(start))
@@ -276,9 +281,14 @@ func move_to_grapple(target):
 
 func do_magnet_attack():
 	ANIM_PLAYER.play("Spit")
+	var mb = load(MAGNET_BOMB)
+	var obj = mb.instantiate()
+	obj.global_position = position
+	add_child(obj)
 
 func do_magnet_special():
 	pass
+	
 
 func _on_terminal_animation_finished() -> void:
 	if ANIM_PLAYER.animation == "Boot":
