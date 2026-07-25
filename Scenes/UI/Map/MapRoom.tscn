@@ -98,7 +98,7 @@ points = PackedVector2Array(0, -13, -8, -12, -13, -9, -13, -3, -13, 5, -13, 10, 
 width = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=21922996]
-position = Vector2(-0.99999994, -4.038968e-28)
+position = Vector2(-5.9604645e-08, 0)
 scale = Vector2(0.15625, 0.15625)
 texture = ExtResource("2_s47ub")
 
