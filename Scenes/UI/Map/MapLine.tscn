@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bnjjyqpb62egx"]
+
+[ext_resource type="Texture2D" uid="uid://efvme1qdhdxi" path="res://Assets/icon.svg" id="1_t6jih"]
+
+[node name="MapLine" type="Line2D" unique_id=1566787598]
+texture_repeat = 2
+points = PackedVector2Array(0, 0)
+texture = ExtResource("1_t6jih")
+texture_mode = 1
