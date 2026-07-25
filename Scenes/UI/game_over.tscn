@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dr54mwe5gklb1"]
+
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="1_wpaxx"]
+[ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="2_jqelu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w88jv"]
+atlas = ExtResource("1_wpaxx")
+region = Rect2(0, 0, 71, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckxb7"]
+atlas = ExtResource("1_wpaxx")
+region = Rect2(71, 0, 71, 20)
+
+[node name="GameOver" type="Control" unique_id=386310477]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1331977249]
+layout_mode = 0
+offset_right = 1930.0
+offset_bottom = 1085.0
+color = Color(0.17402825, 0.17402825, 0.17402819, 0.56078434)
+
+[node name="Start" type="TextureButton" parent="." unique_id=112804881]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.5
+offset_top = 500.0
+offset_right = 35.5
+offset_bottom = 520.0001
+grow_horizontal = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(35.5, 10)
+texture_normal = SubResource("AtlasTexture_w88jv")
+texture_pressed = SubResource("AtlasTexture_ckxb7")
+
+[node name="Label" type="Label" parent="." unique_id=1773579056]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 61.0
+offset_right = 1923.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(1, 0.07999998, 0.07999998, 1)
+theme_override_fonts/font = ExtResource("2_jqelu")
+theme_override_font_sizes/font_size = 80
+text = "YOU LOST YOUR HOST
+
+
+RETRY?"
+horizontal_alignment = 1

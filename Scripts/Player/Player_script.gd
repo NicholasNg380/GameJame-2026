@@ -17,6 +17,9 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
 
+
+
+
 var robots = {"Sword": preload("res://Scenes/Objects/Sword_enemy.tscn"), "Magnet": preload("res://Scenes/Objects/Magnet_enemy.tscn"), 
 "Tank": preload("res://Scenes/Objects/Tank_enemy.tscn")}
 
@@ -57,6 +60,7 @@ var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
 
+var scrap = 0
 
 var hackFail = true
 

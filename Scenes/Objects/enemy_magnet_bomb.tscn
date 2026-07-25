@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bj05ypfmds474"]
+
+[ext_resource type="Script" uid="uid://b1j1t6qftgnc1" path="res://Scenes/Objects/enemy_magnet_bomb.gd" id="1_kjabo"]
+[ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="2_10uue"]
+[ext_resource type="Texture2D" uid="uid://dbwxxracptxbo" path="res://Assets/Sprites/electric_explosion-Sheet.png" id="3_hqdkk"]
+[ext_resource type="Texture2D" uid="uid://puup42q1mcvx" path="res://Assets/Light/circle2.png" id="4_3li7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmmyg"]
+atlas = ExtResource("2_10uue")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfucl"]
+atlas = ExtResource("2_10uue")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqjyl"]
+atlas = ExtResource("3_hqdkk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djmra"]
+atlas = ExtResource("3_hqdkk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj4e6"]
+atlas = ExtResource("3_hqdkk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jol0"]
+atlas = ExtResource("3_hqdkk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iyw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmmyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfucl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqjyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djmra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj4e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jol0")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jq8k"]
+radius = 198.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atxns"]
+radius = 31.016125
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1744531643]
+z_index = 4
+collision_layer = 256
+script = ExtResource("1_kjabo")
+pull_speed = 1000.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=767143887]
+z_index = 12
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_iyw3m")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2038246206]
+texture = ExtResource("4_3li7i")
+texture_scale = 4.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1905737]
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=948801378]
+shape = SubResource("CircleShape2D_3jq8k")
+
+[node name="collide_with_wall" type="Area2D" parent="." unique_id=671680757]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collide_with_wall" unique_id=439814751]
+shape = SubResource("CircleShape2D_atxns")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_body_entered"]
+[connection signal="body_shape_entered" from="collide_with_wall" to="." method="_on_collide_with_wall_body_shape_entered"]
