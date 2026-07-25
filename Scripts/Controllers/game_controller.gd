@@ -1,7 +1,8 @@
 extends Node
 class_name GameController
 
-const HOST_TIME := 20.0
+@export var HOST_TIME := 30.0
+const DAMAGE_TIME_PENALTY := 1.0
 
 var won: bool = false
 var current_robot = null
@@ -148,6 +149,7 @@ func _on_player_hacking(robot) -> void:
 		hackList.append(rand)
 		hackListReferences.append(key)
 	
-	
-	
-	
+func _on_player_damaged(_amount: float) -> void:
+	if timer_active:
+		time_remaining = max(0.0, time_remaining - DAMAGE_TIME_PENALTY)
+		health.value = 100 * (time_remaining / HOST_TIME)

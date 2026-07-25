@@ -28,6 +28,7 @@ var player_direction
 signal hacking(robot)
 signal canHack(robot)
 signal cannotHack
+signal damaged(amount)
 
 const ACCELERATION: int = 15
 const FRICTION: int = 0
@@ -321,5 +322,4 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 	is_knocked_back = false
 	print("took:", amount)
 	HEALTH -= amount
-	if HEALTH <= 0:
-		print("die")
+	damaged.emit(amount)
