@@ -9,12 +9,16 @@ var type: String
 var health: int
 var knocked: bool = false
 
+var game_started := false
 
 var can_be_hacked: bool = true
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damaging_hitbox = $"Damaging Hitbox"
+@onready var attack_hitbox: CollisionShape2D = $"Attack Hitbox/CollisionShape2D"
 
+var attack_damage := 10
+var attacking := false
 
 enum State {REST, CHASE, ATTACK, HIT, COOLDOWN, KNOCKED}
 var current_state: State = State.REST
