@@ -24,8 +24,7 @@ knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("2_uajvg")
-type = 3
-total_rooms = 10
+type = 4
 room_start = ExtResource("3_mcap8")
 room_types = Array[PackedScene]([ExtResource("4_ha5qb")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
@@ -130,6 +129,25 @@ offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
+
+[node name="Score" type="Label" parent="GameController/CanvasLayer" unique_id=1531513479]
+offset_left = 32.0
+offset_top = 167.0
+offset_right = 82.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("12_5xldx")
+theme_override_font_sizes/font_size = 20
+text = "test"
+
+[node name="Combo" type="Label" parent="GameController/CanvasLayer" unique_id=1937101685]
+offset_left = 32.0
+offset_top = 189.0
+offset_right = 82.0
+offset_bottom = 238.0
+theme_override_fonts/font = ExtResource("12_5xldx")
+theme_override_font_sizes/font_size = 20
+text = "test
+"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)

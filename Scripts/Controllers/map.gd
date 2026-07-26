@@ -7,6 +7,7 @@ const MAP_LINE = preload("res://Scenes/UI/Map/MapLine.tscn")
 const WORLD_EASY = "res://Scenes/Levels/WorldEasy.tscn"
 const WORLD_MEDIUM = "res://Scenes/Levels/WorldMedium.tscn"
 const WORLD_HARD = "res://Scenes/Levels/WorldHard.tscn"
+const WORLD_BOSS = "res://Scenes/Levels/WorldBoss.tscn"
 
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var lines: Node2D = %Lines
@@ -127,5 +128,7 @@ func _load_world_for_room(room: RoomController) -> void:
 			get_tree().change_scene_to_file(WORLD_EASY)
 		RoomController.Type.MEDIUM:
 			get_tree().change_scene_to_file(WORLD_MEDIUM)
-		RoomController.Type.HARD, RoomController.Type.BOSS:
+		RoomController.Type.HARD:
 			get_tree().change_scene_to_file(WORLD_HARD)
+		RoomController.Type.BOSS:
+			get_tree().change_scene_to_file(WORLD_BOSS)
