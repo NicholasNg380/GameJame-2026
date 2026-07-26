@@ -114,4 +114,5 @@ func _on_collide_with_wall_body_entered(body: Node2D) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "explode":
+		Score.kill_enemy()
 		queue_free()

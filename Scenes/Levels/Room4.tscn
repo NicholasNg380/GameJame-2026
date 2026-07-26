@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://curkhkvtdufhy"]
+[gd_scene format=4 uid="uid://x5dafpkmts6p"]
 
 [ext_resource type="Script" uid="uid://cqfliow11758c" path="res://Scripts/Controllers/room.gd" id="1_erdnj"]
 [ext_resource type="PackedScene" uid="uid://lbb18ium25nn" path="res://Tileset/tile_map.tscn" id="2_ip48t"]
