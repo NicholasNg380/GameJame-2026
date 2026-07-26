@@ -33,6 +33,8 @@ var robot_being_hacked
 @onready var countdown = $CanvasLayer/Label
 @onready var audio = $"../AudioStreamPlayer2"
 @onready var enemies_left = $"CanvasLayer/Remaining"
+@onready var score = $"CanvasLayer/Score"
+@onready var combo = $"CanvasLayer/Combo"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -45,6 +47,11 @@ func _ready():
 	minigame_init_msg.visible = false
 	host_timer.timeout.connect(_on_host_timer_finished)
 	time_remaining = HOST_TIME
+	Score.score_changed.connect(update_score)
+	Score.combo_changed.connect(update_combo)
+	
+	update_score(Score.score)
+	update_combo(Score.combo)
 
 # -------------------------
 # WIN SYSTEM
@@ -203,3 +210,9 @@ func _on_died():
 	
 func number_of_enemies() -> int:
 	return get_tree().get_nodes_in_group("enemies").size()
+	
+func update_score(value):
+	score.text = "Score: " + str(value)
+
+func update_combo(value):
+	combo.text = "Combo: %.1fx" % value

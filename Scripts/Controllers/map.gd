@@ -122,6 +122,7 @@ func _on_map_room_selected(room: RoomController) -> void:
 func _load_world_for_room(room: RoomController) -> void:
 	MapProgress.store(map_data, floors_climbed, last_room)
 	
+	Score.set_room_difficulty(room.type)
 	match room.type:
 		RoomController.Type.EASY:
 			get_tree().change_scene_to_file(WORLD_EASY)

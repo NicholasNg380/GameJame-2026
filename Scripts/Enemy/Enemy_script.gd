@@ -93,6 +93,7 @@ func die():
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
+		Score.hit_enemy()
 		audio.pitch_scale = randf_range(0.95, 0.105)
 		audio.stream = HURT_SOUND
 		audio.play()
@@ -106,6 +107,7 @@ func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area
 		elif player.TYPE == "Tank":
 			health -= 2
 	elif knocked and can_be_hacked:
+		Score.kill_enemy()
 		die()
 
 func apply_knockback(source_position: Vector2, force: float) -> void:

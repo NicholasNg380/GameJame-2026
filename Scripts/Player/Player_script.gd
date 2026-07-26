@@ -211,6 +211,7 @@ func hack_robot():
 
 func _on_game_controller_hack_success(robot) -> void:
 	if robot:
+		Score.hack_enemy()
 		var player_pos = global_position
 		var robot_pos = robot.global_position
 		hackFail = false
@@ -413,6 +414,7 @@ func _on_terminal_animation_finished() -> void:
 		ANIM_PLAYER.play("Loop")
 
 func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void:
+	Score.player_hit()
 	if is_invulnerable:
 		return
 	elif TYPE == "Sword":

@@ -134,13 +134,32 @@ layout_mode = 2
 texture = ExtResource("14_h33no")
 
 [node name="Remaining" type="Label" parent="GameController/CanvasLayer" unique_id=1715645797]
-offset_left = 31.0
+offset_left = 32.0
 offset_top = 137.0
-offset_right = 294.0
+offset_right = 295.0
 offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("10_qjxhu")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
+
+[node name="Score" type="Label" parent="GameController/CanvasLayer" unique_id=819854384]
+offset_left = 32.0
+offset_top = 167.0
+offset_right = 82.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("10_qjxhu")
+theme_override_font_sizes/font_size = 20
+text = "test"
+
+[node name="Combo" type="Label" parent="GameController/CanvasLayer" unique_id=2724525]
+offset_left = 32.0
+offset_top = 189.0
+offset_right = 82.0
+offset_bottom = 238.0
+theme_override_fonts/font = ExtResource("10_qjxhu")
+theme_override_font_sizes/font_size = 20
+text = "test
+"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
