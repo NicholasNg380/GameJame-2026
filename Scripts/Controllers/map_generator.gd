@@ -61,7 +61,7 @@ func _get_random_starting_points() -> Array[int]:
 	var y_coords: Array[int] = []
 
 	# Everyone starts in the middle column.
-	var start_column = MAP_WIDTH / 2
+	var start_column = MAP_WIDTH / 2.0
 
 	for i in PATHS:
 		y_coords.append(start_column)
@@ -69,17 +69,6 @@ func _get_random_starting_points() -> Array[int]:
 	return y_coords
 	
 func _setup_connection(i: int, j: int) -> int:
-	"""var next_room: RoomController
-	var current_room = map_data[i][j] as RoomController
-	
-	while not next_room or _would_cross_existing_path(i, j, next_room):
-		var random_j = clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
-		next_room = map_data[i + 1][random_j]
-	
-	current_room.next_rooms.append(next_room)
-	
-	return next_room.column"""
-	
 	var next_room: RoomController
 	var current_room = map_data[i][j] as RoomController
 
