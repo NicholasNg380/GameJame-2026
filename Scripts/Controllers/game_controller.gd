@@ -168,6 +168,8 @@ func _on_player_damaged(_amount: float) -> void:
 	if timer_active:
 		time_remaining = max(0.0, time_remaining - DAMAGE_TIME_PENALTY)
 		health.value = 100 * (time_remaining / HOST_TIME)
+		if time_remaining <= 0.0:
+			_on_time_up()
 
 func _on_time_up() -> void:
 	if lost:
