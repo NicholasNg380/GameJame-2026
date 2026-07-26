@@ -1,17 +1,21 @@
 class_name MapGenerator
 extends Node
 
-const X_DIST = 30
-const Y_DIST = 25
+const X_DIST = 80
+const Y_DIST = 50
 const PLACEMENT_RANDMONESS = 5
-const FLOORS = 15
-const MAP_WIDTH = 7
+const FLOORS = 6
+const MAP_WIDTH = 4
 const PATHS = 6
-const ROBOT_ROOM_WEIGHT = 10.0
-const SHOP_ROOM_WEIGHT = 2.5
+const EASY_ROOM_WEIGHT = 10.0
+const MEDIUM_ROOM_WEIGHT = 8.0
+const HARD_ROOM_WEIGHT = 6.0
+const SHOP_ROOM_WEIGHT = 4
 
 var random_room_type_weights = {
-	RoomController.Type.ROBOT: 0.0,
+	RoomController.Type.EASY: 0.0,
+	RoomController.Type.MEDIUM: 0.0,
+	RoomController.Type.HARD: 0.0,
 	RoomController.Type.SHOP: 0.0
 }
 var random_room_type_total_weight = 0
@@ -56,7 +60,7 @@ func _generate_inital_grid() -> Array[Array]:
 	return grid
 
 func _get_random_starting_points() -> Array[int]:
-	var y_coords: Array[int]
+	"""var y_coords: Array[int]
 	var unique_points: int = 0
 	
 	while unique_points < 2:
@@ -70,18 +74,46 @@ func _get_random_starting_points() -> Array[int]:
 				
 			y_coords.append(starting_point)
 	
-	return(y_coords)
+	return(y_coords)"""
+	var y_coords: Array[int] = []
+
+	# Everyone starts in the middle column.
+	var start_column = MAP_WIDTH / 2
+
+	for i in PATHS:
+		y_coords.append(start_column)
+
+	return y_coords
 	
 func _setup_connection(i: int, j: int) -> int:
-	var next_room: RoomController
+	"""var next_room: RoomController
 	var current_room = map_data[i][j] as RoomController
 	
 	while not next_room or _would_cross_existing_path(i, j, next_room):
 		var random_j = clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
 		next_room = map_data[i + 1][random_j]
-		
+	
 	current_room.next_rooms.append(next_room)
 	
+	return next_room.column"""
+	
+	var next_room: RoomController
+	var current_room = map_data[i][j] as RoomController
+
+	while not next_room or _would_cross_existing_path(i, j, next_room):
+		var random_j: int
+
+		# First 3 floors: keep the path straight
+		if i < 2:
+			random_j = j
+		else:
+			# Normal branching after floor 3
+			random_j = clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
+
+		next_room = map_data[i + 1][random_j]
+
+	current_room.next_rooms.append(next_room)
+
 	return next_room.column
 	
 func _would_cross_existing_path(i: int, j:int, room: RoomController) -> bool:
@@ -118,8 +150,10 @@ func _setup_boss_room() -> void:
 	boss_room.type = RoomController.Type.BOSS 
 	
 func _setup_random_room_weights() -> void:
-	random_room_type_weights[RoomController.Type.ROBOT] = ROBOT_ROOM_WEIGHT
-	random_room_type_weights[RoomController.Type.SHOP] = ROBOT_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	random_room_type_weights[RoomController.Type.EASY] = EASY_ROOM_WEIGHT
+	random_room_type_weights[RoomController.Type.MEDIUM] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT
+	random_room_type_weights[RoomController.Type.HARD] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT + HARD_ROOM_WEIGHT
+	random_room_type_weights[RoomController.Type.SHOP] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT + HARD_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
 	
 	random_room_type_total_weight = random_room_type_weights[RoomController.Type.SHOP]
 	
@@ -128,12 +162,22 @@ func _setup_room_types() -> void:
 	# First room is always battle
 	for room: RoomController in map_data[0]:
 		if room.next_rooms.size() > 0:
-			room.type = RoomController.Type.ROBOT
+			room.type = RoomController.Type.EASY
+	
+	for room: RoomController in map_data[1]:
+		if room.next_rooms.size() > 0:
+			room.type = RoomController.Type.EASY
+	
+	for room: RoomController in map_data[2]:
+		if room.next_rooms.size() > 0:
+			room.type = RoomController.Type.EASY
 	
 	# 3rd room is always shop
+	"""
 	for room: RoomController in map_data[2]:
 		if room.next_rooms.size() > 0:
 			room.type = RoomController.Type.SHOP
+	"""
 			
 	for current_floor in map_data:
 		for room: RoomController in current_floor:
@@ -187,6 +231,4 @@ func _get_random_room_type_by_weight() -> RoomController.Type:
 		if random_room_type_weights[type] > roll:
 			return type
 		
-	return RoomController.Type.ROBOT
-		
-	
+	return RoomController.Type.EASY
