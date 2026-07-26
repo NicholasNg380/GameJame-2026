@@ -5,12 +5,12 @@ const X_DIST = 80
 const Y_DIST = 50
 const PLACEMENT_RANDMONESS = 5
 const FLOORS = 6
-const MAP_WIDTH = 4
+const MAP_WIDTH = 5
 const PATHS = 6
-const EASY_ROOM_WEIGHT = 10.0
-const MEDIUM_ROOM_WEIGHT = 8.0
-const HARD_ROOM_WEIGHT = 6.0
-const SHOP_ROOM_WEIGHT = 4
+const EASY_ROOM_WEIGHT = 2
+const MEDIUM_ROOM_WEIGHT = 6
+const HARD_ROOM_WEIGHT = 8
+const SHOP_ROOM_WEIGHT = 5
 
 var random_room_type_weights = {
 	RoomController.Type.EASY: 0.0,
@@ -60,21 +60,6 @@ func _generate_inital_grid() -> Array[Array]:
 	return grid
 
 func _get_random_starting_points() -> Array[int]:
-	"""var y_coords: Array[int]
-	var unique_points: int = 0
-	
-	while unique_points < 2:
-		unique_points = 0
-		y_coords = []
-		
-		for i in PATHS:
-			var starting_point := randi_range(0, MAP_WIDTH - 1)
-			if not y_coords.has(starting_point):
-				unique_points += 1
-				
-			y_coords.append(starting_point)
-	
-	return(y_coords)"""
 	var y_coords: Array[int] = []
 
 	# Everyone starts in the middle column.
@@ -104,7 +89,7 @@ func _setup_connection(i: int, j: int) -> int:
 		var random_j: int
 
 		# First 3 floors: keep the path straight
-		if i < 2:
+		if i < 1:
 			random_j = j
 		else:
 			# Normal branching after floor 3
