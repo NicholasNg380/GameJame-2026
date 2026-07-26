@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="5_xbekk"]
 [ext_resource type="Texture2D" uid="uid://077gk0701n2i" path="res://Assets/UI/prog_bar_specia_under.png" id="7_y42te"]
 [ext_resource type="Texture2D" uid="uid://dfej2v5r1nyb" path="res://Assets/UI/prog_bar_specia_overl.png" id="8_2i876"]
+[ext_resource type="Texture2D" uid="uid://c65iycphtxi1v" path="res://Assets/Sprites/electric_explosion-Sheet-red.png" id="9_2i876"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
 atlas = ExtResource("2_5uqce")
@@ -756,6 +757,42 @@ radius = 301.02658
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahg1b"]
 radius = 32.984844
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_03qow"]
+atlas = ExtResource("9_2i876")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mytd1"]
+atlas = ExtResource("9_2i876")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkk37"]
+atlas = ExtResource("9_2i876")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gra3g"]
+atlas = ExtResource("9_2i876")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nk2vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03qow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mytd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkk37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gra3g")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2130104624]
 collision_layer = 2
 script = ExtResource("1_v0iea")
@@ -864,7 +901,14 @@ shape = SubResource("CircleShape2D_ahg1b")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1413472772]
 volume_db = -10.411
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1746275359]
+[node name="Control" type="Control" parent="." unique_id=1097382873]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=1746275359]
+layout_mode = 0
 offset_left = -57.0
 offset_top = 35.0
 offset_right = -17.0
@@ -872,5 +916,15 @@ offset_bottom = 75.0
 scale = Vector2(4, 4)
 texture_under = ExtResource("7_y42te")
 texture_progress = ExtResource("8_2i876")
+
+[node name="ShockwaveAnim" type="Node2D" parent="." unique_id=820354811]
+
+[node name="Shockwave" type="AnimatedSprite2D" parent="ShockwaveAnim" unique_id=484271268]
+visible = false
+modulate = Color(0.44, 0.44, 0.44, 1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_nk2vc")
+frame = 3
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]
