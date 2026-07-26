@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_4g00e"]
 [ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/room_controller.gd" id="2_flgm1"]
 [ext_resource type="PackedScene" uid="uid://cdteatvpljg2x" path="res://Scenes/Levels/RoomStart.tscn" id="3_phxot"]
-[ext_resource type="PackedScene" uid="uid://curkhkvtdufhy" path="res://Scenes/Levels/Room4.tscn" id="4_5do1k"]
+[ext_resource type="PackedScene" uid="uid://6ptpvnijic1s" path="res://Scenes/Levels/Room1.tscn" id="4_5do1k"]
 [ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_dfvj8"]
 [ext_resource type="PackedScene" uid="uid://bnwtucapco47h" path="res://Scenes/Levels/Room3.tscn" id="6_ox5mo"]
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="7_1i0s3"]
@@ -132,6 +132,25 @@ offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("11_f3r3e")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
+
+[node name="Score" type="Label" parent="GameController/CanvasLayer" unique_id=1531513479]
+offset_left = 32.0
+offset_top = 167.0
+offset_right = 82.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_font_sizes/font_size = 20
+text = "test"
+
+[node name="Combo" type="Label" parent="GameController/CanvasLayer" unique_id=1937101685]
+offset_left = 32.0
+offset_top = 189.0
+offset_right = 82.0
+offset_bottom = 238.0
+theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_font_sizes/font_size = 20
+text = "test
+"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
