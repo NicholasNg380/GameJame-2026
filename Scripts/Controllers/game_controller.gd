@@ -28,12 +28,15 @@ var robot_being_hacked
 
 @onready var minigame_init_msg = $Sprite2D
 @onready var host_timer: Timer = $HostTimer
-@onready var minigame = $HBoxContainer
+@onready var minigame = $CanvasLayer/HBoxContainer
 @onready var health = $"CanvasLayer/Death Timer"
 @onready var countdown = $CanvasLayer/Label
-@onready var audio = $"../AudioStreamPlayer"
+@onready var audio = $"../AudioStreamPlayer2"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
+const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
+const HACK_WIN_SOUND = preload("res://Assets/Audio/win_hack.wav")
+const HACK_FAIL_SOUND = preload("res://Assets/Audio/fail_hack.wav")
 
 func _ready():
 	add_to_group("game_controller")
@@ -44,7 +47,9 @@ func _ready():
 # -------------------------
 # WIN SYSTEM
 # -------------------------
-
+func world_to_ui_position(world_position: Vector2) -> Vector2:
+	return get_viewport().get_canvas_transform() * world_position
+	
 func check_win():
 	await get_tree().process_frame
 	var enemies = get_tree().get_nodes_in_group("enemies")
@@ -96,6 +101,8 @@ func _process(delta):
 				print("Virus timer started")
 			
 			hackSuccess.emit(robot_being_hacked)
+			audio.stream = HACK_WIN_SOUND
+			audio.play()
 			
 			is_hacking=false
 			minigame.visible = false
@@ -117,9 +124,14 @@ func _process(delta):
 func successfulInput(input, required):
 	if required == input:
 		hackListReferences[hackListPointer].texture.region.position.x += 9
+		audio.pitch_scale = randf_range(0.95, 1.05)
 		hackListPointer += 1
+		audio.stream = HACK_SOUND
+		audio.play()
 	else:
 		hackFail.emit()
+		audio.stream = HACK_FAIL_SOUND
+		audio.play()
 		Engine.time_scale = 1
 		is_hacking = false
 		minigame.visible = false
@@ -152,7 +164,7 @@ func _on_player_hacking(robot) -> void:
 	hackList = []
 	hackListReferences = []
 	hackListPointer = 0
-	minigame.global_position = robot.global_position + Vector2(0, -60)
+	minigame.global_position = world_to_ui_position(robot.global_position) + Vector2(0, -60)
 	for i in range(HACK_DIFFICULTY + hack_modifier):
 		var rand = rng.randi_range(0, 3)
 		
