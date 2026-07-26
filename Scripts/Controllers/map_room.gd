@@ -7,8 +7,8 @@ var ICONS = {
 	RoomController.Type.NOT_ASSIGNED: [null, Vector2.ONE],
 	RoomController.Type.ROBOT: [preload("res://Assets/Sprites/Level.png"), Vector2.ONE],
 	RoomController.Type.TREASURE: [preload("res://Assets/icon.svg"), Vector2.ONE],
-	RoomController.Type.SHOP: [preload("res://Assets/Sprites/Shop.png"), Vector2(0.6, 0.6)],
-	RoomController.Type.BOSS: [preload("res://Assets/icon.svg"), Vector2(1.25, 1.25)],
+	RoomController.Type.SHOP: [preload("res://Assets/Sprites/Shop.png"), Vector2.ONE],
+	RoomController.Type.BOSS: [preload("res://Assets/icon.svg"), Vector2(0.4, 0.4)],
 }
 
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
