@@ -244,6 +244,9 @@ func _on_game_controller_hack_fail() -> void:
 	hackFail = true
 	
 func robot_change(type) -> void:
+	if TYPE == "Magnet" and type != "Magnet":
+		clear_magnets()
+	
 	TYPE = type
 	HEALTH = ROBOTS[TYPE][0]
 	MAX_SPEED = ROBOTS[TYPE][1]
@@ -451,3 +454,11 @@ func _disable_sword_hurtbox() -> void:
 	if sword_hurtbox_users <= 0:
 		sword_hurtbox_users = 0
 		sword_hurtbox.disabled = true
+		
+func clear_magnets():
+	for magnet in magnet_list:
+		if is_instance_valid(magnet):
+			magnet.queue_free()
+	
+	magnet_list.clear()
+	current_magnets = 0
