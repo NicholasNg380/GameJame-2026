@@ -30,11 +30,12 @@ script = ExtResource("4_vi80n")
 type = 1
 total_rooms = 4
 room_start = ExtResource("5_exae8")
-room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh"), ExtResource("6_jdbgl"), ExtResource("7_e52br")])
+room_types = Array[PackedScene]([ExtResource("7_e52br"), ExtResource("5_f4gmh"), ExtResource("6_jdbgl"), ExtResource("3_28y5c")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
 
 [node name="GameController" type="Node" parent="." unique_id=1467009610]
 script = ExtResource("5_l0cnv")
+HOST_TIME = 25.0
 
 [node name="HostTimer" type="Timer" parent="GameController" unique_id=1575510637]
 wait_time = 10.0
