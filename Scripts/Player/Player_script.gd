@@ -27,6 +27,7 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
 
+
 @onready var shockwave = $ShockwaveAnim/Shockwave
 
 var audio_list = {"sword_hit": preload("res://Assets/Audio/sword_hit.wav"), 
@@ -64,7 +65,7 @@ var combo1Timer: float = 0;
 var COMBO_LEEWAY: float = 0.6;
 var combo2Timer: float = 0;
 
-var grapple_speed = 1500
+var grapple_speed = 2500
 var grapple_distance: float = 500.0
 var is_grappling = false
 var grapple_target_global: Vector2
@@ -74,8 +75,8 @@ var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
 var current_special_cooldown: float = 0.0
-
-var scrap = 0
+var attack_on_cooldown := false
+const ATTACK_COOLDOWN := 0.2
 
 const SHOCKWAVE_RADIUS := 250.0
 const SHOCKWAVE_FORCE := 700.0
@@ -86,7 +87,7 @@ var hackFail = true
 var sword_hurtbox_users := 0
 
 # Array contains Health then speed
-var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magnet": [50.0, 750.0]}
+var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 350.0], "Magnet": [50.0, 750.0]}
 
 func _ready():
 	ANIM_PLAYER = terminal_anim
@@ -105,6 +106,7 @@ func _process(delta):
 	else:
 		special_on_cooldown = true
 		current_special_cooldown -= delta
+
 func _physics_process(delta):
 	if !gameStart:
 		closest_robot()
@@ -128,8 +130,6 @@ func _physics_process(delta):
 		audio.pitch_scale = randf_range(0.95, 1.05)
 		match TYPE:
 			"Sword":
-				audio.stream = audio_list["sword_hit"]
-				audio.play()
 				do_sword_attack();
 			"Tank":
 				audio.stream = audio_list["shield_bash"]
@@ -289,6 +289,10 @@ func robot_change(type) -> void:
 	ANIM_PLAYER.play("Waking up")
 	
 func do_sword_attack():
+	if attack_on_cooldown:
+		return
+	attack_on_cooldown = true
+	
 	if combo2Timer > 0:
 		ANIM_PLAYER.play("Combo Slash")
 		combo2Timer = 0;
@@ -302,6 +306,12 @@ func do_sword_attack():
 	_enable_sword_hurtbox()
 	await get_tree().create_timer(0.1).timeout
 	_disable_sword_hurtbox()
+	
+	await get_tree().create_timer(ATTACK_COOLDOWN).timeout
+	attack_on_cooldown = false
+	
+	audio.stream = audio_list["sword_hit"]
+	audio.play()
 
 func do_sword_special():
 	if special_on_cooldown:
@@ -411,8 +421,11 @@ func do_magnet_attack():
 		var obj = MAGNET_BOMB.instantiate()
 		obj.global_position = position
 		get_tree().current_scene.add_child(obj)
-		obj.launch(position, player_direction)
+		obj.launch(position, get_aim_direction())
 		magnet_list.append(obj)
+
+func get_aim_direction() -> Vector2:
+	return global_position.direction_to(get_global_mouse_position())
 
 func do_magnet_special():
 	for i in magnet_list:
