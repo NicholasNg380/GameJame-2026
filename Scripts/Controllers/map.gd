@@ -23,10 +23,22 @@ func _ready() -> void:
 	
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
 	
-	#camera_2d.limit_bottom = int(camera_edge_y) - 250
-	
-	generate_new_map()
-	unlock_floor(0)
+	if MapProgress.has_map:
+		_restore_map()
+	else:
+		generate_new_map()
+		unlock_floor(0)
+
+func _restore_map() -> void:
+	map_data = MapProgress.map_data
+	floors_climbed = MapProgress.floors_climbed
+	last_room = MapProgress.last_room
+	create_map()
+
+	if last_room:
+		unlock_next_rooms()
+	else:
+		unlock_floor(0)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action("scroll_up"):
@@ -108,6 +120,8 @@ func _on_map_room_selected(room: RoomController) -> void:
 	#Events.map_exited.emit(room)
 
 func _load_world_for_room(room: RoomController) -> void:
+	MapProgress.store(map_data, floors_climbed, last_room)
+	
 	match room.type:
 		RoomController.Type.EASY:
 			get_tree().change_scene_to_file(WORLD_EASY)

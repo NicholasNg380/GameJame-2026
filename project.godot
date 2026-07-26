@@ -18,7 +18,7 @@ config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-GameProgress="*uid://dxocoxdqptfae"
+MapProgress="*uid://dxocoxdqptfae"
 
 [display]
 
