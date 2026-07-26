@@ -5,8 +5,9 @@ signal selected(room: RoomController)
 
 var ICONS = {
 	RoomController.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	RoomController.Type.ROBOT: [preload("res://Assets/Sprites/Level.png"), Vector2.ONE],
-	RoomController.Type.TREASURE: [preload("res://Assets/icon.svg"), Vector2.ONE],
+	RoomController.Type.EASY: [preload("res://Assets/Sprites/Easy.png"), Vector2.ONE],
+	RoomController.Type.MEDIUM: [preload("res://Assets/Sprites/Medium.png"), Vector2.ONE],
+	RoomController.Type.HARD: [preload("res://Assets/Sprites/Hard.png"), Vector2.ONE],
 	RoomController.Type.SHOP: [preload("res://Assets/Sprites/Shop.png"), Vector2.ONE],
 	RoomController.Type.BOSS: [preload("res://Assets/icon.svg"), Vector2(0.4, 0.4)],
 }
