@@ -78,9 +78,6 @@ func _physics_process(_delta):
 			attack()
 		State.HIT:
 			pass
-			#anim.play("Hit")
-			#var direction = global_position.direction_to(player.global_position)
-			#velocity = -direction * (SPEED/knockback_strength)
 		State.KNOCKED:
 			velocity = Vector2.ZERO
 	move_and_slide()

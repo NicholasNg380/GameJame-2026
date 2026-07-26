@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6nqujga1vlid"]
 
-[ext_resource type="Script" uid="uid://isiqoyp40wi8" path="res://Scenes/Objects/magnet_bomb.gd" id="1_6e834"]
+[ext_resource type="Script" uid="uid://isiqoyp40wi8" path="res://Scripts/Enemy/magnet_bomb.gd" id="1_6e834"]
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="2_m6tsf"]
 [ext_resource type="Texture2D" uid="uid://dbwxxracptxbo" path="res://Assets/Sprites/electric_explosion-Sheet.png" id="3_a185r"]
 [ext_resource type="Texture2D" uid="uid://cwhxqeix5g8o1" path="res://Assets/Light/circle.png" id="3_g4dst"]
