@@ -28,6 +28,8 @@ func _ready() -> void:
 	current_velocity = INIT_VELOCITY
 	animate_timer = ANIM_TIMER_CONST
 	anim.play("default")
+	await get_tree().create_timer(3).timeout
+	queue_free()
 
 func _process(delta: float) -> void:
 	if can_hit_wall_timer <= 0:
