@@ -264,7 +264,7 @@ radius = 14.508618
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da27k"]
 size = Vector2(15, 20)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1258840285]
+[node name="SwordEnemy" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 4
