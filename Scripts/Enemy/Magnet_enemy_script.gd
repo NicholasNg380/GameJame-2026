@@ -4,7 +4,7 @@ var wander_direction := Vector2.ZERO
 var wander_timer := 0.0
 
 var attack_timer := 0.0
-var ATTACK_TIME := 6.0
+var ATTACK_TIME := 3.5
 const MAGNET_BOMB = preload("res://Scenes/Objects/enemy_magnet_bomb.tscn")
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 	attack_timer = ATTACK_TIME
 	SPEED = 550
 	type = "Magnet"
-	health = 3
+	health = 4
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "Waking up":
