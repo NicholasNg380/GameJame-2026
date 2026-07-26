@@ -223,3 +223,14 @@ func update_score(value):
 
 func update_combo(value):
 	combo.text = "Combo: %.1fx" % value
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_K:
+		debug_win()
+
+func debug_win() -> void:
+	if won or lost:
+		return
+	won = true
+	print("DEBUG WIN (K pressed)")
+	get_tree().change_scene_to_file(MAP_SCENE)

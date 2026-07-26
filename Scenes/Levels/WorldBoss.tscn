@@ -1,40 +1,36 @@
-[gd_scene format=3 uid="uid://dqsm3cqcldk6s"]
+[gd_scene format=3 uid="uid://c5t5y1hvf24el"]
 
-[ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_4g00e"]
-[ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/room_controller.gd" id="2_flgm1"]
-[ext_resource type="PackedScene" uid="uid://cdteatvpljg2x" path="res://Scenes/Levels/RoomStart.tscn" id="3_phxot"]
-[ext_resource type="PackedScene" uid="uid://ddhpqaefbnmvm" path="res://Scenes/Levels/Room1Hard.tscn" id="4_flgm1"]
-[ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_dfvj8"]
-[ext_resource type="PackedScene" uid="uid://bnwtucapco47h" path="res://Scenes/Levels/Room3.tscn" id="6_ox5mo"]
-[ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="7_1i0s3"]
-[ext_resource type="PackedScene" uid="uid://b2vedy27vhg1k" path="res://Scenes/Levels/Room4Hard.tscn" id="7_phxot"]
-[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="8_5w2ur"]
-[ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="9_d4dgm"]
-[ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="10_jeq4m"]
-[ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="11_f3r3e"]
-[ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="12_5do1k"]
-[ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="12_oyijb"]
-[ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_dfvj8"]
-[ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_ox5mo"]
+[ext_resource type="PackedScene" uid="uid://j3ilpa66a2iw" path="res://Scenes/Objects/player.tscn" id="1_02c1m"]
+[ext_resource type="Script" uid="uid://dd3n7forj01b" path="res://Scripts/Controllers/room_controller.gd" id="2_uajvg"]
+[ext_resource type="PackedScene" uid="uid://cdteatvpljg2x" path="res://Scenes/Levels/RoomStart.tscn" id="3_mcap8"]
+[ext_resource type="PackedScene" uid="uid://uwougg3uidcx" path="res://Scenes/Levels/RoomBoss.tscn" id="4_ha5qb"]
+[ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="8_rrple"]
+[ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="9_sa1ed"]
+[ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="10_hw8r6"]
+[ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="11_17abi"]
+[ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="12_5xldx"]
+[ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="13_snuhw"]
+[ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="14_tp87q"]
+[ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="15_a0gea"]
+[ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="16_tq1p3"]
 
 [node name="WorldHard" type="Node2D" unique_id=586736019]
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
-[node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_4g00e")]
+[node name="Player" parent="." unique_id=2130104624 instance=ExtResource("1_02c1m")]
 position = Vector2(0, 180)
 knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
-script = ExtResource("2_flgm1")
-type = 3
-total_rooms = 10
-room_start = ExtResource("3_phxot")
-room_types = Array[PackedScene]([ExtResource("4_flgm1"), ExtResource("5_dfvj8"), ExtResource("6_ox5mo"), ExtResource("7_phxot")])
+script = ExtResource("2_uajvg")
+type = 4
+room_start = ExtResource("3_mcap8")
+room_types = Array[PackedScene]([ExtResource("4_ha5qb")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
 
 [node name="GameController" type="Node" parent="." unique_id=1467009610]
-script = ExtResource("7_1i0s3")
+script = ExtResource("8_rrple")
 HOST_TIME = 15.0
 
 [node name="HostTimer" type="Timer" parent="GameController" unique_id=1575510637]
@@ -43,7 +39,7 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="GameController" unique_id=751365433]
 scale = Vector2(4, 4)
-texture = ExtResource("8_5w2ur")
+texture = ExtResource("9_sa1ed")
 region_enabled = true
 region_rect = Rect2(0, 0, 37.958473, 21)
 
@@ -56,15 +52,15 @@ offset_right = 489.0
 offset_bottom = 41.0
 scale = Vector2(4, 4)
 value = 100.0
-texture_under = ExtResource("9_d4dgm")
-texture_progress = ExtResource("10_jeq4m")
+texture_under = ExtResource("10_hw8r6")
+texture_progress = ExtResource("11_17abi")
 
 [node name="Label" type="Label" parent="GameController/CanvasLayer" unique_id=189936359]
 offset_left = 34.0
 offset_top = 21.0
 offset_right = 1886.0
 offset_bottom = 119.0
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 80
 text = "20"
 horizontal_alignment = 1
@@ -87,21 +83,21 @@ theme_override_constants/separation = 23
 [node name="HackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=720546654]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 40
 text = "Hack"
 
 [node name="AttackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=234426366]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 40
 text = "Slash"
 
 [node name="SpecialLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=565499536]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 40
 text = "Dash"
 
@@ -115,22 +111,22 @@ scale = Vector2(4, 4)
 [node name="HackIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=626186567]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("12_5do1k")
+texture = ExtResource("13_snuhw")
 
 [node name="AttacKIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=464874126]
 layout_mode = 2
-texture = ExtResource("13_dfvj8")
+texture = ExtResource("14_tp87q")
 
 [node name="SpecialIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=140973186]
 layout_mode = 2
-texture = ExtResource("14_ox5mo")
+texture = ExtResource("15_a0gea")
 
 [node name="Remaining" type="Label" parent="GameController/CanvasLayer" unique_id=275256095]
 offset_left = 31.0
 offset_top = 137.0
 offset_right = 294.0
 offset_bottom = 163.0
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
 
@@ -139,7 +135,7 @@ offset_left = 32.0
 offset_top = 167.0
 offset_right = 82.0
 offset_bottom = 190.0
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 20
 text = "test"
 
@@ -148,7 +144,7 @@ offset_left = 32.0
 offset_top = 189.0
 offset_right = 82.0
 offset_bottom = 238.0
-theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_fonts/font = ExtResource("12_5xldx")
 theme_override_font_sizes/font_size = 20
 text = "test
 "
@@ -157,7 +153,7 @@ text = "test
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865101754]
-stream = ExtResource("12_oyijb")
+stream = ExtResource("16_tq1p3")
 volume_db = -13.843
 autoplay = true
 

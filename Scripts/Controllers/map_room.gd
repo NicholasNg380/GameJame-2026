@@ -8,7 +8,7 @@ var ICONS = {
 	RoomController.Type.EASY: [preload("res://Assets/Sprites/Easy.png"), Vector2.ONE],
 	RoomController.Type.MEDIUM: [preload("res://Assets/Sprites/Medium.png"), Vector2.ONE],
 	RoomController.Type.HARD: [preload("res://Assets/Sprites/Hard.png"), Vector2.ONE],
-	RoomController.Type.BOSS: [preload("res://Assets/icon.svg"), Vector2(0.4, 0.4)],
+	RoomController.Type.BOSS: [preload("res://Assets/Sprites/Hard.png"), Vector2(2.0, 2.0)],
 }
 
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
