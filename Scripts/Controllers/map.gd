@@ -20,13 +20,9 @@ func _ready() -> void:
 	
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
 	
+	#camera_2d.limit_bottom = int(camera_edge_y) - 250
+	
 	generate_new_map()
-	for floor in map_data:
-		for room: RoomController in floor:
-			for next in room.next_rooms:
-				print(
-					"(", room.row, ",", room.column, ") -> (",
-					next.row, ",", next.column, ")")
 	unlock_floor(0)
 	
 func _input(event: InputEvent) -> void:
@@ -34,7 +30,7 @@ func _input(event: InputEvent) -> void:
 		camera_2d.position.y -= SCROLL_SPEED
 	elif event.is_action("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
-		
+
 func generate_new_map() -> void:
 	floors_climbed = 0
 	map_data = map_generator.generate_map()
