@@ -82,7 +82,7 @@ func die():
 	anim.play("Death")
 	var game_controller = get_tree().get_first_node_in_group("game_controller")
 	if game_controller:
-		died.connect(game_controller._on_died)
+		game_controller._on_died()
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
