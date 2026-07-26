@@ -5,7 +5,7 @@ class_name RoomController
 # -------------------
 # Nick Variables (used for map generator)
 # -------------------
-enum Type {NOT_ASSIGNED, ROBOT, TREASURE, SHOP, BOSS}
+enum Type {NOT_ASSIGNED, EASY, MEDIUM, HARD, SHOP, BOSS}
 
 @export var type: Type
 @export var row: int
