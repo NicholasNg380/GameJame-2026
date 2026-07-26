@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
 [ext_resource type="PackedScene" uid="uid://bnwtucapco47h" path="res://Scenes/Levels/Room3.tscn" id="6_jdbgl"]
 [ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
-[ext_resource type="AudioStream" uid="uid://bkki4ybwurr3g" path="res://Assets/Audio/main_music.wav" id="10_73dir"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="10_qjxhu"]
+[ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="12_jdbgl"]
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
 
@@ -41,11 +41,6 @@ texture = ExtResource("7_exae8")
 region_enabled = true
 region_rect = Rect2(0, 0, 37.958473, 21)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameController" unique_id=762642234]
-scale = Vector2(4, 4)
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="GameController" unique_id=540864384]
 
 [node name="Death Timer" type="TextureProgressBar" parent="GameController/CanvasLayer" unique_id=801256612]
@@ -68,13 +63,22 @@ theme_override_font_sizes/font_size = 80
 text = "20"
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="GameController/CanvasLayer" unique_id=762642234]
+light_mask = 0
+scale = Vector2(4, 4)
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 1
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865101754]
-stream = ExtResource("10_73dir")
-volume_db = -41.503
+stream = ExtResource("12_jdbgl")
+volume_db = -13.843
 autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=212571705]
+volume_db = -17.425
 
 [connection signal="canHack" from="Player" to="GameController" method="_on_player_can_hack"]
 [connection signal="cannotHack" from="Player" to="GameController" method="_on_player_cannot_hack"]

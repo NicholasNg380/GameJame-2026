@@ -389,7 +389,8 @@ func do_magnet_attack():
 func do_magnet_special():
 	for i in magnet_list:
 		i.activate()
-		
+		audio.stream = audio_list["magnet_explosion"]
+		audio.play()
 		magnet_list.erase(i)
 	current_magnets = 0
 
@@ -416,6 +417,9 @@ func take_damage(amount: float, source_position: Vector2 = Vector2.ZERO) -> void
 	is_invulnerable = false
 	HEALTH -= amount
 	damaged.emit(amount)
+	audio.pitch_scale = randf_range(0.95, 1.05)
+	audio.stream = audio_list["hurt"]
+	audio.play()
 
 func trigger_shockwave(origin: Vector2) -> void:
 	var enemies = get_tree().get_nodes_in_group("enemies")
