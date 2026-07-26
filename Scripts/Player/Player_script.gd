@@ -16,12 +16,13 @@ class_name Player
 @onready var audio = $AudioStreamPlayer
 
 
-@onready var special_prog_bar = $TextureProgressBar
+@onready var special_prog_bar = $Control/TextureProgressBar 
+@onready var ui = $Control
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
 
-
+@onready var shockwave = $ShockwaveAnim/Shockwave
 
 var audio_list = {"sword_hit": preload("res://Assets/Audio/sword_hit.wav"), 
 "sword_dash": preload("res://Assets/Audio/sword_dash.wav"), "shield_bash": preload("res://Assets/Audio/shield_bash.wav"),
@@ -86,6 +87,7 @@ func _ready():
 	ANIM_PLAYER = terminal_anim
 	
 func _process(delta):
+	ui.rotation = -rotation
 	if special_on_cooldown:
 		#special_prog_bar.rotation = -rotatio
 		special_prog_bar.visible = true
@@ -228,6 +230,7 @@ func _on_game_controller_hack_success(robot) -> void:
 		trigger_shockwave(robot_pos)
 		await get_tree().create_timer(0.3).timeout
 		camera.position_smoothing_enabled = false
+		shockwave.hide()
 		
 		isHacking = false
 	else:
@@ -428,6 +431,8 @@ func trigger_shockwave(origin: Vector2) -> void:
 			var dist = origin.distance_to(enemy.global_position)
 			if dist <= SHOCKWAVE_RADIUS:
 				enemy.apply_knockback(origin, SHOCKWAVE_FORCE)
+	shockwave.show()
+	shockwave.play("default")
 
 func _enable_sword_hurtbox() -> void:
 	sword_hurtbox_users += 1
