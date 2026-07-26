@@ -9,10 +9,24 @@
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="10_hw8r6"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="11_17abi"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="12_5xldx"]
+[ext_resource type="Texture2D" uid="uid://dueh7et4sjg6r" path="res://Assets/UI/pause_screen.png" id="13_mcap8"]
 [ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="13_snuhw"]
+[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scripts/Controllers/pause_screen.gd" id="14_jtr6o"]
 [ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="14_tp87q"]
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="15_a0gea"]
+[ext_resource type="Texture2D" uid="uid://barqfxvi0m3ps" path="res://Assets/UI/game_over_screen.png" id="15_rqblh"]
+[ext_resource type="Script" uid="uid://jnbdf8n4m71a" path="res://Scripts/Controllers/game_over_screen.gd" id="16_hfwkc"]
 [ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="16_tq1p3"]
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="17_f763l"]
+[ext_resource type="Texture2D" uid="uid://bbjpgoi8tcrhd" path="res://Assets/UI/victory_screen.png" id="18_jtr6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrple"]
+atlas = ExtResource("17_f763l")
+region = Rect2(142, 0, 71, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa1ed"]
+atlas = ExtResource("17_f763l")
+region = Rect2(213, 0, 71, 20)
 
 [node name="WorldBoss" type="Node2D" unique_id=586736019]
 
@@ -32,6 +46,7 @@ metadata/_custom_type_script = "uid://dd3n7forj01b"
 [node name="GameController" type="Node" parent="." unique_id=1467009610]
 script = ExtResource("8_rrple")
 HOST_TIME = 15.0
+is_boss_level = true
 
 [node name="HostTimer" type="Timer" parent="GameController" unique_id=1575510637]
 wait_time = 10.0
@@ -149,6 +164,68 @@ theme_override_font_sizes/font_size = 20
 text = "test
 "
 
+[node name="Pause Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=538787650]
+process_mode = 3
+visible = false
+offset_left = 582.0
+offset_top = 66.0
+offset_right = 771.0
+offset_bottom = 303.0
+scale = Vector2(4, 4)
+texture = ExtResource("13_mcap8")
+script = ExtResource("14_jtr6o")
+
+[node name="Game Over Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=624482205]
+process_mode = 2
+visible = false
+z_index = 4
+offset_left = 110.0
+offset_top = 46.0
+offset_right = 535.0
+offset_bottom = 283.0
+scale = Vector2(4, 4)
+texture = ExtResource("15_rqblh")
+script = ExtResource("16_hfwkc")
+
+[node name="TextureButton" type="TextureButton" parent="GameController/CanvasLayer/Game Over Screen" unique_id=1978932300]
+layout_mode = 0
+offset_left = 173.75
+offset_top = 157.0
+offset_right = 244.75
+offset_bottom = 197.0
+texture_normal = SubResource("AtlasTexture_rrple")
+texture_pressed = SubResource("AtlasTexture_sa1ed")
+
+[node name="Label" type="Label" parent="GameController/CanvasLayer/Game Over Screen" unique_id=597518864]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 111.5
+offset_right = 513.0
+offset_bottom = 162.5
+theme_override_fonts/font = ExtResource("12_5xldx")
+theme_override_font_sizes/font_size = 20
+
+[node name="Victory Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=761794656]
+process_mode = 2
+visible = false
+z_index = 4
+offset_left = 110.0
+offset_top = 46.0
+offset_right = 535.0
+offset_bottom = 283.0
+scale = Vector2(4, 4)
+texture = ExtResource("18_jtr6o")
+script = ExtResource("16_hfwkc")
+
+[node name="Label" type="Label" parent="GameController/CanvasLayer/Victory Screen" unique_id=418179222]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 146.5
+offset_right = 414.5
+offset_bottom = 197.5
+theme_override_fonts/font = ExtResource("12_5xldx")
+theme_override_font_sizes/font_size = 20
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
 
@@ -166,3 +243,4 @@ volume_db = -17.425
 [connection signal="hacking" from="Player" to="GameController" method="_on_player_hacking"]
 [connection signal="hackFail" from="GameController" to="Player" method="_on_game_controller_hack_fail"]
 [connection signal="hackSuccess" from="GameController" to="Player" method="_on_game_controller_hack_success"]
+[connection signal="pressed" from="GameController/CanvasLayer/Game Over Screen/TextureButton" to="GameController/CanvasLayer/Game Over Screen" method="_on_texture_button_pressed"]

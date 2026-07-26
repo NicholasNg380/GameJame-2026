@@ -38,8 +38,9 @@ var robot_being_hacked
 @onready var pause_screen = $"CanvasLayer/Pause Screen"
 @onready var game_over_label = $"CanvasLayer/Game Over Screen/Label"
 @onready var game_over_screen = $"CanvasLayer/Game Over Screen"
+@onready var victory_label = $"CanvasLayer/Victory Screen/Label"
+@onready var victory_screen = $"CanvasLayer/Victory Screen"
 @export var is_boss_level := false
-#const WIN_SCENE := "res://Scenes/UI/WinScreen.tscn"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -75,8 +76,10 @@ func check_win():
 		won = true
 		print("You Win!")
 		if is_boss_level:
-			#get_tree().change_scene_to_file(WIN_SCENE)
-			pass
+			timer_active = false
+			victory_label.text = "Final Score: " + str(Score.score)
+			victory_screen.visible = true
+			get_tree().paused = true
 		else:
 			get_tree().change_scene_to_file(MAP_SCENE)
 
@@ -231,14 +234,3 @@ func update_score(value):
 
 func update_combo(value):
 	combo.text = "Combo: %.1fx" % value
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_K:
-		debug_win()
-
-func debug_win() -> void:
-	if won or lost:
-		return
-	won = true
-	print("DEBUG WIN (K pressed)")
-	get_tree().change_scene_to_file(MAP_SCENE)
