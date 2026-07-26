@@ -13,6 +13,8 @@ class_name Player
 @onready var grapple = $GrappleHook
 @onready var raycast = $RayCast2D
 @export var knockback_strength: float = 4.0
+
+@onready var special_prog_bar = $TextureProgressBar
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
@@ -59,7 +61,7 @@ var dash_speed: int = 10
 var is_dashing
 var special_on_cooldown := false
 const SPECIAL_COOLDOWN := 1.0
-
+var current_special_cooldown: float = 0.0
 
 var scrap = 0
 
@@ -77,7 +79,19 @@ var ROBOTS: Dictionary = {"Sword": [100.0, 500.0], "Tank": [200.0, 250.0], "Magn
 func _ready():
 	ANIM_PLAYER = terminal_anim
 	
-
+func _process(delta):
+	if special_on_cooldown:
+		#special_prog_bar.rotation = -rotatio
+		special_prog_bar.visible = true
+		special_prog_bar.value = 100 * ((SPECIAL_COOLDOWN - current_special_cooldown)/SPECIAL_COOLDOWN)
+	else:
+		special_prog_bar.visible = false
+	if current_special_cooldown <= 0:
+		current_special_cooldown = 0
+		special_on_cooldown = false
+	else:
+		special_on_cooldown = true
+		current_special_cooldown -= delta
 func _physics_process(delta):
 	if !gameStart:
 		closest_robot()
@@ -259,7 +273,8 @@ func do_sword_special():
 	await get_tree().create_timer(0.1).timeout
 	_disable_sword_hurtbox()
 	is_dashing = false
-
+	
+	current_special_cooldown = SPECIAL_COOLDOWN - 0.1
 	await get_tree().create_timer(SPECIAL_COOLDOWN - 0.1).timeout
 	special_on_cooldown = false
 
@@ -301,6 +316,7 @@ func do_tank_special():
 		ANIM_PLAYER.pause()
 		ANIM_PLAYER.frame = ANIM_PLAYER.sprite_frames.get_frame_count("Grapple") - 1
 	
+	current_special_cooldown = SPECIAL_COOLDOWN
 	await get_tree().create_timer(SPECIAL_COOLDOWN).timeout
 	special_on_cooldown = false
 

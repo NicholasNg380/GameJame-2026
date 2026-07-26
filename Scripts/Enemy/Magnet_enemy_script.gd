@@ -70,9 +70,9 @@ func _physics_process(_delta):
 				).normalized()
 			if global_position.distance_to(player.global_position) < 600:
 				away_direction = Vector2.ZERO
-			var movement_direction = (away_direction * 0.8 + wander_direction * 0.5).normalized()
+			var movement_direction = (wander_direction * 0.5).normalized()
 
-			velocity = movement_direction * SPEED
+			velocity = movement_direction * SPEED 
 		State.ATTACK:
 			velocity = Vector2.ZERO
 			attack()

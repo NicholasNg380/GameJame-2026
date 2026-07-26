@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://di8yfa26wo42x" path="res://Assets/Sprites/tanky_bot-Sheet.png" id="3_picsy"]
 [ext_resource type="Texture2D" uid="uid://bpxfclfau7lk2" path="res://Assets/Sprites/magnet_robot-Sheet.png" id="4_dfgsd"]
 [ext_resource type="Texture2D" uid="uid://b7dnmvhts3msc" path="res://Assets/Light/lightmap.png" id="5_xbekk"]
+[ext_resource type="Texture2D" uid="uid://077gk0701n2i" path="res://Assets/UI/prog_bar_specia_under.png" id="7_y42te"]
+[ext_resource type="Texture2D" uid="uid://dfej2v5r1nyb" path="res://Assets/UI/prog_bar_specia_overl.png" id="8_2i876"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
 atlas = ExtResource("2_5uqce")
@@ -860,5 +862,14 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_ahg1b")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1413472772]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1746275359]
+offset_left = -57.0
+offset_top = 35.0
+offset_right = -17.0
+offset_bottom = 75.0
+scale = Vector2(4, 4)
+texture_under = ExtResource("7_y42te")
+texture_progress = ExtResource("8_2i876")
 
 [connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]
