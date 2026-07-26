@@ -171,5 +171,8 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_ecjq5")
 debug_color = Color(0.727528, 0.451104, 0.4141794, 0.41960785)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1834866053]
+volume_db = -10.978
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="Damaging Hitbox" to="." method="_on_damaging_hitbox_area_shape_entered"]

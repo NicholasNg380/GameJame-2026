@@ -278,6 +278,9 @@ shape = SubResource("RectangleShape2D_jbq8x")
 disabled = true
 debug_color = Color(0.82178944, 0.13659218, 0.9099394, 0.41960785)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=793909480]
+volume_db = -10.23
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="Damaging Hitbox" to="." method="_on_damaging_hitbox_area_shape_entered"]
 [connection signal="area_entered" from="Attack_Hitbox" to="." method="_on_attack_hitbox_area_entered"]

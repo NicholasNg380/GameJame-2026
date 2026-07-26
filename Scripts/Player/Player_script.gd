@@ -13,6 +13,8 @@ class_name Player
 @onready var grapple = $GrappleHook
 @onready var raycast = $RayCast2D
 @export var knockback_strength: float = 4.0
+@onready var audio = $AudioStreamPlayer
+
 
 @onready var special_prog_bar = $TextureProgressBar
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -21,6 +23,10 @@ var is_invulnerable := false
 
 
 
+var audio_list = {"sword_hit": preload("res://Assets/Audio/sword_hit.wav"), 
+"sword_dash": preload("res://Assets/Audio/sword_dash.wav"), "shield_bash": preload("res://Assets/Audio/shield_bash.wav"),
+"magnet_explosion": preload("res://Assets/Audio/magnet_explosion.wav"), "magnet_sendout": preload("res://Assets/Audio/magnet_send_out.wav"),
+"hurt": preload("res://Assets/Audio/player_hurt.wav"), "grapple_end": preload("res://Assets/Audio/tank_after_grapple.wav")}
 
 var robots = {"Sword": preload("res://Scenes/Objects/Sword_enemy.tscn"), "Magnet": preload("res://Scenes/Objects/Magnet_enemy.tscn"), 
 "Tank": preload("res://Scenes/Objects/Tank_enemy.tscn")}
@@ -112,16 +118,25 @@ func _physics_process(delta):
 		hack_robot()
 	
 	if Input.is_action_just_pressed("attack"):
+		audio.pitch_scale = randf_range(0.95, 1.05)
 		match TYPE:
 			"Sword":
+				audio.stream = audio_list["sword_hit"]
+				audio.play()
 				do_sword_attack();
 			"Tank":
+				audio.stream = audio_list["shield_bash"]
+				audio.play()
 				do_tank_attack();
 			"Magnet":
+				audio.stream = audio_list["magnet_sendout"]
+				audio.play()
 				do_magnet_attack();
 	if Input.is_action_just_pressed("special"):
+		audio.pitch_scale = randf_range(0.95, 1.05)
 		match TYPE:
 			"Sword":
+				
 				do_sword_special();
 			"Tank":
 				if !is_grappling:
@@ -166,7 +181,6 @@ func closest_robot() -> Enemy:
 	var min_distance: float = INF
 	
 	for body in overlapping_bodies:
-		print("Yelo")
 		# Ignore the player itself if it accidentally triggers the area
 		if body == self or !body.canBeHacked(): 
 			continue
@@ -264,6 +278,8 @@ func do_sword_attack():
 func do_sword_special():
 	if special_on_cooldown:
 		return
+	audio.stream = audio_list["sword_dash"]
+	audio.play()
 	special_on_cooldown = true
 
 	ANIM_PLAYER.play("Dash")
@@ -316,6 +332,8 @@ func do_tank_special():
 		is_invulnerable = false
 		ANIM_PLAYER.pause()
 		ANIM_PLAYER.frame = ANIM_PLAYER.sprite_frames.get_frame_count("Grapple") - 1
+		audio.stream = audio_list["grapple_end"]
+		audio.play()
 	
 	current_special_cooldown = SPECIAL_COOLDOWN
 	await get_tree().create_timer(SPECIAL_COOLDOWN).timeout

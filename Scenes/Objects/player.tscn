@@ -727,7 +727,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Waking up",
-"speed": 1.5
+"speed": 5.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -820,7 +820,7 @@ texture_mode = 1
 visible = false
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xbekk")
-animation = &"Hit"
+animation = &"Waking up"
 autoplay = "Waking up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38318355]
@@ -862,6 +862,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_ahg1b")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1413472772]
+volume_db = -10.411
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1746275359]
 offset_left = -57.0

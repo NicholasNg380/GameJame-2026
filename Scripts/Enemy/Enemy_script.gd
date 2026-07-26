@@ -12,11 +12,14 @@ var can_be_hacked: bool = true
 @export var knockback_force: float = 400.0
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox = $"Damaging Hitbox"
+@onready var audio = $AudioStreamPlayer
 
 signal died
 
 enum State {REST, CHASE, ATTACK, HIT, COOLDOWN, KNOCKED}
 var current_state: State = State.REST
+
+const HURT_SOUND = preload("res://Assets/Audio/enemy_hurt.wav")
 
 func _ready():
 	add_to_group("enemies")
@@ -86,6 +89,9 @@ func die():
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
+		audio.pitch_scale = randf_range(0.95, 0.105)
+		audio.stream = HURT_SOUND
+		audio.play()
 		print(health)
 		current_state = State.HIT
 		anim.play("Hit")

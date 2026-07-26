@@ -102,9 +102,10 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		enemies.append(enemy)
 		
 func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	var enemy := area.get_parent() as Enemy
-	if enemy in enemies:
-		enemies.erase(enemy)
+	if area != null:
+		var enemy := area.get_parent() as Enemy
+		if enemy in enemies:
+			enemies.erase(enemy)
 
 func _on_collide_with_wall_body_entered(body: Node2D) -> void:
 	current_velocity = 0

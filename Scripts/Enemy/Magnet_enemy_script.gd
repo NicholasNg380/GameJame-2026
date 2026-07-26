@@ -4,7 +4,7 @@ var wander_direction := Vector2.ZERO
 var wander_timer := 0.0
 
 var attack_timer := 0.0
-var ATTACK_TIME := 4.0
+var ATTACK_TIME := 6.0
 const MAGNET_BOMB = preload("res://Scenes/Objects/enemy_magnet_bomb.tscn")
 
 func _ready():
@@ -47,7 +47,7 @@ func _physics_process(_delta):
 		return
 	attack_status(global_position.distance_to(player.global_position))
 	
-	if attack_timer <= 0:
+	if attack_timer <= 0 and current_state == State.CHASE:
 		attack_timer = ATTACK_TIME
 		var obj = MAGNET_BOMB.instantiate()
 		obj.global_position = position
