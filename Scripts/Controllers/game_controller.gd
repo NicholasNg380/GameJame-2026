@@ -36,6 +36,8 @@ var robot_being_hacked
 @onready var score = $"CanvasLayer/Score"
 @onready var combo = $"CanvasLayer/Combo"
 @onready var pause_screen = $"CanvasLayer/Pause Screen"
+@onready var game_over_label = $"CanvasLayer/Game Over Screen/Label"
+@onready var game_over_screen = $"CanvasLayer/Game Over Screen"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -208,8 +210,8 @@ func _on_time_up() -> void:
 	lost = true
 	timer_active = false
 	print("Time's up — Game Over") 
-	
-	# TODO: actual game-over flow (freeze player, show a screen, reload level, etc.)
+	game_over_label = "Final Score " + str(score)
+	game_over_screen.visible = true
 	get_tree().paused = true
 
 func _on_died():

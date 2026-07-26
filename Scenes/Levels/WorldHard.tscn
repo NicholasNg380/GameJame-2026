@@ -17,7 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_dfvj8"]
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_ox5mo"]
 [ext_resource type="Texture2D" uid="uid://dueh7et4sjg6r" path="res://Assets/UI/pause_screen.png" id="16_1i0s3"]
-[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scenes/Levels/pause_screen.gd" id="17_5w2ur"]
+[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scripts/Controllers/pause_screen.gd" id="17_5w2ur"]
+[ext_resource type="Texture2D" uid="uid://barqfxvi0m3ps" path="res://Assets/UI/game_over_screen.png" id="18_d4dgm"]
+[ext_resource type="Script" uid="uid://jnbdf8n4m71a" path="res://Scripts/Controllers/game_over_screen.gd" id="19_f3r3e"]
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="19_jeq4m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyijb"]
+atlas = ExtResource("19_jeq4m")
+region = Rect2(142, 0, 71, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i2m4"]
+atlas = ExtResource("19_jeq4m")
+region = Rect2(213, 0, 71, 20)
 
 [node name="WorldHard" type="Node2D" unique_id=586736019]
 
@@ -166,6 +177,37 @@ scale = Vector2(4, 4)
 texture = ExtResource("16_1i0s3")
 script = ExtResource("17_5w2ur")
 
+[node name="Game Over Screen" type="TextureRect" parent="GameController" unique_id=863460959]
+process_mode = 2
+visible = false
+z_index = 4
+offset_left = 110.0
+offset_top = 46.0
+offset_right = 535.0
+offset_bottom = 283.0
+scale = Vector2(4, 4)
+texture = ExtResource("18_d4dgm")
+script = ExtResource("19_f3r3e")
+
+[node name="TextureButton" type="TextureButton" parent="GameController/Game Over Screen" unique_id=1559252933]
+layout_mode = 0
+offset_left = 173.75
+offset_top = 157.0
+offset_right = 244.75
+offset_bottom = 197.0
+texture_normal = SubResource("AtlasTexture_oyijb")
+texture_pressed = SubResource("AtlasTexture_4i2m4")
+
+[node name="Label" type="Label" parent="GameController/Game Over Screen" unique_id=1435021326]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 111.5
+offset_right = 513.0
+offset_bottom = 162.5
+theme_override_fonts/font = ExtResource("11_f3r3e")
+theme_override_font_sizes/font_size = 20
+text = "final score: 20000"
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
 
@@ -183,3 +225,4 @@ volume_db = -17.425
 [connection signal="hacking" from="Player" to="GameController" method="_on_player_hacking"]
 [connection signal="hackFail" from="GameController" to="Player" method="_on_game_controller_hack_fail"]
 [connection signal="hackSuccess" from="GameController" to="Player" method="_on_game_controller_hack_success"]
+[connection signal="pressed" from="GameController/Game Over Screen/TextureButton" to="GameController/Game Over Screen" method="_on_texture_button_pressed"]
