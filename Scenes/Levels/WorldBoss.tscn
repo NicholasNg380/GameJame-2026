@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="15_a0gea"]
 [ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="16_tq1p3"]
 
-[node name="WorldHard" type="Node2D" unique_id=586736019]
+[node name="WorldHard2" type="Node2D" unique_id=586736019]
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 

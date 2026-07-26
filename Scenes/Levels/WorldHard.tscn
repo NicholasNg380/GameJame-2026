@@ -206,7 +206,6 @@ offset_right = 513.0
 offset_bottom = 162.5
 theme_override_fonts/font = ExtResource("11_f3r3e")
 theme_override_font_sizes/font_size = 20
-text = "final score: 20000"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)

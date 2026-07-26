@@ -38,6 +38,8 @@ var robot_being_hacked
 @onready var pause_screen = $"CanvasLayer/Pause Screen"
 @onready var game_over_label = $"CanvasLayer/Game Over Screen/Label"
 @onready var game_over_screen = $"CanvasLayer/Game Over Screen"
+@export var is_boss_level := false
+#const WIN_SCENE := "res://Scenes/UI/WinScreen.tscn"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -72,7 +74,11 @@ func check_win():
 	if enemies.is_empty():
 		won = true
 		print("You Win!")
-		get_tree().change_scene_to_file(MAP_SCENE)
+		if is_boss_level:
+			#get_tree().change_scene_to_file(WIN_SCENE)
+			pass
+		else:
+			get_tree().change_scene_to_file(MAP_SCENE)
 
 # -------------------------
 # HOST TIMER SYSTEM
@@ -209,7 +215,7 @@ func _on_time_up() -> void:
 		return
 	lost = true
 	timer_active = false
-	game_over_label = "Final Score " + str(Score.score)
+	game_over_label.text = "Final Score: " + str(Score.score)
 	game_over_screen.visible = true
 	get_tree().paused = true
 
