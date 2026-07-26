@@ -15,6 +15,8 @@ class_name Player
 @export var knockback_strength: float = 4.0
 @onready var audio = $AudioStreamPlayer
 
+@onready var attack_label = $"../GameController/CanvasLayer/descriptions/AttackLabel"
+@onready var special_label = $"../GameController/CanvasLayer/descriptions/SpecialLabel"
 
 @onready var special_prog_bar = $TextureProgressBar
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -249,12 +251,18 @@ func robot_change(type) -> void:
 	terminal_anim.visible = false
 	match type:
 		"Sword":
+			attack_label.text = "Slash"
+			special_label.text = "Dash"
 			sword_anim.visible = true
 			ANIM_PLAYER = sword_anim
 		"Tank":
+			attack_label.text = "Bash"
+			special_label.text = "Grapple"
 			tank_anim.visible = true
 			ANIM_PLAYER = tank_anim
 		"Magnet":
+			attack_label.text = "Shoot Magnet"
+			special_label.text = "Activate Magnet"
 			magnet_anim.visible = true
 			rotation = 0;
 			ANIM_PLAYER = magnet_anim

@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bnwtucapco47h" path="res://Scenes/Levels/Room3.tscn" id="6_jdbgl"]
 [ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="10_qjxhu"]
+[ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="12_fb73i"]
 [ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="12_jdbgl"]
+[ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_fxmlw"]
+[ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_h33no"]
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
 
@@ -68,6 +71,65 @@ light_mask = 0
 scale = Vector2(4, 4)
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 1
+
+[node name="ColorRect" type="ColorRect" parent="GameController/CanvasLayer" unique_id=858938807]
+z_index = -8
+offset_left = 1717.0
+offset_top = 130.00002
+offset_right = 1737.7041
+offset_bottom = 170.00002
+scale = Vector2(8.549043, 5.075814)
+color = Color(0.56, 0.56, 0.56, 0.16862746)
+
+[node name="descriptions" type="VBoxContainer" parent="GameController/CanvasLayer" unique_id=409880109]
+z_index = 2
+offset_left = 514.0
+offset_top = 137.0
+offset_right = 1676.7617
+offset_bottom = 303.0
+scale = Vector2(1.0262446, 1)
+theme_override_constants/separation = 23
+
+[node name="HackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=1498961578]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("10_qjxhu")
+theme_override_font_sizes/font_size = 40
+text = "Hack"
+
+[node name="AttackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=605822774]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("10_qjxhu")
+theme_override_font_sizes/font_size = 40
+text = "Slash"
+
+[node name="SpecialLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=632144605]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("10_qjxhu")
+theme_override_font_sizes/font_size = 40
+text = "Dash"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameController/CanvasLayer" unique_id=1930516574]
+offset_left = 1721.0
+offset_top = 137.0
+offset_right = 1761.0
+offset_bottom = 177.0
+scale = Vector2(4, 4)
+
+[node name="HackIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=135060722]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("12_fb73i")
+
+[node name="AttacKIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=1778764803]
+layout_mode = 2
+texture = ExtResource("13_fxmlw")
+
+[node name="SpecialIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=2074227541]
+layout_mode = 2
+texture = ExtResource("14_h33no")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
