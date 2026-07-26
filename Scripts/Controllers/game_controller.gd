@@ -35,7 +35,8 @@ var robot_being_hacked
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
-
+const HACK_WIN_SOUND = preload("res://Assets/Audio/win_hack.wav")
+const HACK_FAIL_SOUND = preload("res://Assets/Audio/fail_hack.wav")
 
 func _ready():
 	add_to_group("game_controller")
@@ -100,6 +101,8 @@ func _process(delta):
 				print("Virus timer started")
 			
 			hackSuccess.emit(robot_being_hacked)
+			audio.stream = HACK_WIN_SOUND
+			audio.play()
 			
 			is_hacking=false
 			minigame.visible = false
@@ -127,6 +130,8 @@ func successfulInput(input, required):
 		audio.play()
 	else:
 		hackFail.emit()
+		audio.stream = HACK_FAIL_SOUND
+		audio.play()
 		Engine.time_scale = 1
 		is_hacking = false
 		minigame.visible = false
