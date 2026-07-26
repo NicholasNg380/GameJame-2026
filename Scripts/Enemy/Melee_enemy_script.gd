@@ -38,7 +38,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		await get_tree().create_timer(0.1).timeout # 1-second attack delay
 		current_state = State.CHASE
 	elif anim.animation == "Death":
-		self.queue_free()
+		die()
 	elif anim.animation == "Knocked":
 		# flash red or something
 		#CODE HERE

@@ -13,6 +13,8 @@ var can_be_hacked: bool = true
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox = $"Damaging Hitbox"
 @onready var audio = $AudioStreamPlayer
+var has_died := false
+
 
 signal died
 
@@ -78,14 +80,16 @@ func take_a_lot_of_damage_magnet():
 	health -= 1000
 
 func die():
-	health = -10
+	if has_died:
+		return
+	has_died = true
 	knocked=true
 	current_state = State.KNOCKED
 	can_be_hacked = false
-	anim.play("Death")
 	var game_controller = get_tree().get_first_node_in_group("game_controller")
 	if game_controller:
 		game_controller._on_died()
+	queue_free()
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
