@@ -31,9 +31,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -35.5
-offset_top = 500.0
+offset_top = 700.0
 offset_right = 35.5
-offset_bottom = 520.0001
+offset_bottom = 720.0006
 grow_horizontal = 2
 scale = Vector2(4, 4)
 pivot_offset = Vector2(35.5, 10)
@@ -49,7 +49,8 @@ offset_bottom = 390.0
 theme_override_colors/font_color = Color(1, 0.07999998, 0.07999998, 1)
 theme_override_fonts/font = ExtResource("2_jqelu")
 theme_override_font_sizes/font_size = 80
-text = "YOU LOST YOUR HOST
+text = "FIREWALL ACTIVATED
+- YOU LOST YOUR HOST -
 
 
 RETRY?"

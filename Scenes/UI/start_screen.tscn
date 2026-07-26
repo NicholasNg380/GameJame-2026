@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://c4jodmve8y67j"]
 
-[ext_resource type="Texture2D" uid="uid://3kh6glklu53x" path="res://Assets/UI/title_screen.png" id="1_ainjc"]
-[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="2_60ddj"]
+[ext_resource type="Script" uid="uid://bib0s6b3w2m5j" path="res://Scripts/Controllers/MainMenu.gd" id="1_px0ht"]
+[ext_resource type="Texture2D" uid="uid://3kh6glklu53x" path="res://Assets/UI/title_screen.png" id="2_0p1pj"]
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="3_vhrx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xa11k"]
-atlas = ExtResource("2_60ddj")
+atlas = ExtResource("3_vhrx5")
 region = Rect2(0, 0, 71, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvsrl"]
-atlas = ExtResource("2_60ddj")
+atlas = ExtResource("3_vhrx5")
 region = Rect2(71, 0, 71, 20)
 
 [node name="StartScreen" type="Control" unique_id=1767037233]
@@ -18,13 +19,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_px0ht")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=35526657]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(4, 4)
-texture = ExtResource("1_ainjc")
+texture = ExtResource("2_0p1pj")
 
 [node name="Start" type="TextureButton" parent="." unique_id=1015507902]
 layout_mode = 1
@@ -46,3 +48,5 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Virus"
-run/main_scene="uid://b2mo1tqwb87av"
+run/main_scene="uid://c4jodmve8y67j"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 <<<<<<<HEADrun/main_scene="uid://coar0w52ewb50"
+
+[autoload]
+
+GameProgress="*uid://dxocoxdqptfae"
 
 [display]
 
