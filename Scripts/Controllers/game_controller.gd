@@ -37,6 +37,7 @@ const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
 const HACK_WIN_SOUND = preload("res://Assets/Audio/win_hack.wav")
 const HACK_FAIL_SOUND = preload("res://Assets/Audio/fail_hack.wav")
+const MAP_SCENE = "res://Scenes/UI/Map/Map.tscn"
 
 func _ready():
 	add_to_group("game_controller")
@@ -56,6 +57,7 @@ func check_win():
 	if enemies.is_empty():
 		won = true
 		print("You Win!")
+		get_tree().change_scene_to_file(MAP_SCENE)
 
 # -------------------------
 # HOST TIMER SYSTEM
@@ -75,6 +77,7 @@ func _on_host_timer_finished():
 
 
 func _process(delta):
+	print("Enemies remaining: ", get_tree().get_nodes_in_group("enemies").size())
 	#Update health bar
 	countdown.text = str(int(ceil(time_remaining)))
 	if timer_active and time_remaining > 0:

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
 
-[node name="World" type="Node2D" unique_id=586736019]
+[node name="WorldEasy" type="Node2D" unique_id=586736019]
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1540764981]
 
@@ -23,6 +23,8 @@ knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
+type = 1
+total_rooms = 4
 room_start = ExtResource("5_exae8")
 room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh"), ExtResource("6_jdbgl")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"

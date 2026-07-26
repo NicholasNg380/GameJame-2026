@@ -4,6 +4,9 @@ extends Node2D
 const SCROLL_SPEED = 15
 const MAP_ROOM = preload("res://Scenes/UI/Map/MapRoom.tscn")
 const MAP_LINE = preload("res://Scenes/UI/Map/MapLine.tscn")
+const WORLD_EASY = "res://Scenes/Levels/WorldEasy.tscn"
+const WORLD_MEDIUM = "res://Scenes/Levels/WorldMedium.tscn"
+const WORLD_HARD = "res://Scenes/Levels/WorldHard.tscn"
 
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var lines: Node2D = %Lines
@@ -100,4 +103,17 @@ func _on_map_room_selected(room: RoomController) -> void:
 	last_room = room
 	floors_climbed += 1
 	unlock_next_rooms()
+	
+	_load_world_for_room(room)
 	#Events.map_exited.emit(room)
+
+func _load_world_for_room(room: RoomController) -> void:
+	match room.type:
+		RoomController.Type.EASY:
+			get_tree().change_scene_to_file(WORLD_EASY)
+		RoomController.Type.MEDIUM:
+			get_tree().change_scene_to_file(WORLD_MEDIUM)
+		RoomController.Type.HARD, RoomController.Type.BOSS:
+			get_tree().change_scene_to_file(WORLD_HARD)
+		RoomController.Type.SHOP:
+			pass # no shop scene yet — add when ready
