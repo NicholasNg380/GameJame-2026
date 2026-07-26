@@ -32,6 +32,7 @@ var robot_being_hacked
 @onready var health = $"CanvasLayer/Death Timer"
 @onready var countdown = $CanvasLayer/Label
 @onready var audio = $"../AudioStreamPlayer2"
+@onready var enemies_left = $"CanvasLayer/Remaining"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -80,6 +81,7 @@ func _process(delta):
 	print("Enemies remaining: ", get_tree().get_nodes_in_group("enemies").size())
 	#Update health bar
 	countdown.text = str(int(ceil(time_remaining)))
+	enemies_left.text = ("Enemies Remaining: " + str(get_tree().get_nodes_in_group("enemies").size()))
 	if timer_active and time_remaining > 0:
 		time_remaining -= delta
 		update_timer += delta
@@ -198,3 +200,6 @@ func _on_time_up() -> void:
 func _on_died():
 	await get_tree().create_timer(0.5).timeout # wait a sec
 	check_win()
+	
+func number_of_enemies() -> int:
+	return get_tree().get_nodes_in_group("enemies").size()
