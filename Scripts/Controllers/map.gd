@@ -117,7 +117,6 @@ func _on_map_room_selected(room: RoomController) -> void:
 	unlock_next_rooms()
 	
 	_load_world_for_room(room)
-	#Events.map_exited.emit(room)
 
 func _load_world_for_room(room: RoomController) -> void:
 	MapProgress.store(map_data, floors_climbed, last_room)
