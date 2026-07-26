@@ -47,10 +47,6 @@ polygon = PackedVector2Array(-812, -128, -172, -128, -172, -768, 0, -768, 0, 0, 
 cull_mode = 2
 polygon = PackedVector2Array(-1024, -768, -852, -768, -852, -128, -212, -128, -212, 0, -1024, 0)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0odv2"]
-cull_mode = 2
-polygon = PackedVector2Array(-1096, -796, -240, -796, -240, 12, -1096, 12)
-
 [node name="Room4" type="Node2D" unique_id=203248451]
 script = ExtResource("1_erdnj")
 
@@ -160,9 +156,4 @@ metadata/_edit_group_ = true
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="." unique_id=1212392133]
 position = Vector2(0, 1024)
 occluder = SubResource("OccluderPolygon2D_6uwql")
-metadata/_edit_group_ = true
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="." unique_id=159982771]
-position = Vector2(668, 412)
-occluder = SubResource("OccluderPolygon2D_0odv2")
 metadata/_edit_group_ = true
