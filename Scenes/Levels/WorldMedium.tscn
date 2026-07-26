@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="12_3uxdn"]
 [ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_3rbss"]
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_366ew"]
+[ext_resource type="Texture2D" uid="uid://dueh7et4sjg6r" path="res://Assets/UI/pause_screen.png" id="15_366ew"]
+[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scenes/Levels/pause_screen.gd" id="16_khlos"]
 
 [node name="WorldMedium" type="Node2D" unique_id=586736019]
 
@@ -132,6 +134,17 @@ offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("11_qdsgd")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
+
+[node name="Pause Screen" type="TextureRect" parent="GameController" unique_id=16384191]
+process_mode = 3
+visible = false
+offset_left = 582.0
+offset_top = 66.0
+offset_right = 771.0
+offset_bottom = 303.0
+scale = Vector2(4, 4)
+texture = ExtResource("15_366ew")
+script = ExtResource("16_khlos")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)

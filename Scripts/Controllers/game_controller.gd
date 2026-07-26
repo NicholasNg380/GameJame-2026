@@ -35,6 +35,7 @@ var robot_being_hacked
 @onready var enemies_left = $"CanvasLayer/Remaining"
 @onready var score = $"CanvasLayer/Score"
 @onready var combo = $"CanvasLayer/Combo"
+@onready var pause_screen = $"CanvasLayer/Pause Screen"
 
 const MINIGAME_KEY = "res://Scenes/UI/minigame_key.tscn"
 const HACK_SOUND = preload("res://Assets/Audio/Hacking_Sound.wav")
@@ -91,6 +92,8 @@ func _on_host_timer_finished():
 func _process(delta):
 	#print("Enemies remaining: ", get_tree().get_nodes_in_group("enemies").size())
 	#Update health bar
+	
+	
 	countdown.text = str(int(ceil(time_remaining)))
 	enemies_left.text = ("Enemies Remaining: " + str(get_tree().get_nodes_in_group("enemies").size()))
 	if timer_active and time_remaining > 0:

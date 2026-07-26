@@ -15,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_fxmlw"]
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_h33no"]
 [ext_resource type="Texture2D" uid="uid://dy1wlx5l132n8" path="res://Assets/UI/prog_bar_back.png" id="15_fxmlw"]
+[ext_resource type="Texture2D" uid="uid://dueh7et4sjg6r" path="res://Assets/UI/pause_screen.png" id="16_eh2gb"]
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="16_h33no"]
+[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scenes/Levels/pause_screen.gd" id="17_efy6b"]
 
 [node name="WorldEasy" type="Node2D" unique_id=586736019]
 
@@ -162,10 +164,22 @@ theme_override_font_sizes/font_size = 20
 text = "test
 "
 
+[node name="Pause Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=1553025284]
+process_mode = 3
+visible = false
+offset_left = 582.0
+offset_top = 66.0
+offset_right = 771.0
+offset_bottom = 303.0
+scale = Vector2(4, 4)
+texture = ExtResource("16_eh2gb")
+script = ExtResource("17_efy6b")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865101754]
+process_mode = 3
 stream = ExtResource("12_jdbgl")
 volume_db = -13.843
 autoplay = true
