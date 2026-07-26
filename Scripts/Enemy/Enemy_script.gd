@@ -80,6 +80,9 @@ func die():
 	current_state = State.KNOCKED
 	can_be_hacked = false
 	anim.play("Death")
+	var game_controller = get_tree().get_first_node_in_group("game_controller")
+	if game_controller:
+		game_controller._on_died()
 
 func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if !knocked:
@@ -93,12 +96,7 @@ func _on_damaging_hitbox_area_shape_entered(_area_rid: RID, _area: Area2D, _area
 		elif player.TYPE == "Tank":
 			health -= 2
 	elif knocked and can_be_hacked:
-		can_be_hacked = false
-		anim.play("Death")
-		var game_controller = get_tree().get_first_node_in_group("game_controller")
-		if game_controller:
-			died.connect(game_controller._on_died)
-		died.emit()
+		die()
 
 func apply_knockback(source_position: Vector2, force: float) -> void:
 	if knocked:

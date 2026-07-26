@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdteatvpljg2x" path="res://Scenes/Levels/RoomStart.tscn" id="5_exae8"]
 [ext_resource type="PackedScene" uid="uid://dw0tsrsc7s35" path="res://Scenes/Levels/Room2.tscn" id="5_f4gmh"]
 [ext_resource type="Script" uid="uid://cyx1lbenspyyq" path="res://Scripts/Controllers/game_controller.gd" id="5_l0cnv"]
+[ext_resource type="PackedScene" uid="uid://bnwtucapco47h" path="res://Scenes/Levels/Room3.tscn" id="6_jdbgl"]
 [ext_resource type="Texture2D" uid="uid://b2pr65js5bhxt" path="res://Assets/UI/UI-Sheet.png" id="7_exae8"]
 [ext_resource type="AudioStream" uid="uid://bkki4ybwurr3g" path="res://Assets/Audio/main_music.wav" id="10_73dir"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="10_qjxhu"]
@@ -22,9 +23,9 @@ knockback_strength = 2.0
 
 [node name="RoomController" type="Node" parent="." unique_id=1643441790]
 script = ExtResource("4_vi80n")
-total_rooms = 3
+total_rooms = 2
 room_start = ExtResource("5_exae8")
-room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh")])
+room_types = Array[PackedScene]([ExtResource("3_28y5c"), ExtResource("5_f4gmh"), ExtResource("6_jdbgl")])
 metadata/_custom_type_script = "uid://dd3n7forj01b"
 
 [node name="GameController" type="Node" parent="." unique_id=1467009610]
