@@ -18,7 +18,6 @@ class_name Player
 @onready var attack_label = $"../GameController/CanvasLayer/descriptions/AttackLabel"
 @onready var special_label = $"../GameController/CanvasLayer/descriptions/SpecialLabel"
 
-@onready var virus_anim = $CPUParticles2D
 
 @onready var special_prog_bar = $Control/TextureProgressBar 
 @onready var ui = $Control
@@ -241,8 +240,8 @@ func _on_game_controller_hack_success(robot) -> void:
 		
 		isHacking = false
 	else:
-		_on_game_controller_hack_fail(
-		
+		_on_game_controller_hack_fail()
+
 
 func animate_virus(end_pos):
 	virus_anim.visible = true

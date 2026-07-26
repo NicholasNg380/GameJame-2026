@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://c65iycphtxi1v" path="res://Assets/Sprites/electric_explosion-Sheet-red.png" id="9_2i876"]
 [ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="10_jvxap"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
 atlas = ExtResource("2_5uqce")
 region = Rect2(0, 0, 32, 32)
@@ -950,6 +949,5 @@ initial_velocity_max = 426.12
 angular_velocity_min = 638.75
 angular_velocity_max = 638.75
 scale_amount_max = 1.5
-
 
 [connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]
