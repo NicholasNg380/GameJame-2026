@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://077gk0701n2i" path="res://Assets/UI/prog_bar_specia_under.png" id="7_y42te"]
 [ext_resource type="Texture2D" uid="uid://dfej2v5r1nyb" path="res://Assets/UI/prog_bar_specia_overl.png" id="8_2i876"]
 [ext_resource type="Texture2D" uid="uid://c65iycphtxi1v" path="res://Assets/Sprites/electric_explosion-Sheet-red.png" id="9_2i876"]
+[ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="10_jvxap"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6i5h"]
 atlas = ExtResource("2_5uqce")
@@ -793,6 +794,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ykjt"]
+atlas = ExtResource("10_jvxap")
+region = Rect2(265, 6, 13, 11)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2130104624]
 collision_layer = 2
 script = ExtResource("1_v0iea")
@@ -926,5 +931,23 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nk2vc")
 frame = 3
 frame_progress = 1.0
+
+[node name="Virus_Particles" type="Node2D" parent="." unique_id=492245616]
+z_index = 4
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Virus_Particles" unique_id=885674581]
+visible = false
+z_index = 10
+rotation = -4.998623
+texture = SubResource("AtlasTexture_0ykjt")
+lifetime = 0.29000000000000004
+speed_scale = 2.0
+explosiveness = 0.01
+gravity = Vector2(0, 500)
+initial_velocity_min = 40.42
+initial_velocity_max = 426.12
+angular_velocity_min = 638.75
+angular_velocity_max = 638.75
+scale_amount_max = 1.5
 
 [connection signal="animation_finished" from="Terminal" to="." method="_on_terminal_animation_finished"]

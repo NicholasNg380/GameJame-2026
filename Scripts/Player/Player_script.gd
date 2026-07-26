@@ -20,6 +20,8 @@ class_name Player
 
 @onready var special_prog_bar = $Control/TextureProgressBar 
 @onready var ui = $Control
+@onready var virus_anim = $Virus_Particles/CPUParticles2D
+
 var knockback_velocity: Vector2 = Vector2.ZERO
 var is_knocked_back := false
 var is_invulnerable := false
@@ -213,6 +215,8 @@ func _on_game_controller_hack_success(robot) -> void:
 	if robot:
 		var player_pos = global_position
 		var robot_pos = robot.global_position
+		await animate_virus(robot_pos)
+		
 		hackFail = false
 		if TYPE != "":
 			var death_anim = robots[TYPE].instantiate()
@@ -222,7 +226,7 @@ func _on_game_controller_hack_success(robot) -> void:
 			
 			death_anim.die()
 		robot_change(robot.type)
-
+		
 		camera.position_smoothing_enabled = true
 		
 		global_position = robot_pos
@@ -237,7 +241,19 @@ func _on_game_controller_hack_success(robot) -> void:
 		isHacking = false
 	else:
 		_on_game_controller_hack_fail()
-		
+
+func animate_virus(end_pos):
+	print("fjDI")
+	virus_anim.visible = true
+	virus_anim.global_position = global_position
+	var tween = create_tween()
+	tween.tween_property(virus_anim, "global_position", end_pos, 0.3)
+	await tween.finished
+	virus_anim.visible = false
+	virus_anim.global_position = global_position
+	
+	
+
 	
 func _on_game_controller_hack_fail() -> void:
 	isHacking = false
