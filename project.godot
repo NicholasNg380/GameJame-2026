@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 MapProgress="*uid://dxocoxdqptfae"
+Score="*uid://dj6fgx1jmf77k"
 
 [display]
 

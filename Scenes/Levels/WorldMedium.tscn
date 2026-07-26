@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bsimjdm23a0ch" path="res://Assets/UI/prog_bar.png" id="10_01nvq"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="11_qdsgd"]
 [ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="12_2umx0"]
+[ext_resource type="Texture2D" uid="uid://pjdcbhmewikw" path="res://Assets/UI/ekey.png" id="12_3uxdn"]
+[ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_3rbss"]
+[ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_366ew"]
 
 [node name="WorldMedium" type="Node2D" unique_id=586736019]
 
@@ -70,6 +73,65 @@ light_mask = 0
 scale = Vector2(4, 4)
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 1
+
+[node name="descriptions" type="VBoxContainer" parent="GameController/CanvasLayer" unique_id=2091740116]
+z_index = 2
+offset_left = 514.0
+offset_top = 137.0
+offset_right = 1676.7617
+offset_bottom = 303.0
+scale = Vector2(1.0262446, 1)
+theme_override_constants/separation = 23
+
+[node name="HackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=1115064700]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("11_qdsgd")
+theme_override_font_sizes/font_size = 40
+text = "Hack"
+
+[node name="AttackLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=608497597]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("11_qdsgd")
+theme_override_font_sizes/font_size = 40
+text = "Slash"
+
+[node name="SpecialLabel" type="Label" parent="GameController/CanvasLayer/descriptions" unique_id=1236038277]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("11_qdsgd")
+theme_override_font_sizes/font_size = 40
+text = "Dash"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameController/CanvasLayer" unique_id=1377066142]
+offset_left = 1721.0
+offset_top = 137.0
+offset_right = 1761.0
+offset_bottom = 177.0
+scale = Vector2(4, 4)
+
+[node name="HackIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=773513449]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("12_3uxdn")
+
+[node name="AttacKIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=1684865090]
+layout_mode = 2
+texture = ExtResource("13_3rbss")
+
+[node name="SpecialIcon" type="TextureRect" parent="GameController/CanvasLayer/VBoxContainer" unique_id=1989218991]
+layout_mode = 2
+texture = ExtResource("14_366ew")
+
+[node name="Remaining" type="Label" parent="GameController/CanvasLayer" unique_id=1467361714]
+offset_left = 31.0
+offset_top = 137.0
+offset_right = 294.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("11_qdsgd")
+theme_override_font_sizes/font_size = 25
+text = "Enemies Remaining"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
