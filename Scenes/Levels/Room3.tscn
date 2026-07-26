@@ -202,8 +202,8 @@ shape = SubResource("RectangleShape2D_bcjo6")
 position = Vector2(0, -1880)
 occluder = SubResource("OccluderPolygon2D_suuho")
 
-[node name="MagnetEnemy1" parent="." unique_id=1329063503 instance=ExtResource("7_5o3dc")]
-collision_layer = 2
+[node name="MagnetEnemy1" parent="." unique_id=1258840285 instance=ExtResource("7_5o3dc")]
+position = Vector2(-2, -3)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")

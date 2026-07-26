@@ -206,10 +206,6 @@ occluder = SubResource("OccluderPolygon2D_suuho")
 [node name="SwordEnemy1" parent="." unique_id=1258840285 instance=ExtResource("5_i8noo")]
 position = Vector2(-480, -552)
 
-[node name="MagnetEnemy1" parent="." unique_id=1329063503 instance=ExtResource("5_bcjo6")]
-position = Vector2(456, 576)
-collision_layer = 2
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1776192829]
 occluder = SubResource("OccluderPolygon2D_ahg1b")
 metadata/_edit_group_ = true
@@ -228,3 +224,6 @@ metadata/_edit_group_ = true
 position = Vector2(0, 1024)
 occluder = SubResource("OccluderPolygon2D_6uwql")
 metadata/_edit_group_ = true
+
+[node name="Enemy3" parent="." unique_id=66826073 instance=ExtResource("5_bcjo6")]
+position = Vector2(438, 475)

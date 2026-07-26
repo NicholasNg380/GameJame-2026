@@ -8,6 +8,7 @@ var ATTACK_TIME := 4.0
 const MAGNET_BOMB = preload("res://Scenes/Objects/enemy_magnet_bomb.tscn")
 
 func _ready():
+	
 	super()
 	attack_timer = ATTACK_TIME
 	SPEED = 550

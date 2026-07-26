@@ -166,6 +166,7 @@ func closest_robot() -> Enemy:
 	var min_distance: float = INF
 	
 	for body in overlapping_bodies:
+		print("Yelo")
 		# Ignore the player itself if it accidentally triggers the area
 		if body == self or !body.canBeHacked(): 
 			continue
