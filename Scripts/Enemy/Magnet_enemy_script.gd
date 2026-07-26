@@ -60,7 +60,7 @@ func _physics_process(_delta):
 				can_be_hacked = false
 				anim.play("Waking up")
 		State.CHASE:
-			var _away_direction = player.global_position.direction_to(global_position)
+			var away_direction = player.global_position.direction_to(global_position)
 
 			if wander_timer <= 0:
 				wander_timer = randf_range(0.5, 1.0)
@@ -69,7 +69,7 @@ func _physics_process(_delta):
 					randf_range(-1, 1)
 				).normalized()
 			if global_position.distance_to(player.global_position) < 600:
-				_away_direction = Vector2.ZERO
+				away_direction = Vector2.ZERO
 			var movement_direction = (wander_direction * 0.5).normalized()
 
 			velocity = movement_direction * SPEED 

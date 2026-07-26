@@ -86,7 +86,7 @@ func activate():
 	enemy_lines[playerRef] = line
 
 
-func _on_area_2d_area_shape_entered(area: Area2D) -> void:
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if activated:
 		return
 
@@ -95,7 +95,7 @@ func _on_area_2d_area_shape_entered(area: Area2D) -> void:
 	activate()
 		
 
-func _on_collide_with_wall_body_entered() -> void:
+func _on_collide_with_wall_body_entered(body: Node2D) -> void:
 	if can_hit_wall:
 		current_velocity = 0
 		on_wall = true

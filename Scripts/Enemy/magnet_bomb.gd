@@ -93,7 +93,7 @@ func activate():
 func enemies_detected():
 	return enemies
 
-func _on_area_2d_area_shape_entered(area: Area2D) -> void:
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if activated:
 		return
 
@@ -101,13 +101,13 @@ func _on_area_2d_area_shape_entered(area: Area2D) -> void:
 	if enemy and !enemies.has(enemy):
 		enemies.append(enemy)
 		
-func _on_area_2d_area_shape_exited(area: Area2D) -> void:
+func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area != null:
 		var enemy := area.get_parent() as Enemy
 		if enemy in enemies:
 			enemies.erase(enemy)
 
-func _on_collide_with_wall_body_entered() -> void:
+func _on_collide_with_wall_body_entered(body: Node2D) -> void:
 	current_velocity = 0
 	on_wall = true
 
