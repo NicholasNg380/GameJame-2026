@@ -141,7 +141,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecjq5"]
 radius = 14.508618
 
-[node name="Enemy3" type="CharacterBody2D" unique_id=1258840285]
+[node name="MagnetEnemy" type="CharacterBody2D" unique_id=1258840285]
 z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 4

@@ -52,7 +52,11 @@ func world_to_ui_position(world_position: Vector2) -> Vector2:
 	return get_viewport().get_canvas_transform() * world_position
 	
 func check_win():
+	if won or lost:
+		return
 	await get_tree().process_frame
+	if won or lost or not is_inside_tree():
+		return
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	if enemies.is_empty():
 		won = true

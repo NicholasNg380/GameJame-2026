@@ -24,7 +24,6 @@ var can_hit_wall_timer := 0.05
 @onready var collision = $Area2D/CollisionShape2D
 
 func _ready() -> void:
-	#collision.disabled = true
 	current_velocity = INIT_VELOCITY
 	animate_timer = ANIM_TIMER_CONST
 	anim.play("default")
@@ -71,7 +70,7 @@ func stop_object():
 
 func activate():
 	current_velocity = 0
-	collision.disabled = false
+	collision.set_deferred("disabled", false)
 	activated = true
 
 	

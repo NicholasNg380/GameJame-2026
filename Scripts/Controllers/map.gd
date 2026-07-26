@@ -117,7 +117,6 @@ func _on_map_room_selected(room: RoomController) -> void:
 	unlock_next_rooms()
 	
 	_load_world_for_room(room)
-	#Events.map_exited.emit(room)
 
 func _load_world_for_room(room: RoomController) -> void:
 	MapProgress.store(map_data, floors_climbed, last_room)
@@ -129,5 +128,3 @@ func _load_world_for_room(room: RoomController) -> void:
 			get_tree().change_scene_to_file(WORLD_MEDIUM)
 		RoomController.Type.HARD, RoomController.Type.BOSS:
 			get_tree().change_scene_to_file(WORLD_HARD)
-		RoomController.Type.SHOP:
-			pass # no shop scene yet — add when ready

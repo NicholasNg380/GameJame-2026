@@ -8,15 +8,13 @@ const FLOORS = 6
 const MAP_WIDTH = 5
 const PATHS = 6
 const EASY_ROOM_WEIGHT = 2
-const MEDIUM_ROOM_WEIGHT = 6
-const HARD_ROOM_WEIGHT = 8
-const SHOP_ROOM_WEIGHT = 5
+const MEDIUM_ROOM_WEIGHT = 8
+const HARD_ROOM_WEIGHT = 6
 
 var random_room_type_weights = {
 	RoomController.Type.EASY: 0.0,
 	RoomController.Type.MEDIUM: 0.0,
 	RoomController.Type.HARD: 0.0,
-	RoomController.Type.SHOP: 0.0
 }
 var random_room_type_total_weight = 0
 var map_data: Array[Array]
@@ -138,9 +136,8 @@ func _setup_random_room_weights() -> void:
 	random_room_type_weights[RoomController.Type.EASY] = EASY_ROOM_WEIGHT
 	random_room_type_weights[RoomController.Type.MEDIUM] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT
 	random_room_type_weights[RoomController.Type.HARD] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT + HARD_ROOM_WEIGHT
-	random_room_type_weights[RoomController.Type.SHOP] = EASY_ROOM_WEIGHT + MEDIUM_ROOM_WEIGHT + HARD_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
 	
-	random_room_type_total_weight = random_room_type_weights[RoomController.Type.SHOP]
+	random_room_type_total_weight = random_room_type_weights[RoomController.Type.HARD]
 	
 func _setup_room_types() -> void:
 	
@@ -156,13 +153,6 @@ func _setup_room_types() -> void:
 	for room: RoomController in map_data[2]:
 		if room.next_rooms.size() > 0:
 			room.type = RoomController.Type.EASY
-	
-	# 3rd room is always shop
-	"""
-	for room: RoomController in map_data[2]:
-		if room.next_rooms.size() > 0:
-			room.type = RoomController.Type.SHOP
-	"""
 			
 	for current_floor in map_data:
 		for room: RoomController in current_floor:
@@ -171,17 +161,10 @@ func _setup_room_types() -> void:
 					_set_room_randomly(next_room)
 					
 func _set_room_randomly(room_to_set: RoomController) -> void:
-	var consecutive_shop = true
 	
 	var type_candidate: RoomController.Type
 	
-	while consecutive_shop:
-		type_candidate = _get_random_room_type_by_weight()
-		
-		var is_shop = type_candidate == RoomController.Type.SHOP
-		var has_shop_parent = _room_has_parent_of_type(room_to_set, RoomController.Type.SHOP)
-		
-		consecutive_shop = is_shop and has_shop_parent
+	type_candidate = _get_random_room_type_by_weight()
 		
 	room_to_set.type = type_candidate
 	
