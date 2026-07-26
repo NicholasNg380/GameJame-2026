@@ -209,8 +209,7 @@ func _on_time_up() -> void:
 		return
 	lost = true
 	timer_active = false
-	print("Time's up — Game Over") 
-	game_over_label = "Final Score " + str(score)
+	game_over_label = "Final Score " + str(Score.score)
 	game_over_screen.visible = true
 	get_tree().paused = true
 

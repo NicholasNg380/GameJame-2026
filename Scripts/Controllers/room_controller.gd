@@ -31,7 +31,6 @@ var occupied: Dictionary = {}
 
 func _ready():
 	generate_map()
-	print("Room type: ", Type.keys()[type])
 
 func generate_map():
 	# Delete old rooms

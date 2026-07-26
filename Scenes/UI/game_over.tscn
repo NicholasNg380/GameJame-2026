@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bbdduc76rfaxi" path="res://Assets/UI/title_screen_UI-Sheet.png" id="1_wpaxx"]
 [ext_resource type="FontFile" uid="uid://d3b13hxnt7o63" path="res://Assets/Fonts/Porto_Buena.otf" id="2_jqelu"]
+[ext_resource type="Script" uid="uid://jnbdf8n4m71a" path="res://Scripts/Controllers/game_over_screen.gd" id="2_w88jv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w88jv"]
 atlas = ExtResource("1_wpaxx")
@@ -39,6 +40,7 @@ scale = Vector2(4, 4)
 pivot_offset = Vector2(35.5, 10)
 texture_normal = SubResource("AtlasTexture_w88jv")
 texture_pressed = SubResource("AtlasTexture_ckxb7")
+script = ExtResource("2_w88jv")
 
 [node name="Label" type="Label" parent="." unique_id=1773579056]
 layout_mode = 0
