@@ -207,7 +207,8 @@ func _on_time_up() -> void:
 		return
 	lost = true
 	timer_active = false
-	print("Time's up — Game Over")
+	print("Time's up — Game Over") 
+	
 	# TODO: actual game-over flow (freeze player, show a screen, reload level, etc.)
 	get_tree().paused = true
 

@@ -135,18 +135,6 @@ theme_override_fonts/font = ExtResource("11_qdsgd")
 theme_override_font_sizes/font_size = 25
 text = "Enemies Remaining"
 
-
-[node name="Pause Screen" type="TextureRect" parent="GameController" unique_id=16384191]
-process_mode = 3
-visible = false
-offset_left = 582.0
-offset_top = 66.0
-offset_right = 771.0
-offset_bottom = 303.0
-scale = Vector2(4, 4)
-texture = ExtResource("15_366ew")
-script = ExtResource("16_khlos")
-
 [node name="Score" type="Label" parent="GameController/CanvasLayer" unique_id=1339893714]
 offset_left = 32.0
 offset_top = 167.0
@@ -166,6 +154,20 @@ theme_override_font_sizes/font_size = 20
 text = "test
 "
 
+[node name="TextureRect" type="TextureRect" parent="GameController/CanvasLayer" unique_id=991649500]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=16384191]
+process_mode = 3
+visible = false
+offset_left = 582.0
+offset_top = 66.0
+offset_right = 771.0
+offset_bottom = 303.0
+scale = Vector2(4, 4)
+texture = ExtResource("15_366ew")
+script = ExtResource("16_khlos")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)

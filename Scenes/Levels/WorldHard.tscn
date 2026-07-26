@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://dcw3ohrhvvy7g" path="res://Assets/Audio/8059346-chiptune-grooving-142242.mp3" id="12_oyijb"]
 [ext_resource type="Texture2D" uid="uid://dur2w1hc0lsew" path="res://Assets/UI/space_and_lclick.png" id="13_dfvj8"]
 [ext_resource type="Texture2D" uid="uid://doak3buvwj286" path="res://Assets/UI/shift_and_rclick.png" id="14_ox5mo"]
+[ext_resource type="Texture2D" uid="uid://dueh7et4sjg6r" path="res://Assets/UI/pause_screen.png" id="16_1i0s3"]
+[ext_resource type="Script" uid="uid://csmtteggi10ts" path="res://Scenes/Levels/pause_screen.gd" id="17_5w2ur"]
 
 [node name="WorldHard" type="Node2D" unique_id=586736019]
 
@@ -152,6 +154,17 @@ theme_override_fonts/font = ExtResource("11_f3r3e")
 theme_override_font_sizes/font_size = 20
 text = "test
 "
+
+[node name="Pause Screen" type="TextureRect" parent="GameController/CanvasLayer" unique_id=786593879]
+process_mode = 3
+visible = false
+offset_left = 582.0
+offset_top = 66.0
+offset_right = 771.0
+offset_bottom = 303.0
+scale = Vector2(4, 4)
+texture = ExtResource("16_1i0s3")
+script = ExtResource("17_5w2ur")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762017053]
 color = Color(0, 0, 0, 1)
