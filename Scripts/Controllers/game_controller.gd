@@ -81,7 +81,7 @@ func _on_host_timer_finished():
 
 
 func _process(delta):
-	#print("Enemies remaining: ", get_tree().get_nodes_in_group("enemies").size())
+	print("Enemies remaining: ", get_tree().get_nodes_in_group("enemies").size())
 	#Update health bar
 	countdown.text = str(int(ceil(time_remaining)))
 	if timer_active and time_remaining > 0:
