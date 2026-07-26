@@ -18,16 +18,6 @@ var ICONS = {
 var available := false : set = set_available
 var room: RoomController : set = set_room
 
-#Test code
-func _ready() -> void:
-	var test_room = RoomController.new()
-	test_room.type = RoomController.Type.SHOP
-	test_room.position = Vector2(100, 100)
-	room = test_room
-	
-	await get_tree().create_timer(3).timeout
-	available = true
-
 func set_available(new_value: bool) -> void:
 	available = new_value
 	
