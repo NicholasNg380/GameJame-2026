@@ -8,7 +8,6 @@ var ICONS = {
 	RoomController.Type.EASY: [preload("res://Assets/Sprites/Easy.png"), Vector2.ONE],
 	RoomController.Type.MEDIUM: [preload("res://Assets/Sprites/Medium.png"), Vector2.ONE],
 	RoomController.Type.HARD: [preload("res://Assets/Sprites/Hard.png"), Vector2.ONE],
-	RoomController.Type.SHOP: [preload("res://Assets/Sprites/Shop.png"), Vector2.ONE],
 	RoomController.Type.BOSS: [preload("res://Assets/icon.svg"), Vector2(0.4, 0.4)],
 }
 

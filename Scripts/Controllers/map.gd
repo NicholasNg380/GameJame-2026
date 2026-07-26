@@ -129,5 +129,3 @@ func _load_world_for_room(room: RoomController) -> void:
 			get_tree().change_scene_to_file(WORLD_MEDIUM)
 		RoomController.Type.HARD, RoomController.Type.BOSS:
 			get_tree().change_scene_to_file(WORLD_HARD)
-		RoomController.Type.SHOP:
-			pass # no shop scene yet — add when ready
